@@ -81,7 +81,8 @@
 <main class="wrap thanks hidden" id="thanks-view">
   <img class="logo" src="assets/img/logo.png" alt="DREADWOOD" width="900" height="249">
   <h1>Thanks, partner.</h1>
-  <p class="lede" style="font-size:20px">Your notes go straight into the rulebook pile. Every game you played made it better.</p>
+  <figure class="vamp" id="vamp"><img id="vamp-img" alt="" width="260" height="360"><figcaption><b id="vamp-name"></b><span id="vamp-line"></span></figcaption></figure>
+  <p class="lede" style="font-size:20px">Your notes go straight into the rulebook pile.</p>
   <div class="status wait" id="tstatus">Saving…</div>
   <p class="lede">Eliminated early? Grab another drink. You earned it.</p>
   <div style="display:grid;gap:10px;margin-top:20px">
@@ -141,7 +142,8 @@ function build(){
     handle:v("handle"), email:v("email"), ok_followup:$("#followup").checked, ok_credit:$("#credit").checked, credit_name:v("creditname"),
     seconds:Math.round((Date.now()-mounted)/1000) };
 }
-async function showThanks(){
+async function showThanks(real){
+  if (real){ const v = DW.nextVampire(); $('#vamp-img').src='assets/vamps/'+v.f; $('#vamp-img').alt=v.name; $('#vamp-name').textContent=v.name; $('#vamp-line').textContent=v.line; $('#vamp').classList.remove('hidden'); } else $('#vamp').classList.add('hidden');
   $("#form-view").classList.add("hidden"); $("#dock").classList.add("hidden"); $("#thanks-view").classList.remove("hidden"); scrollTo(0,0);
   const st = $("#tstatus");
   const paint = () => { const n = pending(); if (n){ st.className="status wait"; st.textContent="Saved on this phone. It will send itself as soon as you have signal. You can close this page."; } else { st.className="status ok"; st.textContent="✓ Received. Nothing more to do."; } };
@@ -151,7 +153,7 @@ $("#go").onclick = async () => {
   if ($("#f [name=website]").value) { showThanks(); return; }           // honeypot: bots get a fake thank-you, nothing is stored
   if (Date.now()-mounted < 2500) return;                                   // humans need more than 2.5 s
   const em = $("#email").value.trim(); if (em && !/^\S+@\S+\.\S+$/.test(em)) { $("#d-contact").open = true; $("#email").focus(); return; }
-  enqueue(build()); showThanks();
+  enqueue(build()); showThanks(true);
 };
 function resetForm(keepGame){
   $("#f").reset(); ["c-faction","c-fun","c-clarity","c-again","c-balance","c-tier","c-count","c-seat","c-won","c-first","c-heard"].forEach(i=>setChips($("#"+i),""));

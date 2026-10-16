@@ -35,3 +35,6 @@ Hidden honeypot field (bots get a fake thank-you and nothing is stored), a minim
 
 ## Editing
 Layout names and canon rosters are in `assets/common.js`. Palette is in `assets/app.css` (from the manual redesign direction). Logo is the untouched DREADWOOD logo, resized.
+
+## Thank-you vampire
+After each survey the thank-you screen shows one of the 8 characters (`assets/vamps/`, transparent WebP cutouts). Each device gets a random `device_id` and a shuffled order in `localStorage` (`dw_device_v1`); the index advances per survey, all 8 show before reshuffling, and the first of a new shuffle never equals the last one shown. Every record (survey and game) carries `device_id`. Add it as a column in the Sheet (`Code.gs` COLS) if you want it there.

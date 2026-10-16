@@ -72,3 +72,8 @@ details{margin:10px 0}summary{cursor:pointer;font:700 22px "Barlow Condensed";te
 .foot a{color:#d8bf8a}
 nav.hostnav{display:flex;gap:8px;flex-wrap:wrap}
 @media (min-width:700px){.chip{min-height:56px}}
+
+.vamp{margin:6px auto 0;text-align:center}
+.vamp img{display:block;margin:0 auto;height:min(40vh,340px);width:auto;max-width:90%;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(0,0,0,.55))}
+.vamp figcaption b{display:block;font:700 26px "Barlow Condensed";text-transform:uppercase;letter-spacing:.06em;color:var(--parch-mid);margin-top:8px}
+.vamp figcaption span{display:block;color:#e6cf9c;font-weight:400;font-size:17px}
