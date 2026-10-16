@@ -15,8 +15,6 @@
 
    <section class="panel">
     <h2>Your game</h2>
-    <div class="q">Which game of the night? <small>optional</small></div>
-    <div class="chips eq num" id="c-game"></div>
     <div class="q req">Who did you play?</div>
     <div class="chips grid2" id="c-faction" data-chipclass="fac"></div>
 
@@ -38,7 +36,8 @@
    </section>
 
    <details class="panel" id="d-game">
-    <summary>About the game (optional)</summary>
+    <summary>About the game <span class="opt">optional</span><span class="cnt" hidden></span></summary>
+    <div class="q">Which game of the night?</div><div class="chips eq num" id="c-game"></div>
     <div class="q">Difficulty</div><div class="chips grid2" id="c-tier"></div>
     <div class="q">Players</div><div class="chips grid3" id="c-count"></div>
     <div class="q">Layout</div><select id="layout" aria-label="Layout"></select>
@@ -47,19 +46,23 @@
     <div class="q">First time playing?</div><div class="chips grid2" id="c-first"></div>
    </details>
 
-   <details class="panel" id="d-more" open>
-    <summary>Tell us more (optional)</summary>
+   <details class="panel" id="d-more">
+    <summary>Tell us more <span class="opt">optional</span><span class="cnt" hidden></span></summary>
     <div class="q">Favorite character or ability</div><select id="fav"></select>
     <div class="q">Least favorite</div><select id="least"></select>
     <div class="q">What confused you?</div><textarea id="confused" maxlength="600" placeholder="A rule, a card, a moment where you went “wait, what?”"></textarea>
     <div class="q">One thing you'd change</div><textarea id="change" maxlength="600"></textarea>
+   </details>
+
+   <details class="panel" id="d-you">
+    <summary>About you <span class="opt">optional</span><span class="cnt" hidden></span></summary>
     <div class="q">How did you hear about tonight?</div><div class="chips grid2" id="c-heard"></div>
     <div class="q">What do you usually play? <small>pick any</small></div><div class="chips grid2 left" id="c-interests"></div>
     <div class="q">Favorite board or video game?</div><input type="text" id="favgame" maxlength="100" placeholder="Anything goes">
    </details>
 
    <details class="panel" id="d-contact">
-    <summary>Stay in touch (optional)</summary>
+    <summary>Stay in touch <span class="opt">optional</span><span class="cnt" hidden></span></summary>
     <p class="hint">Only Adam sees this. No spam, no list sales.</p>
     <div class="q">Name or handle</div><input type="text" id="handle" maxlength="80" autocomplete="off" placeholder="First name or @handle">
     <div class="q">Email</div><input type="email" id="email" maxlength="120" autocomplete="off" inputmode="email" placeholder="you@example.com">
@@ -127,6 +130,16 @@ for (const id of ["fav","least"]) { const s=$("#"+id); s.innerHTML='<option valu
 $("#credit").onchange = e => $("#credit-wrap").classList.toggle("hidden", !e.target.checked);
 upd();
 
+function badges(){
+  $$('#f details').forEach(d=>{ let n=0;
+    $$('.chips',d).forEach(c=>{ if($$('.chip[aria-pressed=true]',c).length) n++; });
+    $$('input[type=text],input[type=email],textarea,select',d).forEach(e=>{ if((e.value||'').trim()) n++; });
+    $$('input[type=checkbox]',d).forEach(e=>{ if(e.checked) n++; });
+    const b=$('.cnt',d); b.hidden=!n; b.textContent=n+' answered'; });
+}
+['click','input','change'].forEach(ev=>$('#f').addEventListener(ev,()=>setTimeout(badges,0)));
+badges();
+
 function build(){
   const v = id => ($("#"+id).value||"").trim();
   return { type:"survey", game:getChips($("#c-game")), faction:getChips($("#c-faction")), fun:+getChips($("#c-fun")), clarity:+getChips($("#c-clarity")),
@@ -152,7 +165,7 @@ $("#go").onclick = async () => {
 function resetForm(keepGame){
   $("#f").reset(); ["c-game","c-faction","c-fun","c-clarity","c-again","c-balance","c-tier","c-count","c-seat","c-won","c-first","c-heard","c-interests"].forEach(i=>setChips($("#"+i),""));
   $("#credit-wrap").classList.add("hidden"); if(!keepGame) game="";
-  setChips($("#c-game"), keepGame ? game : ""); fillLayouts($("#layout"),0); upd();
+  setChips($("#c-game"), keepGame ? game : ""); fillLayouts($("#layout"),0); upd(); badges(); $$('#f details').forEach(d=>d.open=false);
   $("#thanks-view").classList.add("hidden"); $("#form-view").classList.remove("hidden"); $("#dock").classList.remove("hidden"); scrollTo(0,0);
 }
 $("#again").onclick = () => resetForm(true);

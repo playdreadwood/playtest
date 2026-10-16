@@ -103,3 +103,11 @@ p,label,li{text-wrap:pretty}
 .chip.fac{text-align:left;justify-content:flex-start}
 
 .chips.left .chip{justify-content:flex-start;text-align:left;min-height:64px;line-height:1.15}
+
+summary{display:flex;align-items:center;gap:10px;flex-wrap:wrap;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸";font-size:20px;color:var(--logo);transition:transform .15s;display:inline-block;width:16px}
+details[open]>summary::before{transform:rotate(90deg)}
+summary .opt{font:500 14px Barlow;text-transform:none;letter-spacing:0;color:#d8bf8a}
+summary .cnt{margin-left:auto;font:700 15px Barlow;letter-spacing:.02em;text-transform:none;background:var(--logo);color:var(--ink);border-radius:99px;padding:2px 10px}
+summary .cnt[hidden]{display:none}
