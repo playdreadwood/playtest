@@ -57,3 +57,5 @@ The thank-you screen can reopen the survey with every answer kept. A resend reus
 The game-number question reads "How many games of Dreadwood have you played tonight? (Count this one.)". `game` stores 1, 2, 3 or 4+ (this game included); `?g=` still prefills it.
 
 The player survey no longer asks for difficulty. `tier` stays in the schema/Sheet as an empty column for surveys; the host log still records tier per game, which is the source of truth.
+
+The player survey no longer asks "First time playing?"; `first_time` stays as an empty column for surveys (the host log still records first-timers vs returning). The seat question now sits under Players, appears only after a player count is chosen, and offers seats 1..N for that count (a chosen seat above N is cleared when the count changes).
