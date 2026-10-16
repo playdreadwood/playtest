@@ -133,7 +133,7 @@ for (const id of ["fav","least"]) { const s=$("#"+id); s.innerHTML='<option valu
     [...r.chars.map(c=>["Character: "+c, c]), ...r.abil.map(a=>["Ability: "+a, a+" (ability)"])].forEach(([v,l])=>{const o=document.createElement("option");o.value=v;o.textContent=l;g.appendChild(o)}); s.appendChild(g); });
   const g=document.createElement("optgroup"); g.label="Everyone"; const o=document.createElement("option"); o.value="Silver Bullet"; o.textContent="Silver Bullet"; g.appendChild(o); s.appendChild(g); }
 $("#credit").onchange = e => { $("#pt-fields").classList.toggle("open", e.target.checked); if(!e.target.checked){ $("#creditname").value=""; $("#email").value=""; } };
-$("#more").onclick = () => { const x=$("#extra"), open=x.classList.toggle("open"); $("#more").setAttribute("aria-expanded",open); $("#more").textContent = open ? "Done helping" : "Help shape the game"; if(open) setTimeout(()=>x.scrollIntoView({behavior:"smooth",block:"start"}),120); };
+$("#more").onclick = () => { $(".actions").classList.add("hidden"); $("#left").classList.add("hidden"); const x=$("#extra"); x.classList.add("open"); $("#more").setAttribute("aria-expanded","true"); setTimeout(()=>x.scrollIntoView({behavior:"smooth",block:"start"}),120); };
 upd();
 
 function badges(){
@@ -177,13 +177,13 @@ $("#go").onclick = $("#go2").onclick = submit;
 function resetForm(keepGame){
   cur = null;
   $("#f").reset(); ["c-game","c-faction","c-fun","c-clarity","c-again","c-balance","c-tier","c-count","c-seat","c-won","c-first","c-heard","c-interests"].forEach(i=>setChips($("#"+i),""));
-  $("#pt-fields").classList.remove("open"); $("#extra").classList.remove("open"); $("#more").textContent="Help shape the game"; $("#more").setAttribute("aria-expanded","false"); if(!keepGame) game="";
+  $("#pt-fields").classList.remove("open"); $("#extra").classList.remove("open"); $(".actions").classList.remove("hidden"); $("#left").classList.remove("hidden"); $("#more").setAttribute("aria-expanded","false"); if(!keepGame) game="";
   setChips($("#c-game"), keepGame ? game : ""); fillLayouts($("#layout"),0); upd(); badges(); $$('#f details').forEach(d=>d.open=false);
   $("#thanks-view").classList.add("hidden"); $("#form-view").classList.remove("hidden"); scrollTo(0,0);
 }
 $("#more-thoughts").onclick = () => {
   $("#thanks-view").classList.add("hidden"); $("#form-view").classList.remove("hidden");
-  const x=$("#extra"); if(!x.classList.contains("open")) $("#more").click(); else scrollTo(0,0);
+  if(!$("#extra").classList.contains("open")) $("#more").click(); else $("#extra").scrollIntoView({behavior:"smooth",block:"start"});
   badges();
 };
 $("#again").onclick = () => resetForm(true);
