@@ -140,3 +140,5 @@ html{scrollbar-gutter:stable;overflow-y:scroll}
 .reveal>.rv{overflow:hidden;min-height:0}
 .reveal.open>.rv{overflow:visible;transition:none}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.open{transition:none}}
+
+.chip{text-wrap:balance}

@@ -46,12 +46,12 @@
    <p class="note count" id="left">5 answers to go</p>
    <div class="actions">
      <button class="btn" id="go" type="button" disabled>Submit</button>
-     <button class="btn ghost" id="more" type="button" aria-expanded="false" aria-controls="extra">Add more detail</button>
+     <button class="btn ghost" id="more" type="button" aria-expanded="false" aria-controls="extra">Help shape the game</button>
    </div>
 
    <div id="extra" class="reveal"><div class="rv">
    <details class="panel" id="d-game">
-    <summary>About the game <span class="opt">optional</span><span class="cnt" hidden></span></summary>
+    <summary>The match <span class="opt">optional</span><span class="cnt" hidden></span></summary>
     <div class="q">Which game of the night?</div><div class="chips eq num" id="c-game"></div>
     <div class="q">Difficulty</div><div class="chips grid2" id="c-tier"></div>
     <div class="q">Players</div><div class="chips grid3" id="c-count"></div>
@@ -62,7 +62,7 @@
    </details>
 
    <details class="panel" id="d-more">
-    <summary>Tell us more <span class="opt">optional</span><span class="cnt" hidden></span></summary>
+    <summary>Your two cents <span class="opt">optional</span><span class="cnt" hidden></span></summary>
     <div class="q">Favorite character or ability</div><select id="fav"></select>
     <div class="q">Least favorite</div><select id="least"></select>
     <div class="q">What confused you?</div><textarea id="confused" maxlength="600" placeholder="A rule, a card, a moment where you went “wait, what?”"></textarea>
@@ -70,7 +70,7 @@
    </details>
 
    <details class="panel" id="d-you">
-    <summary>About you <span class="opt">optional</span><span class="cnt" hidden></span></summary>
+    <summary>Who's talking <span class="opt">optional</span><span class="cnt" hidden></span></summary>
     <div class="q">How did you hear about tonight?</div><div class="chips grid2" id="c-heard"></div>
     <div class="q">What do you usually play? <small>pick any</small></div><div class="chips grid2 left" id="c-interests"></div>
     <div class="q">Favorite board or video game?</div><input type="text" id="favgame" maxlength="100" placeholder="Anything goes">
@@ -132,7 +132,7 @@ for (const id of ["fav","least"]) { const s=$("#"+id); s.innerHTML='<option valu
     [...r.chars.map(c=>["Character: "+c, c]), ...r.abil.map(a=>["Ability: "+a, a+" (ability)"])].forEach(([v,l])=>{const o=document.createElement("option");o.value=v;o.textContent=l;g.appendChild(o)}); s.appendChild(g); });
   const g=document.createElement("optgroup"); g.label="Everyone"; const o=document.createElement("option"); o.value="Silver Bullet"; o.textContent="Silver Bullet"; g.appendChild(o); s.appendChild(g); }
 $("#credit").onchange = e => { $("#pt-fields").classList.toggle("open", e.target.checked); if(!e.target.checked){ $("#creditname").value=""; $("#email").value=""; } };
-$("#more").onclick = () => { const x=$("#extra"), open=x.classList.toggle("open"); $("#more").setAttribute("aria-expanded",open); $("#more").textContent = open ? "Hide extra detail" : "Add more detail"; if(open) setTimeout(()=>x.scrollIntoView({behavior:"smooth",block:"start"}),120); };
+$("#more").onclick = () => { const x=$("#extra"), open=x.classList.toggle("open"); $("#more").setAttribute("aria-expanded",open); $("#more").textContent = open ? "Done helping" : "Help shape the game"; if(open) setTimeout(()=>x.scrollIntoView({behavior:"smooth",block:"start"}),120); };
 upd();
 
 function badges(){
@@ -170,7 +170,7 @@ const submit = async () => {
 $("#go").onclick = $("#go2").onclick = submit;
 function resetForm(keepGame){
   $("#f").reset(); ["c-game","c-faction","c-fun","c-clarity","c-again","c-balance","c-tier","c-count","c-seat","c-won","c-first","c-heard","c-interests"].forEach(i=>setChips($("#"+i),""));
-  $("#pt-fields").classList.remove("open"); $("#extra").classList.remove("open"); $("#more").textContent="Add more detail"; $("#more").setAttribute("aria-expanded","false"); if(!keepGame) game="";
+  $("#pt-fields").classList.remove("open"); $("#extra").classList.remove("open"); $("#more").textContent="Help shape the game"; $("#more").setAttribute("aria-expanded","false"); if(!keepGame) game="";
   setChips($("#c-game"), keepGame ? game : ""); fillLayouts($("#layout"),0); upd(); badges(); $$('#f details').forEach(d=>d.open=false);
   $("#thanks-view").classList.add("hidden"); $("#form-view").classList.remove("hidden"); scrollTo(0,0);
 }

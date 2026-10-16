@@ -45,3 +45,5 @@ After each survey the thank-you screen shows one of the 8 characters (`assets/va
 
 ## Wording notes (player-facing)
 The balance question reads "Did everyone have a fair shot?" with buttons "Yes, fair" / "Someone had an edge". Stored values are unchanged (`balance` = `Fair` or `Felt off`; free text in `balance_note`), so Sheet columns and old rows stay compatible. Likewise the interests chip "Video: role-playing games" still stores `Video: RPGs`. Keep labels plain; faction names and Beginner/Deadly/Immortal are left as is.
+
+The optional accordions are titled "The match", "Your two cents" and "Who's talking"; the expand button reads "Help shape the game" and then "Done helping".
