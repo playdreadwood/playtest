@@ -54,6 +54,8 @@
     <div class="q">What confused you?</div><textarea id="confused" maxlength="600" placeholder="A rule, a card, a moment where you went “wait, what?”"></textarea>
     <div class="q">One thing you'd change</div><textarea id="change" maxlength="600"></textarea>
     <div class="q">How did you hear about tonight?</div><div class="chips grid2" id="c-heard"></div>
+    <div class="q">What do you usually play? <small>pick any</small></div><div class="chips grid2 left" id="c-interests"></div>
+    <div class="q">Favorite board or video game?</div><input type="text" id="favgame" maxlength="100" placeholder="Anything goes">
    </details>
 
    <details class="panel" id="d-contact">
@@ -115,6 +117,7 @@ chips($("#c-seat"), ["1","2","3","4"]);
 chips($("#c-won"), ["Won","Lost","Unfinished"]);
 chips($("#c-first"), ["First time","Played before"]);
 chips($("#c-heard"), ["Potion Portal","Social media","A friend","Walked in","Other"]);
+chips($("#c-interests"), ["Tactics/strategy board games","Miniatures wargames","Card games","Party/family games","Video: tactics/strategy","Video: shooters","Video: RPGs","Other"], {multi:true});
 fillLayouts($("#layout"), 0);
 // favorite / least: characters + abilities + Silver Bullet
 for (const id of ["fav","least"]) { const s=$("#"+id); s.innerHTML='<option value="">No pick</option>';
@@ -129,7 +132,7 @@ function build(){
   return { type:"survey", game:getChips($("#c-game")), faction:getChips($("#c-faction")), fun:+getChips($("#c-fun")), clarity:+getChips($("#c-clarity")),
     play_again:getChips($("#c-again")), balance:getChips($("#c-balance")), balance_note:v("off"),
     tier:getChips($("#c-tier")), players:getChips($("#c-count")), layout:v("layout"), seat:getChips($("#c-seat")), result:getChips($("#c-won")), first_time:getChips($("#c-first")),
-    favorite:v("fav"), least_favorite:v("least"), confused:v("confused"), change:v("change"), heard:getChips($("#c-heard")),
+    favorite:v("fav"), least_favorite:v("least"), confused:v("confused"), change:v("change"), heard:getChips($("#c-heard")), interests:getChips($("#c-interests"),true), favorite_game:v("favgame"),
     handle:v("handle"), email:v("email"), ok_followup:$("#followup").checked, ok_credit:$("#credit").checked, credit_name:v("creditname"),
     seconds:Math.round((Date.now()-mounted)/1000) };
 }
@@ -147,7 +150,7 @@ $("#go").onclick = async () => {
   enqueue(build()); showThanks(true);
 };
 function resetForm(keepGame){
-  $("#f").reset(); ["c-game","c-faction","c-fun","c-clarity","c-again","c-balance","c-tier","c-count","c-seat","c-won","c-first","c-heard"].forEach(i=>setChips($("#"+i),""));
+  $("#f").reset(); ["c-game","c-faction","c-fun","c-clarity","c-again","c-balance","c-tier","c-count","c-seat","c-won","c-first","c-heard","c-interests"].forEach(i=>setChips($("#"+i),""));
   $("#credit-wrap").classList.add("hidden"); if(!keepGame) game="";
   setChips($("#c-game"), keepGame ? game : ""); fillLayouts($("#layout"),0); upd();
   $("#thanks-view").classList.add("hidden"); $("#form-view").classList.remove("hidden"); $("#dock").classList.remove("hidden"); scrollTo(0,0);

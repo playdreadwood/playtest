@@ -6,7 +6,7 @@
  */
 var READ_KEY = 'change-me';
 var COLS = {
-  surveys: ['id','ts','game','faction','fun','clarity','play_again','balance','balance_note','tier','players','layout','seat','result','first_time','favorite','least_favorite','confused','change','heard','handle','email','ok_followup','ok_credit','credit_name','seconds','device_id','ua'],
+  surveys: ['id','ts','game','faction','fun','clarity','play_again','balance','balance_note','tier','players','layout','seat','result','first_time','favorite','least_favorite','confused','change','heard','interests','favorite_game','handle','email','ok_followup','ok_credit','credit_name','seconds','device_id','ua'],
   games:   ['id','ts','game','tier','players','layout','start','end','teach_min','first_timers','returning','winner_seat','winner_faction','end_condition','rounds','margin_wells','margin_vamps','disputes','confusion','kingmaking','runaway','broken_combo','stall','house_rules','notes','seats_json','device_id','ua'],
   seats:   ['game_id','ts','game','tier','players','layout','seat','name','faction','out_round','out_cause','cards_used','winner']
 };

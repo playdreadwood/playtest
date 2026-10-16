@@ -101,3 +101,5 @@ p,label,li{text-wrap:pretty}
 .chip.fac{min-height:72px;align-items:center}
 .q small{display:block;margin-top:2px}
 .chip.fac{text-align:left;justify-content:flex-start}
+
+.chips.left .chip{justify-content:flex-start;text-align:left;min-height:64px;line-height:1.15}
