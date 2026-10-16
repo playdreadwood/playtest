@@ -118,3 +118,4 @@ summary .cnt[hidden]{display:none}
 .hdr .lede{max-width:30ch;margin:10px auto 0;text-wrap:balance}
 .wide .hdr .lede{max-width:46ch}
 @media(min-width:700px){.hdr .lede{max-width:44ch}}
+.hdr .lede{max-width:34ch}.wide .hdr .lede{max-width:38ch}
