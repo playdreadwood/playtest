@@ -111,3 +111,10 @@ details[open]>summary::before{transform:rotate(90deg)}
 summary .opt{font:500 14px Barlow;text-transform:none;letter-spacing:0;color:#d8bf8a}
 summary .cnt{margin-left:auto;font:700 15px Barlow;letter-spacing:.02em;text-transform:none;background:var(--logo);color:var(--ink);border-radius:99px;padding:2px 10px}
 summary .cnt[hidden]{display:none}
+
+.hdr{text-align:center;margin-bottom:22px}
+.hdr .logo{margin:6px auto 12px}
+.hdr h1{text-wrap:balance;font-size:36px}
+.hdr .lede{max-width:30ch;margin:10px auto 0;text-wrap:balance}
+.wide .hdr .lede{max-width:46ch}
+@media(min-width:700px){.hdr .lede{max-width:44ch}}
