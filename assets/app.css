@@ -142,3 +142,4 @@ html{scrollbar-gutter:stable;overflow-y:scroll}
 @media (prefers-reduced-motion:reduce){.reveal,.reveal.open{transition:none}}
 
 .chip{text-wrap:balance}
+@media (max-width:380px){.actions .btn{font-size:19px;letter-spacing:.03em;padding:8px 6px}}
