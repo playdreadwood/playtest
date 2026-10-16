@@ -86,3 +86,13 @@ p,label,li{text-wrap:pretty}
 .btn.ig .igt{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
 .btn.ig .a{font-size:24px;white-space:nowrap}.btn.ig .b{font:600 15px Barlow;letter-spacing:.08em;opacity:.95}
 @media (max-width:370px){.btn.ig .a{font-size:21px}}
+
+.chips.eq{display:grid;grid-template-columns:repeat(var(--n,4),1fr)}
+.chips.eq.num .chip{font-size:24px;font-family:"Barlow Condensed";font-weight:700;min-height:58px;padding:4px}
+.chips.grid2 .chip:last-child:nth-child(odd){grid-column:1/-1}
+.chips.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.chips.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.chips.grid4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.chips.five{grid-template-columns:repeat(5,minmax(0,1fr))}
+.chips.eq{grid-template-columns:repeat(var(--n,4),minmax(0,1fr))}
+.chips.grid3 .chip{padding:8px 6px;line-height:1.1}

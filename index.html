@@ -12,7 +12,7 @@
   <p class="lede">About a minute. Five taps are required; the rest is yours to skip. Be blunt. The game can take it.</p>
   <p class="row" style="margin:12px 0 0"><span class="tag" id="where">Game ?</span><button class="btn ghost sm" id="edit-where" type="button">Change</button></p>
   <div id="where-edit" class="panel hidden">
-    <div class="q">Which game of the night?</div><div class="chips" id="c-game"></div>
+    <div class="q">Which game of the night?</div><div class="chips eq num" id="c-game"></div>
   </div>
 
   <form id="f" autocomplete="off" novalidate>
@@ -42,10 +42,10 @@
 
    <details class="panel" id="d-game">
     <summary>About the game (optional)</summary>
-    <div class="q">Difficulty</div><div class="chips grid3" id="c-tier"></div>
+    <div class="q">Difficulty</div><div class="chips grid2" id="c-tier"></div>
     <div class="q">Players</div><div class="chips grid3" id="c-count"></div>
     <div class="q">Layout</div><select id="layout" aria-label="Layout"></select>
-    <div class="q">Your seat <small>1 = went first</small></div><div class="chips" id="c-seat"></div>
+    <div class="q">Your seat <small>1 = went first</small></div><div class="chips eq num" id="c-seat"></div>
     <div class="q">Did you win?</div><div class="chips grid3" id="c-won"></div>
     <div class="q">First time playing?</div><div class="chips grid2" id="c-first"></div>
    </details>
@@ -117,7 +117,6 @@ chips($("#c-clarity"), ["1","2","3","4","5"], {onchange:upd});
 chips($("#c-again"), ["Yes","Maybe","No"], {onchange:upd});
 chips($("#c-balance"), ["Fair","Felt off"], {onchange:upd});
 chips($("#c-tier"), ["Beginner","Deadly","Immortal","Not sure"].map(v=>({v})), {onchange:()=>{}});
-$("#c-tier").classList.remove("grid3");
 chips($("#c-count"), ["2","3","4"], {onchange:v=>fillLayouts($("#layout"), v?+v:0)});
 chips($("#c-seat"), ["1","2","3","4"]);
 chips($("#c-won"), ["Won","Lost","Unfinished"]);

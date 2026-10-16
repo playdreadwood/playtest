@@ -11,7 +11,7 @@
 
   <form id="f" autocomplete="off" novalidate>
   <section class="panel"><h2>Setup</h2>
-    <div class="mini">Game # tonight</div><div class="chips" id="c-game"></div>
+    <div class="mini">Game # tonight</div><div class="chips eq num" id="c-game"></div>
     <div class="mini">Difficulty</div><div class="chips grid3" id="c-tier"></div>
     <div class="mini">Players</div><div class="chips grid3" id="c-count"></div>
     <div class="mini">Layout <small>(players choose or go random)</small></div><select id="layout"></select>
@@ -90,7 +90,7 @@ function seatsView(){
       <div class="mini">Faction</div><div class="chips grid2 fc" data-chipclass="fac"></div>
       <div class="mini">Went out in round / by</div>
       <input type="number" data-k="out_round" inputmode="numeric" min="1" placeholder="Round number" value="${s.out_round}" style="margin-bottom:8px"><div class="chips grid2 oc"></div>
-      ${cards.length ? `<div class="mini">Once-per-game cards used</div><div class="chips cc"></div>` : ""}
+      ${cards.length ? `<div class="mini">Once-per-game cards used</div><div class="chips grid2 cc"></div>` : ""}
       <div style="margin-top:10px"><button type="button" class="btn sm ${winner===i?"":"ghost"}" data-win="${i}">${winner===i?"★ Winner":"Mark as winner"}</button></div>`;
     box.appendChild(d);
     $("input[data-k=name]", d).oninput = e => {s.name=e.target.value; save();};

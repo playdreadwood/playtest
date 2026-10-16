@@ -22,6 +22,7 @@ function chips(el, opts, {multi=false, onchange}={}){
     });
     el.appendChild(b);
   });
+  if (el.classList.contains("eq")) el.style.setProperty("--n", opts.length);
 }
 function getChips(el, multi){ const v = $$(".chip[aria-pressed=true]", el).map(b=>b.dataset.v); return multi ? v : (v[0] || ""); }
 function setChips(el, val){ const vs = Array.isArray(val) ? val : [val]; $$(".chip", el).forEach(b=>b.setAttribute("aria-pressed", vs.includes(b.dataset.v)?"true":"false")); }
