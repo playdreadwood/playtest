@@ -53,7 +53,6 @@
    <details class="panel" id="d-game">
     <summary>The match <span class="opt">optional</span><span class="cnt" hidden></span></summary>
     <div class="q">How many games of Dreadwood have you played tonight?<small>Count this one.</small></div><div class="chips eq num" id="c-game"></div>
-    <div class="q">Difficulty</div><div class="chips grid2" id="c-tier"></div>
     <div class="q">Players</div><div class="chips grid3" id="c-count"></div>
     <div class="q">Layout</div><select id="layout" aria-label="Layout"></select>
     <div class="q">Your seat <small>1 = went first</small></div><div class="chips eq num" id="c-seat"></div>
@@ -119,7 +118,6 @@ chips($("#c-fun"), ["1","2","3","4","5"], {onchange:upd});
 chips($("#c-clarity"), ["1","2","3","4","5"], {onchange:upd});
 chips($("#c-again"), ["Yes","Maybe","No"], {onchange:upd});
 chips($("#c-balance"), [{v:"Fair",l:"Yes, fair"},{v:"Felt off",l:"Someone had an edge"}], {onchange:upd});
-chips($("#c-tier"), ["Beginner","Deadly","Immortal","Not sure"].map(v=>({v})), {onchange:()=>{}});
 chips($("#c-count"), ["2","3","4"], {onchange:v=>fillLayouts($("#layout"), v?+v:0)});
 chips($("#c-seat"), ["1","2","3","4"]);
 chips($("#c-won"), ["Won","Lost","Unfinished"]);
@@ -150,7 +148,7 @@ function build(){
   const v = id => ($("#"+id).value||"").trim(), pt = $("#credit").checked;
   return { type:"survey", game:getChips($("#c-game")), faction:getChips($("#c-faction")), fun:+getChips($("#c-fun")), clarity:+getChips($("#c-clarity")),
     play_again:getChips($("#c-again")), balance:getChips($("#c-balance")), balance_note:v("off"),
-    tier:getChips($("#c-tier")), players:getChips($("#c-count")), layout:v("layout"), seat:getChips($("#c-seat")), result:getChips($("#c-won")), first_time:getChips($("#c-first")),
+    tier:"", players:getChips($("#c-count")), layout:v("layout"), seat:getChips($("#c-seat")), result:getChips($("#c-won")), first_time:getChips($("#c-first")),
     favorite:v("fav"), least_favorite:v("least"), confused:v("confused"), change:v("change"), heard:getChips($("#c-heard")), interests:getChips($("#c-interests"),true), favorite_game:v("favgame"),
     handle:pt?v("creditname"):"", email:pt?v("email"):"", ok_followup:pt && !!v("email"), ok_credit:pt, credit_name:pt?v("creditname"):"",
     seconds:Math.round((Date.now()-mounted)/1000) };
@@ -176,7 +174,7 @@ const submit = async () => {
 $("#go").onclick = $("#go2").onclick = submit;
 function resetForm(keepGame){
   cur = null;
-  $("#f").reset(); ["c-game","c-faction","c-fun","c-clarity","c-again","c-balance","c-tier","c-count","c-seat","c-won","c-first","c-heard","c-interests"].forEach(i=>setChips($("#"+i),""));
+  $("#f").reset(); ["c-game","c-faction","c-fun","c-clarity","c-again","c-balance","c-count","c-seat","c-won","c-first","c-heard","c-interests"].forEach(i=>setChips($("#"+i),""));
   $("#pt-fields").classList.remove("open"); $("#extra").classList.remove("open"); $(".actions").classList.remove("hidden"); $("#left").classList.remove("hidden"); $("#more").setAttribute("aria-expanded","false"); if(!keepGame) game="";
   setChips($("#c-game"), keepGame ? game : ""); fillLayouts($("#layout"),0); upd(); badges(); $$('#f details').forEach(d=>d.open=false);
   $("#thanks-view").classList.add("hidden"); $("#form-view").classList.remove("hidden"); scrollTo(0,0);

@@ -55,3 +55,5 @@ The thank-you screen can reopen the survey with every answer kept. A resend reus
 - **Any other export:** keep the last row per `id`.
 
 The game-number question reads "How many games of Dreadwood have you played tonight? (Count this one.)". `game` stores 1, 2, 3 or 4+ (this game included); `?g=` still prefills it.
+
+The player survey no longer asks for difficulty. `tier` stays in the schema/Sheet as an empty column for surveys; the host log still records tier per game, which is the source of truth.
