@@ -100,3 +100,4 @@ p,label,li{text-wrap:pretty}
 .chip{text-align:center;line-height:1.1}
 .chip.fac{min-height:72px;align-items:center}
 .q small{display:block;margin-top:2px}
+.chip.fac{text-align:left;justify-content:flex-start}
