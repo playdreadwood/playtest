@@ -119,3 +119,5 @@ summary .cnt[hidden]{display:none}
 .wide .hdr .lede{max-width:46ch}
 @media(min-width:700px){.hdr .lede{max-width:44ch}}
 .hdr .lede{max-width:34ch}.wide .hdr .lede{max-width:38ch}
+
+#form-view .hdr{margin-bottom:6px}#form-view .hdr h1{margin-top:2px}
