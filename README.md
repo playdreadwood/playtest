@@ -16,7 +16,7 @@ Every submission is written to the device's `localStorage` first (so offline or 
 
 Two sinks (set in `assets/config.js`; a send succeeds if either accepts):
 
-1. **Google Sheet via Apps Script** (permanent). `apps-script/Code.gs`. Tabs `surveys`, `games`, `seats`. Empty `sheet:` in `config.js` means it is not wired yet.
+1. **Google Sheet via Apps Script** (permanent). `apps-script/Code.gs`. Tabs `surveys`, `games`, `seats`. The exec URL is set as `sheet:` in `config.js` (public by design).
 2. **ntfy.sh relay** (interim, no account). The topic is in `config.js`. ntfy keeps messages only about 12 hours, so pull often. Anyone who reads `config.js` could read or post to the topic, so treat it as a stopgap.
 
 ### Setting up the Sheet sink (about 3 minutes, Adam's Google account)
@@ -27,6 +27,7 @@ Two sinks (set in `assets/config.js`; a send succeeds if either accepts):
 
 ## Reading the results back
 - **Sheet:** open it, or download as CSV/XLSX. Or `GET <exec URL>?key=<READ_KEY>` returns all three tabs as JSON.
+- **Sheet to file:** `tools/pull_sheet.sh` saves all tabs to `results/sheet.json` (read key from `DW_READ_KEY` or a gitignored `.secrets` file; never commit it).
 - **Relay:** `tools/pull.sh` merges the relay's messages into `results/relay.jsonl`, de-duplicated by `id`. Run it at least every few hours on the night, e.g. each hour from 7 PM.
 - **Device backup:** `/host/` → "This device" → Download JSON/CSV exports every record submitted from that phone or tablet.
 
