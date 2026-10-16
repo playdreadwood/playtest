@@ -99,3 +99,4 @@ p,label,li{text-wrap:pretty}
 .chips.grid2,.chips.grid3,.chips.grid4,.chips.five,.chips.eq{grid-auto-rows:1fr}
 .chip{text-align:center;line-height:1.1}
 .chip.fac{min-height:72px;align-items:center}
+.q small{display:block;margin-top:2px}
