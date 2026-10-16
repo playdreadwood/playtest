@@ -59,3 +59,5 @@ The game-number question reads "How many games of Dreadwood have you played toni
 The player survey no longer asks for difficulty. `tier` stays in the schema/Sheet as an empty column for surveys; the host log still records tier per game, which is the source of truth.
 
 The player survey no longer asks "First time playing?"; `first_time` stays as an empty column for surveys (the host log still records first-timers vs returning). The seat question now sits under Players, appears only after a player count is chosen, and offers seats 1..N for that count (a chosen seat above N is cleared when the count changes).
+
+Interest chips now store their displayed text: "Tactics/strategy video games", "Shooter video games", "Role-playing video games" (earlier test rows used "Video: tactics/strategy", "Video: shooters", "Video: RPGs"; treat those as the same answers).

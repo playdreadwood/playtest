@@ -124,7 +124,7 @@ chips($("#c-count"), ["2","3","4"], {onchange:v=>{ fillLayouts($("#layout"), v?+
 seatsFor("");
 chips($("#c-won"), ["Won","Lost","Unfinished"]);
 chips($("#c-heard"), ["Potion Portal","Social media","A friend","Walked in","Other"]);
-chips($("#c-interests"), ["Tactics/strategy board games","Miniatures wargames","Card games","Party/family games","Video: tactics/strategy","Video: shooters",{v:"Video: RPGs",l:"Video: role-playing games"},"Other"], {multi:true});
+chips($("#c-interests"), ["Tactics/strategy board games","Miniatures wargames","Card games","Party/family games","Tactics/strategy video games","Shooter video games","Role-playing video games","Other"], {multi:true});
 fillLayouts($("#layout"), 0);
 // favorite / least: characters + abilities + Silver Bullet
 for (const id of ["fav","least"]) { const s=$("#"+id); s.innerHTML='<option value="">No pick</option>';
