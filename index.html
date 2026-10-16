@@ -12,6 +12,15 @@
   <form id="f" autocomplete="off" novalidate>
    <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 
+   <section class="panel pt" id="pt-panel">
+    <label class="tick big"><input type="checkbox" id="credit"><span><b>Include me as a playtester</b><small>Your name goes in the rulebook credits.</small></span></label>
+    <div id="pt-fields" class="hidden">
+      <div class="q">Name <small>exactly as it should be printed</small></div><input type="text" id="creditname" maxlength="80" autocomplete="off" placeholder="First name, handle, or both">
+      <div class="q">Email <small>optional, only if you're up for follow-up questions</small></div><input type="email" id="email" maxlength="120" autocomplete="off" inputmode="email" placeholder="you@example.com">
+      <p class="hint" style="margin:8px 0 0">Only Adam sees this. No spam, no list sales.</p>
+    </div>
+   </section>
+
    <section class="panel">
     <h2>Your game</h2>
     <div class="q req">Who did you play?</div>
@@ -34,6 +43,13 @@
       <input type="text" id="off" maxlength="200" placeholder="A faction, ability, seat, layout…"></div>
    </section>
 
+   <p class="note count" id="left">5 answers to go</p>
+   <div class="actions">
+     <button class="btn" id="go" type="button" disabled>Submit</button>
+     <button class="btn ghost" id="more" type="button" aria-expanded="false" aria-controls="extra">Add more detail</button>
+   </div>
+
+   <div id="extra" class="hidden">
    <details class="panel" id="d-game">
     <summary>About the game <span class="opt">optional</span><span class="cnt" hidden></span></summary>
     <div class="q">Which game of the night?</div><div class="chips eq num" id="c-game"></div>
@@ -60,23 +76,12 @@
     <div class="q">Favorite board or video game?</div><input type="text" id="favgame" maxlength="100" placeholder="Anything goes">
    </details>
 
-   <details class="panel" id="d-contact">
-    <summary>Stay in touch <span class="opt">optional</span><span class="cnt" hidden></span></summary>
-    <p class="hint">Only Adam sees this. No spam, no list sales.</p>
-    <div class="q">Name or handle</div><input type="text" id="handle" maxlength="80" autocomplete="off" placeholder="First name or @handle">
-    <div class="q">Email</div><input type="email" id="email" maxlength="120" autocomplete="off" inputmode="email" placeholder="you@example.com">
-    <label class="tick"><input type="checkbox" id="followup"><span>You may contact me with follow-up questions about my game.</span></label>
-    <label class="tick"><input type="checkbox" id="credit"><span>Credit me in the rulebook playtester list.</span></label>
-    <div id="credit-wrap" class="hidden"><div class="q">Credit me as</div><input type="text" id="creditname" maxlength="80" placeholder="Exactly how it should be printed"></div>
-   </details>
+   <p class="note count" id="left2"></p>
+   <button class="btn" id="go2" type="button" disabled>Submit</button>
+   </div>
   </form>
   <p class="foot">DREADWOOD · First public playtest · Potion Portal, St. Pete</p>
 </main>
-
-<div class="dock" id="dock"><div class="in">
-  <p class="note" id="left">5 answers to go</p>
-  <button class="btn" id="go" type="button" disabled>Send feedback</button>
-</div></div>
 
 <main class="wrap thanks hidden" id="thanks-view">
   <img class="logo" src="assets/img/logo.png" alt="DREADWOOD" width="900" height="249">
@@ -104,8 +109,8 @@ const mounted = Date.now();
 chips($("#c-game"), ["1","2","3","4+"], {onchange:v=>{game=v;}}); setChips($("#c-game"), game);
 const upd = () => {
   const need = [["fac",getChips($("#c-faction"))],["fun",getChips($("#c-fun"))],["cl",getChips($("#c-clarity"))],["ag",getChips($("#c-again"))],["bal",getChips($("#c-balance"))]].filter(x=>!x[1]).length;
-  $("#go").disabled = need>0;
-  $("#left").textContent = need ? need + (need===1?" answer to go":" answers to go") : "Ready. Thanks for doing this.";
+  $("#go").disabled = $("#go2").disabled = need>0;
+  $("#left").textContent = $("#left2").textContent = need ? need + (need===1?" answer to go":" answers to go") : "Ready. Thanks for doing this.";
   $("#off-wrap").classList.toggle("hidden", getChips($("#c-balance"))!=="Felt off");
 };
 chips($("#c-faction"), FACTIONS, {onchange:upd});
@@ -126,7 +131,8 @@ for (const id of ["fav","least"]) { const s=$("#"+id); s.innerHTML='<option valu
   Object.entries(ROSTER).forEach(([f,r]) => { const g=document.createElement("optgroup"); g.label=f;
     [...r.chars.map(c=>["Character: "+c, c]), ...r.abil.map(a=>["Ability: "+a, a+" (ability)"])].forEach(([v,l])=>{const o=document.createElement("option");o.value=v;o.textContent=l;g.appendChild(o)}); s.appendChild(g); });
   const g=document.createElement("optgroup"); g.label="Everyone"; const o=document.createElement("option"); o.value="Silver Bullet"; o.textContent="Silver Bullet"; g.appendChild(o); s.appendChild(g); }
-$("#credit").onchange = e => $("#credit-wrap").classList.toggle("hidden", !e.target.checked);
+$("#credit").onchange = e => { $("#pt-fields").classList.toggle("hidden", !e.target.checked); if(!e.target.checked){ $("#creditname").value=""; $("#email").value=""; } };
+$("#more").onclick = () => { const x=$("#extra"), open=x.classList.toggle("hidden")===false; $("#more").setAttribute("aria-expanded",open); $("#more").textContent = open ? "Hide extra detail" : "Add more detail"; if(open) setTimeout(()=>x.scrollIntoView({behavior:"smooth",block:"start"}),50); };
 upd();
 
 function badges(){
@@ -140,32 +146,33 @@ function badges(){
 badges();
 
 function build(){
-  const v = id => ($("#"+id).value||"").trim();
+  const v = id => ($("#"+id).value||"").trim(), pt = $("#credit").checked;
   return { type:"survey", game:getChips($("#c-game")), faction:getChips($("#c-faction")), fun:+getChips($("#c-fun")), clarity:+getChips($("#c-clarity")),
     play_again:getChips($("#c-again")), balance:getChips($("#c-balance")), balance_note:v("off"),
     tier:getChips($("#c-tier")), players:getChips($("#c-count")), layout:v("layout"), seat:getChips($("#c-seat")), result:getChips($("#c-won")), first_time:getChips($("#c-first")),
     favorite:v("fav"), least_favorite:v("least"), confused:v("confused"), change:v("change"), heard:getChips($("#c-heard")), interests:getChips($("#c-interests"),true), favorite_game:v("favgame"),
-    handle:v("handle"), email:v("email"), ok_followup:$("#followup").checked, ok_credit:$("#credit").checked, credit_name:v("creditname"),
+    handle:pt?v("creditname"):"", email:pt?v("email"):"", ok_followup:pt && !!v("email"), ok_credit:pt, credit_name:pt?v("creditname"):"",
     seconds:Math.round((Date.now()-mounted)/1000) };
 }
 async function showThanks(real){
   if (real){ const v = DW.nextVampire(); $('#vamp-img').src='assets/vamps/'+v.f; $('#vamp-img').alt=v.name; $('#vamp-name').textContent=v.name; $('#vamp-line').textContent=v.line; $('#vamp').classList.remove('hidden'); } else $('#vamp').classList.add('hidden');
-  $("#form-view").classList.add("hidden"); $("#dock").classList.add("hidden"); $("#thanks-view").classList.remove("hidden"); scrollTo(0,0);
+  $("#form-view").classList.add("hidden"); $("#thanks-view").classList.remove("hidden"); scrollTo(0,0);
   const st = $("#tstatus");
   const paint = () => { const n = pending(); if (n){ st.className="status wait"; st.textContent="Saved on this phone. It will send itself as soon as you have signal. You can close this page."; } else { st.className="status ok"; st.textContent="✓ Received. Nothing more to do."; } };
   paint(); document.addEventListener("dw-queue", paint); await flush(); paint();
 }
-$("#go").onclick = async () => {
+const submit = async () => {
   if ($("#f [name=website]").value) { showThanks(); return; }           // honeypot: bots get a fake thank-you, nothing is stored
   if (Date.now()-mounted < 2500) return;                                   // humans need more than 2.5 s
-  const em = $("#email").value.trim(); if (em && !/^\S+@\S+\.\S+$/.test(em)) { $("#d-contact").open = true; $("#email").focus(); return; }
+  const em = $("#email").value.trim(); if (em && !/^\S+@\S+\.\S+$/.test(em)) { $("#email").focus(); return; }
   enqueue(build()); showThanks(true);
 };
+$("#go").onclick = $("#go2").onclick = submit;
 function resetForm(keepGame){
   $("#f").reset(); ["c-game","c-faction","c-fun","c-clarity","c-again","c-balance","c-tier","c-count","c-seat","c-won","c-first","c-heard","c-interests"].forEach(i=>setChips($("#"+i),""));
-  $("#credit-wrap").classList.add("hidden"); if(!keepGame) game="";
+  $("#pt-fields").classList.add("hidden"); $("#extra").classList.add("hidden"); $("#more").textContent="Add more detail"; $("#more").setAttribute("aria-expanded","false"); if(!keepGame) game="";
   setChips($("#c-game"), keepGame ? game : ""); fillLayouts($("#layout"),0); upd(); badges(); $$('#f details').forEach(d=>d.open=false);
-  $("#thanks-view").classList.add("hidden"); $("#form-view").classList.remove("hidden"); $("#dock").classList.remove("hidden"); scrollTo(0,0);
+  $("#thanks-view").classList.add("hidden"); $("#form-view").classList.remove("hidden"); scrollTo(0,0);
 }
 $("#again").onclick = () => resetForm(true);
 $("#again-me").onclick = () => resetForm(false);
