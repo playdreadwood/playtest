@@ -10,16 +10,13 @@
   <img class="logo" src="assets/img/logo.png" alt="DREADWOOD" width="900" height="249">
   <h1>Playtest feedback</h1>
   <p class="lede">About a minute. Five taps are required; the rest is yours to skip. Be blunt. The game can take it.</p>
-  <p class="row" style="margin:12px 0 0"><span class="tag" id="where">Game ?</span><button class="btn ghost sm" id="edit-where" type="button">Change</button></p>
-  <div id="where-edit" class="panel hidden">
-    <div class="q">Which game of the night?</div><div class="chips eq num" id="c-game"></div>
-  </div>
-
   <form id="f" autocomplete="off" novalidate>
    <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 
    <section class="panel">
     <h2>Your game</h2>
+    <div class="q">Which game of the night? <small>optional</small></div>
+    <div class="chips eq num" id="c-game"></div>
     <div class="q req">Who did you play?</div>
     <div class="chips grid2" id="c-faction" data-chipclass="fac"></div>
 
@@ -96,15 +93,11 @@
 (() => {
 const {$, $$, chips, getChips, setChips, enqueue, flush, pending, fillLayouts, ROSTER, FACTIONS, jget, jset} = DW;
 const P = new URLSearchParams(location.search);
-let game = P.get("g") || "";   // ?t= (old table param) is ignored on purpose
-const num = x => (/^\d{1,2}$/.test(x) ? x : "");
-game = num(game);
+let game = "";   // ?t= (old table param) is ignored on purpose
+const gp = (P.get("g")||"").replace(/\s/g,"+");   // ?t= (old table param) is ignored on purpose
+if (/^\d{1,2}\+?$/.test(gp)) game = (parseInt(gp,10) >= 4 || gp.endsWith("+")) ? "4+" : String(parseInt(gp,10));
 const mounted = Date.now();
-chips($("#c-game"), ["1","2","3","4+"], {onchange:v=>{game=v; showWhere();}});
-function showWhere(){ $("#where").textContent = "Game " + (game||"?"); setChips($("#c-game"), game); if (game) $("#where-edit").classList.add("hidden"); }
-$("#edit-where").onclick = () => $("#where-edit").classList.toggle("hidden");
-showWhere(); if (!game) $("#where-edit").classList.remove("hidden");
-
+chips($("#c-game"), ["1","2","3","4+"], {onchange:v=>{game=v;}}); setChips($("#c-game"), game);
 const upd = () => {
   const need = [["fac",getChips($("#c-faction"))],["fun",getChips($("#c-fun"))],["cl",getChips($("#c-clarity"))],["ag",getChips($("#c-again"))],["bal",getChips($("#c-balance"))]].filter(x=>!x[1]).length;
   $("#go").disabled = need>0;
@@ -133,7 +126,7 @@ upd();
 
 function build(){
   const v = id => ($("#"+id).value||"").trim();
-  return { type:"survey", game, faction:getChips($("#c-faction")), fun:+getChips($("#c-fun")), clarity:+getChips($("#c-clarity")),
+  return { type:"survey", game:getChips($("#c-game")), faction:getChips($("#c-faction")), fun:+getChips($("#c-fun")), clarity:+getChips($("#c-clarity")),
     play_again:getChips($("#c-again")), balance:getChips($("#c-balance")), balance_note:v("off"),
     tier:getChips($("#c-tier")), players:getChips($("#c-count")), layout:v("layout"), seat:getChips($("#c-seat")), result:getChips($("#c-won")), first_time:getChips($("#c-first")),
     favorite:v("fav"), least_favorite:v("least"), confused:v("confused"), change:v("change"), heard:getChips($("#c-heard")),
@@ -154,9 +147,9 @@ $("#go").onclick = async () => {
   enqueue(build()); showThanks(true);
 };
 function resetForm(keepGame){
-  $("#f").reset(); ["c-faction","c-fun","c-clarity","c-again","c-balance","c-tier","c-count","c-seat","c-won","c-first","c-heard"].forEach(i=>setChips($("#"+i),""));
-  $("#credit-wrap").classList.add("hidden"); if(!keepGame){ game=""; showWhere(); $("#where-edit").classList.remove("hidden"); }
-  fillLayouts($("#layout"),0); upd();
+  $("#f").reset(); ["c-game","c-faction","c-fun","c-clarity","c-again","c-balance","c-tier","c-count","c-seat","c-won","c-first","c-heard"].forEach(i=>setChips($("#"+i),""));
+  $("#credit-wrap").classList.add("hidden"); if(!keepGame) game="";
+  setChips($("#c-game"), keepGame ? game : ""); fillLayouts($("#layout"),0); upd();
   $("#thanks-view").classList.add("hidden"); $("#form-view").classList.remove("hidden"); $("#dock").classList.remove("hidden"); scrollTo(0,0);
 }
 $("#again").onclick = () => resetForm(true);
