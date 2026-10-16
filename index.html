@@ -37,10 +37,10 @@
     <div class="q req">Would you play again?</div>
     <div class="chips grid3" id="c-again"></div>
 
-    <div class="q req">Did it feel balanced?</div>
+    <div class="q req">Did everyone have a fair shot?</div>
     <div class="chips grid2" id="c-balance"></div>
-    <div id="off-wrap" class="hidden"><div class="q">What felt too strong or too weak? <small>optional</small></div>
-      <input type="text" id="off" maxlength="200" placeholder="A faction, ability, seat, layout…"></div>
+    <div id="off-wrap" class="hidden"><div class="q">What gave someone the edge? <small>optional</small></div>
+      <input type="text" id="off" maxlength="200" placeholder="A faction, a card, a seat, the board…"></div>
    </section>
 
    <p class="note count" id="left">5 answers to go</p>
@@ -117,7 +117,7 @@ chips($("#c-faction"), FACTIONS, {onchange:upd});
 chips($("#c-fun"), ["1","2","3","4","5"], {onchange:upd});
 chips($("#c-clarity"), ["1","2","3","4","5"], {onchange:upd});
 chips($("#c-again"), ["Yes","Maybe","No"], {onchange:upd});
-chips($("#c-balance"), ["Fair","Felt off"], {onchange:upd});
+chips($("#c-balance"), [{v:"Fair",l:"Yes, fair"},{v:"Felt off",l:"Someone had an edge"}], {onchange:upd});
 chips($("#c-tier"), ["Beginner","Deadly","Immortal","Not sure"].map(v=>({v})), {onchange:()=>{}});
 chips($("#c-count"), ["2","3","4"], {onchange:v=>fillLayouts($("#layout"), v?+v:0)});
 chips($("#c-seat"), ["1","2","3","4"]);

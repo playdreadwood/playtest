@@ -42,3 +42,6 @@ After each survey the thank-you screen shows one of the 8 characters (`assets/va
 
 ## Survey fields (record schema)
 `type:"survey"`, `id`, `ts`, `device_id`, `game`, `faction`, `fun`, `clarity`, `play_again`, `balance`, `balance_note`, `tier`, `players`, `layout`, `seat`, `result`, `first_time`, `favorite`, `least_favorite`, `confused`, `change`, `heard`, `interests` (array, e.g. ["Miniatures wargames","Card games"]), `favorite_game`, `handle`, `email`, `ok_followup`, `ok_credit`, `credit_name`, `seconds`, `ua`. In the Sheet, `interests` is stored as JSON text. `tools/pull.sh` copies records verbatim, so new fields need no change there. If you already created the Sheet before this update, delete the `surveys` tab (or add `interests` and `favorite_game` columns before `handle`) so headers match.
+
+## Wording notes (player-facing)
+The balance question reads "Did everyone have a fair shot?" with buttons "Yes, fair" / "Someone had an edge". Stored values are unchanged (`balance` = `Fair` or `Felt off`; free text in `balance_note`), so Sheet columns and old rows stay compatible. Likewise the interests chip "Video: role-playing games" still stores `Video: RPGs`. Keep labels plain; faction names and Beginner/Deadly/Immortal are left as is.
