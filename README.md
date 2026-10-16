@@ -53,3 +53,5 @@ The thank-you screen can reopen the survey with every answer kept. A resend reus
 - **Sheet:** the current `apps-script/Code.gs` does an upsert (repeat id = update that row; games also replace their `seats` rows). It must be redeployed (Deploy > Manage deployments > edit > Version: New version > Deploy) for updates to land. **Until then the old script ignores repeat ids**, so the Sheet keeps the first submission and the extras are lost there (the relay still has them, last-wins, for about 12 h; the device history also keeps them).
 - **Relay:** `tools/pull.sh` is last-wins per id.
 - **Any other export:** keep the last row per `id`.
+
+The game-number question reads "How many games of Dreadwood have you played tonight? (Count this one.)". `game` stores 1, 2, 3 or 4+ (this game included); `?g=` still prefills it.
