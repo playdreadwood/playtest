@@ -6,9 +6,9 @@ Mobile-first static site for DREADWOOD's first public playtest (Fri Oct 30, 2026
 
 | Page | What it is |
 |---|---|
-| `/` | Player survey (~60 s, 5 required taps). `?t=3&g=2` prefills table and game. Ends on a thank-you screen that says whether the answer is saved on the phone or received. |
-| `/host/` | Game log for Adam and the assistant: tier, players, layout, seats clockwise with faction, winner, how each player went out, rounds, end condition, margin, once-per-game cards, first-timers/returning, teaching time, ticks (disputes, confusion, kingmaking, runaway, broken combo, stall), house rules, notes. Draft autosaves. Not linked anywhere and `noindex`. |
-| `/qr/` | A6 print cards, one per table 1–6 plus a spare, each with a pre-generated QR (`qr/table-N.svg`) to `…/playtest/?t=N`. |
+| `/` | Player survey (~60 s, 5 required taps). `?g=2` prefills the game number (the old `?t=` table param is ignored). Ends on a thank-you screen that says whether the answer is saved on the phone or received. |
+| `/host/` | Game log for Adam and the assistant: game number, tier, players, layout, seats clockwise with faction, winner, how each player went out, rounds, end condition, margin, once-per-game cards, first-timers/returning, teaching time, ticks (disputes, confusion, kingmaking, runaway, broken combo, stall), house rules, notes. Draft autosaves. Not linked anywhere and `noindex`. |
+| `/qr/` | One A6 card design with a single QR (`qr/survey.svg`) to the live site; choose how many identical copies to print. No table labels. |
 
 ## How submissions are stored
 

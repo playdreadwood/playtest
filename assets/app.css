@@ -74,6 +74,15 @@ nav.hostnav{display:flex;gap:8px;flex-wrap:wrap}
 @media (min-width:700px){.chip{min-height:56px}}
 
 .vamp{margin:6px auto 0;text-align:center}
-.vamp img{display:block;margin:0 auto;height:min(40vh,340px);width:auto;max-width:90%;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(0,0,0,.55))}
+.vamp img{display:block;margin:0 auto;height:min(30vh,270px);width:auto;max-width:90%;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(0,0,0,.55))}
 .vamp figcaption b{display:block;font:700 26px "Barlow Condensed";text-transform:uppercase;letter-spacing:.06em;color:var(--parch-mid);margin-top:8px}
 .vamp figcaption span{display:block;color:#e6cf9c;font-weight:400;font-size:17px}
+
+h1,h2,h3,figcaption b,.lede,summary,.q,.hint,.note,.status,.foot,.vamp figcaption span,.thanks p,label.tick span{text-wrap:balance}
+p,label,li{text-wrap:pretty}
+.btn.ig{display:flex;align-items:center;justify-content:center;gap:12px;text-decoration:none;margin:14px 0 4px;min-height:64px;font-size:23px;line-height:1.05;text-wrap:balance;background:linear-gradient(135deg,#F8A133,#D6249F);color:#fff;border-color:var(--ink);text-shadow:0 1px 0 rgba(42,18,48,.6);box-shadow:0 4px 0 #6b1c52}
+.btn.ig svg{flex:none}
+
+.btn.ig .igt{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+.btn.ig .a{font-size:24px;white-space:nowrap}.btn.ig .b{font:600 15px Barlow;letter-spacing:.08em;opacity:.95}
+@media (max-width:370px){.btn.ig .a{font-size:21px}}

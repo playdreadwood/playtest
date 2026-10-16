@@ -1,20 +1,20 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DREADWOOD Table Cards</title><meta name="robots" content="noindex,nofollow">
+<title>DREADWOOD Feedback Cards</title><meta name="robots" content="noindex,nofollow">
 <link rel="stylesheet" href="../assets/app.css">
 <style>
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:16px}
 .card{background:linear-gradient(180deg,var(--wood),#3a1c49);border:3px solid var(--ink);box-shadow:inset 0 0 0 2px var(--sheen);border-radius:12px;padding:14px;text-align:center;aspect-ratio:105/148;display:flex;flex-direction:column;align-items:center;justify-content:space-between}
 .card img.lg{width:78%;height:auto}
-.card .tn{font:700 44px/1 "Barlow Condensed";text-transform:uppercase;letter-spacing:.06em;color:var(--logo)}
+.card .hd{font:700 40px/1.05 "Barlow Condensed";text-transform:uppercase;letter-spacing:.05em;color:var(--logo);text-wrap:balance}
 .card .qr{background:#fff;padding:8px;border-radius:8px;width:68%;line-height:0}.card .qr img{width:100%;height:auto}
 .card p{margin:0;font-size:15px;line-height:1.25;color:var(--parch)}
-.card .u{font-size:11px;color:#d8bf8a;word-break:break-all}
+.card .u{font-size:12px;color:#d8bf8a}
+.ctl{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.ctl input{width:90px}
 @page{size:A6;margin:0}
 @media print{
  html,body{background:#fff!important;padding:0!important}
- body{background:#fff!important}
  .noprint{display:none!important}.wrap{max-width:none;padding:0}
  .cards{display:block;margin:0}
  .card{width:105mm;height:148mm;aspect-ratio:auto;border-radius:0;border:0;box-shadow:none;page-break-after:always;break-after:page;padding:8mm;-webkit-print-color-adjust:exact;print-color-adjust:exact;background:#4A255A}
@@ -23,22 +23,22 @@
 </style></head><body>
 <main class="wrap wide">
   <div class="noprint">
-    <h1>Table cards</h1>
-    <p class="lede">A6, one card per page. Print at 100% scale, color, “Actual size”. Cut, fold or slip into a stand. Codes open the survey with the table number filled in.</p>
-    <p><button class="btn sm" onclick="print()">Print all cards</button></p>
+    <h1>Feedback cards</h1>
+    <p class="lede">One design, one QR code. A6, one card per page. Print at 100% scale in color, then cut or slip into stands. Set how many copies the page prints.</p>
+    <div class="ctl"><label for="n">Copies</label><input type="number" id="n" min="1" max="24" value="6" inputmode="numeric"><button class="btn sm" onclick="print()">Print</button></div>
   </div>
   <div class="cards" id="cards"></div>
 </main>
 <script>
-const url = n => "https://playdreadwood.github.io/playtest/" + (n ? "?t="+n : "");
-const el = document.getElementById("cards");
-[1,2,3,4,5,6,0].forEach(n => {
-  const d = document.createElement("div"); d.className = "card";
-  d.innerHTML = `<img class="lg" src="../assets/img/logo.png" alt="DREADWOOD">
-   <div class="tn">${n ? "Table "+n : "Spare card"}</div>
-   <div class="qr"><img src="table-${n||"any"}.svg" alt="QR code for ${n ? "table "+n : "the survey"}"></div>
-   <p><b>Scan after your game</b><br>or the minute you're knocked out.<br>About 60 seconds. Be blunt.</p>
-   <p class="u">${url(n).replace("https://","")}</p>`;
-  el.appendChild(d);
-});
+const el = document.getElementById("cards"), inp = document.getElementById("n");
+function draw(){
+  el.innerHTML = ""; const n = Math.max(1, Math.min(24, +inp.value || 1));
+  for (let i=0;i<n;i++){ const d = document.createElement("div"); d.className = "card";
+    d.innerHTML = `<img class="lg" src="../assets/img/logo.png" alt="DREADWOOD">
+     <div class="hd">Playtest feedback</div>
+     <div class="qr"><img src="survey.svg" alt="QR code for the playtest survey"></div>
+     <p><b>Scan after your game</b><br>or the minute you're knocked out.<br>About 60 seconds. Be blunt.</p>
+     <p class="u">playdreadwood.github.io/playtest</p>`; el.appendChild(d); }
+}
+inp.addEventListener("input", draw); draw();
 </script></body></html>

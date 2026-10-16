@@ -11,10 +11,7 @@
 
   <form id="f" autocomplete="off" novalidate>
   <section class="panel"><h2>Setup</h2>
-    <div class="cols">
-      <div><div class="mini">Table</div><div class="chips grid3" id="c-table"></div></div>
-      <div><div class="mini">Game # at this table</div><div class="chips" id="c-game"></div></div>
-    </div>
+    <div class="mini">Game # tonight</div><div class="chips" id="c-game"></div>
     <div class="mini">Difficulty</div><div class="chips grid3" id="c-tier"></div>
     <div class="mini">Players</div><div class="chips grid3" id="c-count"></div>
     <div class="mini">Layout <small>(players choose or go random)</small></div><select id="layout"></select>
@@ -67,7 +64,6 @@ const {$, $$, chips, getChips, setChips, enqueue, flush, pending, fillLayouts, R
 const DK = "dw_host_draft_v1";
 const TICKS = [["disputes","Rule looked up or disputed","Which rule?"],["confusion","Confusion moment","What happened?"],["kingmaking","Kingmaking","Who helped whom?"],["runaway","Runaway leader","Who, and when?"],["broken_combo","Broken or unfun combo","Which one?"],["stall","Long stall (over 2 min on one turn)","Whose turn, why?"]];
 const OUT = ["—","Wells","Vamps","Staked"];
-chips($("#c-table"), ["1","2","3","4","5","6"], {onchange:save});
 chips($("#c-game"), ["1","2","3","4","5"], {onchange:save});
 chips($("#c-tier"), ["Beginner","Deadly","Immortal"], {onchange:()=>{seatsView(); save();}});
 chips($("#c-count"), ["2","3","4"], {onchange:v=>{fillLayouts($("#layout"), v?+v:0); seatsView(); save();}});
@@ -112,7 +108,7 @@ $$("input,textarea,select").forEach(e => e.addEventListener("input", save));
 function collect(){
   const v = id => ($("#"+id).value||"").trim(), ticks = {};
   TICKS.forEach(([k]) => { ticks[k] = $(`[data-tick=${k}]`).checked ? (($(`[data-tn=${k}]`).value||"").trim() || "yes") : ""; });
-  return { type:"game", table:getChips($("#c-table")), game:getChips($("#c-game")), tier:getChips($("#c-tier")), players:getChips($("#c-count")), layout:v("layout"),
+  return { type:"game", game:getChips($("#c-game")), tier:getChips($("#c-tier")), players:getChips($("#c-count")), layout:v("layout"),
     start:v("t0"), end:v("t1"), teach_min:v("teach"), first_timers:v("newp"), returning:v("retp"),
     seats:seatState.map((s,i)=>({seat:i+1,name:s.name,faction:s.faction,out_round:s.out_round,out_cause:s.out_cause==="—"?"":s.out_cause,cards_used:s.cards,winner:winner===i})),
     winner_seat: winner>=0 ? winner+1 : "", winner_faction: winner>=0 ? seatState[winner].faction : "",
@@ -122,7 +118,7 @@ function collect(){
 function save(){ jset(DK, {...collect(), _seatState:seatState, _winner:winner}); $("#note").textContent = "Draft saved on this device."; }
 function restore(){
   const d = jget(DK, null); if (!d) return seatsView();
-  setChips($("#c-table"), d.table); setChips($("#c-game"), d.game); setChips($("#c-tier"), d.tier); setChips($("#c-count"), d.players);
+  setChips($("#c-game"), d.game); setChips($("#c-tier"), d.tier); setChips($("#c-count"), d.players);
   fillLayouts($("#layout"), +d.players||0); $("#layout").value = d.layout||"";
   $("#t0").value=d.start||""; $("#t1").value=d.end||""; $("#teach").value=d.teach_min||""; $("#newp").value=d.first_timers||""; $("#retp").value=d.returning||"";
   setChips($("#c-end"), d.end_condition); $("#rounds").value=d.rounds||""; setChips($("#c-mw"), d.margin_wells); setChips($("#c-mv"), d.margin_vamps);
@@ -133,16 +129,16 @@ function restore(){
 restore();
 
 function newGame(){
-  const t = getChips($("#c-table")), g = getChips($("#c-game"));
+  const g = getChips($("#c-game"));
   localStorage.removeItem(DK); $("#f").reset(); seatState=[]; winner=-1;
   ["c-tier","c-count","c-end","c-mw","c-mv"].forEach(i=>setChips($("#"+i),"")); $$("[data-tn]").forEach(e=>e.classList.add("hidden"));
-  fillLayouts($("#layout"),0); setChips($("#c-table"), t); setChips($("#c-game"), g && g!=="5" ? String(+g+1) : ""); seatsView(); save(); scrollTo(0,0);
+  fillLayouts($("#layout"),0); setChips($("#c-game"), g && g!=="5" ? String(+g+1) : ""); seatsView(); save(); scrollTo(0,0);
 }
 $("#clear").onclick = () => { if (confirm("Start a blank log for the next game? The current draft will be cleared (saved games are not affected).")) newGame(); };
 $("#save").onclick = async () => {
   if ($("#f [name=website]").value) return;
   const r = collect(); const miss = [];
-  if (!r.table) miss.push("table"); if (!r.tier) miss.push("difficulty"); if (!r.players) miss.push("player count"); if (!r.layout) miss.push("layout"); if (r.winner_seat==="" && r.end_condition!=="Unfinished at close") miss.push("winner");
+  if (!r.tier) miss.push("difficulty"); if (!r.players) miss.push("player count"); if (!r.layout) miss.push("layout"); if (r.winner_seat==="" && r.end_condition!=="Unfinished at close") miss.push("winner");
   if (r.seats.some(s=>!s.faction)) miss.push("factions");
   if (miss.length && !confirm("Missing: "+miss.join(", ")+". Save anyway?")) return;
   enqueue(r); localStorage.removeItem(DK);

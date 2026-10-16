@@ -10,9 +10,8 @@
   <img class="logo" src="assets/img/logo.png" alt="DREADWOOD" width="900" height="249">
   <h1>Playtest feedback</h1>
   <p class="lede">About a minute. Five taps are required; the rest is yours to skip. Be blunt. The game can take it.</p>
-  <p class="row" style="margin:12px 0 0"><span class="tag" id="where">Table ? · Game ?</span><button class="btn ghost sm" id="edit-where" type="button">Change</button></p>
+  <p class="row" style="margin:12px 0 0"><span class="tag" id="where">Game ?</span><button class="btn ghost sm" id="edit-where" type="button">Change</button></p>
   <div id="where-edit" class="panel hidden">
-    <div class="q">Table</div><div class="chips grid3" id="c-table" data-chipclass=""></div>
     <div class="q">Which game of the night?</div><div class="chips" id="c-game"></div>
   </div>
 
@@ -84,6 +83,7 @@
   <figure class="vamp" id="vamp"><img id="vamp-img" alt="" width="260" height="360"><figcaption><b id="vamp-name"></b><span id="vamp-line"></span></figcaption></figure>
   <p class="lede" style="font-size:20px">Your notes go straight into the rulebook pile.</p>
   <div class="status wait" id="tstatus">Saving…</div>
+  <a class="btn ig" id="ig" href="https://instagram.com/playdreadwood" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg><div class="igt"><span class="a">Follow @playdreadwood</span><span class="b">on Instagram</span></div></a>
   <p class="lede">Eliminated early? Grab another drink. You earned it.</p>
   <div style="display:grid;gap:10px;margin-top:20px">
    <button class="btn" id="again" type="button">Another player at this table</button>
@@ -96,15 +96,14 @@
 (() => {
 const {$, $$, chips, getChips, setChips, enqueue, flush, pending, fillLayouts, ROSTER, FACTIONS, jget, jset} = DW;
 const P = new URLSearchParams(location.search);
-let table = P.get("t") || "", game = P.get("g") || "";
+let game = P.get("g") || "";   // ?t= (old table param) is ignored on purpose
 const num = x => (/^\d{1,2}$/.test(x) ? x : "");
-table = num(table); game = num(game);
+game = num(game);
 const mounted = Date.now();
-chips($("#c-table"), ["1","2","3","4","5","6"], {onchange:v=>{table=v; showWhere();}});
 chips($("#c-game"), ["1","2","3","4+"], {onchange:v=>{game=v; showWhere();}});
-function showWhere(){ $("#where").textContent = "Table " + (table||"?") + " · Game " + (game||"?"); setChips($("#c-table"), table); setChips($("#c-game"), game); if (table && game) $("#where-edit").classList.add("hidden"); }
+function showWhere(){ $("#where").textContent = "Game " + (game||"?"); setChips($("#c-game"), game); if (game) $("#where-edit").classList.add("hidden"); }
 $("#edit-where").onclick = () => $("#where-edit").classList.toggle("hidden");
-showWhere(); if (!table || !game) $("#where-edit").classList.remove("hidden");
+showWhere(); if (!game) $("#where-edit").classList.remove("hidden");
 
 const upd = () => {
   const need = [["fac",getChips($("#c-faction"))],["fun",getChips($("#c-fun"))],["cl",getChips($("#c-clarity"))],["ag",getChips($("#c-again"))],["bal",getChips($("#c-balance"))]].filter(x=>!x[1]).length;
@@ -135,7 +134,7 @@ upd();
 
 function build(){
   const v = id => ($("#"+id).value||"").trim();
-  return { type:"survey", table, game, faction:getChips($("#c-faction")), fun:+getChips($("#c-fun")), clarity:+getChips($("#c-clarity")),
+  return { type:"survey", game, faction:getChips($("#c-faction")), fun:+getChips($("#c-fun")), clarity:+getChips($("#c-clarity")),
     play_again:getChips($("#c-again")), balance:getChips($("#c-balance")), balance_note:v("off"),
     tier:getChips($("#c-tier")), players:getChips($("#c-count")), layout:v("layout"), seat:getChips($("#c-seat")), result:getChips($("#c-won")), first_time:getChips($("#c-first")),
     favorite:v("fav"), least_favorite:v("least"), confused:v("confused"), change:v("change"), heard:getChips($("#c-heard")),
