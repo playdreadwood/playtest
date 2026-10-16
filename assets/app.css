@@ -133,3 +133,10 @@ label.tick.big span small{display:block;color:#d8bf8a;font-weight:400;font-size:
 .actions .btn{display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.05;padding:8px 10px;min-height:64px;font-size:22px;text-wrap:balance}
 .note.count{text-align:center;color:#d8bf8a;font-size:16px;margin:10px 0 8px;min-height:1.2em}
 #go2{margin:8px 0 6px}
+
+html{scrollbar-gutter:stable;overflow-y:scroll}
+.reveal{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .28s ease,visibility 0s linear .28s}
+.reveal.open{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .28s ease,visibility 0s}
+.reveal>.rv{overflow:hidden;min-height:0}
+.reveal.open>.rv{overflow:visible;transition:none}
+@media (prefers-reduced-motion:reduce){.reveal,.reveal.open{transition:none}}

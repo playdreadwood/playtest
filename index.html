@@ -14,11 +14,11 @@
 
    <section class="panel pt" id="pt-panel">
     <label class="tick big"><input type="checkbox" id="credit"><span><b>Include me as a playtester</b><small>Your name goes in the rulebook credits.</small></span></label>
-    <div id="pt-fields" class="hidden">
+    <div id="pt-fields" class="reveal"><div class="rv">
       <div class="q">Name <small>exactly as it should be printed</small></div><input type="text" id="creditname" maxlength="80" autocomplete="off" placeholder="First name, handle, or both">
       <div class="q">Email <small>optional, only if you're up for follow-up questions</small></div><input type="email" id="email" maxlength="120" autocomplete="off" inputmode="email" placeholder="you@example.com">
       <p class="hint" style="margin:8px 0 0">Only Adam sees this. No spam, no list sales.</p>
-    </div>
+    </div></div>
    </section>
 
    <section class="panel">
@@ -49,7 +49,7 @@
      <button class="btn ghost" id="more" type="button" aria-expanded="false" aria-controls="extra">Add more detail</button>
    </div>
 
-   <div id="extra" class="hidden">
+   <div id="extra" class="reveal"><div class="rv">
    <details class="panel" id="d-game">
     <summary>About the game <span class="opt">optional</span><span class="cnt" hidden></span></summary>
     <div class="q">Which game of the night?</div><div class="chips eq num" id="c-game"></div>
@@ -78,7 +78,7 @@
 
    <p class="note count" id="left2"></p>
    <button class="btn" id="go2" type="button" disabled>Submit</button>
-   </div>
+   </div></div>
   </form>
   <p class="foot">DREADWOOD · First public playtest · Potion Portal, St. Pete</p>
 </main>
@@ -131,8 +131,8 @@ for (const id of ["fav","least"]) { const s=$("#"+id); s.innerHTML='<option valu
   Object.entries(ROSTER).forEach(([f,r]) => { const g=document.createElement("optgroup"); g.label=f;
     [...r.chars.map(c=>["Character: "+c, c]), ...r.abil.map(a=>["Ability: "+a, a+" (ability)"])].forEach(([v,l])=>{const o=document.createElement("option");o.value=v;o.textContent=l;g.appendChild(o)}); s.appendChild(g); });
   const g=document.createElement("optgroup"); g.label="Everyone"; const o=document.createElement("option"); o.value="Silver Bullet"; o.textContent="Silver Bullet"; g.appendChild(o); s.appendChild(g); }
-$("#credit").onchange = e => { $("#pt-fields").classList.toggle("hidden", !e.target.checked); if(!e.target.checked){ $("#creditname").value=""; $("#email").value=""; } };
-$("#more").onclick = () => { const x=$("#extra"), open=x.classList.toggle("hidden")===false; $("#more").setAttribute("aria-expanded",open); $("#more").textContent = open ? "Hide extra detail" : "Add more detail"; if(open) setTimeout(()=>x.scrollIntoView({behavior:"smooth",block:"start"}),50); };
+$("#credit").onchange = e => { $("#pt-fields").classList.toggle("open", e.target.checked); if(!e.target.checked){ $("#creditname").value=""; $("#email").value=""; } };
+$("#more").onclick = () => { const x=$("#extra"), open=x.classList.toggle("open"); $("#more").setAttribute("aria-expanded",open); $("#more").textContent = open ? "Hide extra detail" : "Add more detail"; if(open) setTimeout(()=>x.scrollIntoView({behavior:"smooth",block:"start"}),120); };
 upd();
 
 function badges(){
@@ -170,7 +170,7 @@ const submit = async () => {
 $("#go").onclick = $("#go2").onclick = submit;
 function resetForm(keepGame){
   $("#f").reset(); ["c-game","c-faction","c-fun","c-clarity","c-again","c-balance","c-tier","c-count","c-seat","c-won","c-first","c-heard","c-interests"].forEach(i=>setChips($("#"+i),""));
-  $("#pt-fields").classList.add("hidden"); $("#extra").classList.add("hidden"); $("#more").textContent="Add more detail"; $("#more").setAttribute("aria-expanded","false"); if(!keepGame) game="";
+  $("#pt-fields").classList.remove("open"); $("#extra").classList.remove("open"); $("#more").textContent="Add more detail"; $("#more").setAttribute("aria-expanded","false"); if(!keepGame) game="";
   setChips($("#c-game"), keepGame ? game : ""); fillLayouts($("#layout"),0); upd(); badges(); $$('#f details').forEach(d=>d.open=false);
   $("#thanks-view").classList.add("hidden"); $("#form-view").classList.remove("hidden"); scrollTo(0,0);
 }
