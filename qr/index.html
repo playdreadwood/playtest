@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DREADWOOD Table Cards</title><meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="../assets/app.css">
+<style>
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:16px}
+.card{background:linear-gradient(180deg,var(--wood),#3a1c49);border:3px solid var(--ink);box-shadow:inset 0 0 0 2px var(--sheen);border-radius:12px;padding:14px;text-align:center;aspect-ratio:105/148;display:flex;flex-direction:column;align-items:center;justify-content:space-between}
+.card img.lg{width:78%;height:auto}
+.card .tn{font:700 44px/1 "Barlow Condensed";text-transform:uppercase;letter-spacing:.06em;color:var(--logo)}
+.card .qr{background:#fff;padding:8px;border-radius:8px;width:68%;line-height:0}.card .qr img{width:100%;height:auto}
+.card p{margin:0;font-size:15px;line-height:1.25;color:var(--parch)}
+.card .u{font-size:11px;color:#d8bf8a;word-break:break-all}
+@page{size:A6;margin:0}
+@media print{
+ html,body{background:#fff!important;padding:0!important}
+ body{background:#fff!important}
+ .noprint{display:none!important}.wrap{max-width:none;padding:0}
+ .cards{display:block;margin:0}
+ .card{width:105mm;height:148mm;aspect-ratio:auto;border-radius:0;border:0;box-shadow:none;page-break-after:always;break-after:page;padding:8mm;-webkit-print-color-adjust:exact;print-color-adjust:exact;background:#4A255A}
+ .card:last-child{page-break-after:auto}
+}
+</style></head><body>
+<main class="wrap wide">
+  <div class="noprint">
+    <h1>Table cards</h1>
+    <p class="lede">A6, one card per page. Print at 100% scale, color, “Actual size”. Cut, fold or slip into a stand. Codes open the survey with the table number filled in.</p>
+    <p><button class="btn sm" onclick="print()">Print all cards</button></p>
+  </div>
+  <div class="cards" id="cards"></div>
+</main>
+<script>
+const url = n => "https://playdreadwood.github.io/playtest/" + (n ? "?t="+n : "");
+const el = document.getElementById("cards");
+[1,2,3,4,5,6,0].forEach(n => {
+  const d = document.createElement("div"); d.className = "card";
+  d.innerHTML = `<img class="lg" src="../assets/img/logo.png" alt="DREADWOOD">
+   <div class="tn">${n ? "Table "+n : "Spare card"}</div>
+   <div class="qr"><img src="table-${n||"any"}.svg" alt="QR code for ${n ? "table "+n : "the survey"}"></div>
+   <p><b>Scan after your game</b><br>or the minute you're knocked out.<br>About 60 seconds. Be blunt.</p>
+   <p class="u">${url(n).replace("https://","")}</p>`;
+  el.appendChild(d);
+});
+</script></body></html>

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>DREADWOOD Playtest Feedback</title><meta name="theme-color" content="#251538">
+<meta name="description" content="Tell us how your DREADWOOD game went. About 60 seconds.">
+<link rel="preload" href="assets/fonts/BarlowCondensed-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/app.css">
+</head><body>
+<main class="wrap" id="form-view">
+  <img class="logo" src="assets/img/logo.png" alt="DREADWOOD" width="900" height="249">
+  <h1>Playtest feedback</h1>
+  <p class="lede">About a minute. Five taps are required; the rest is yours to skip. Be blunt. The game can take it.</p>
+  <p class="row" style="margin:12px 0 0"><span class="tag" id="where">Table ? · Game ?</span><button class="btn ghost sm" id="edit-where" type="button">Change</button></p>
+  <div id="where-edit" class="panel hidden">
+    <div class="q">Table</div><div class="chips grid3" id="c-table" data-chipclass=""></div>
+    <div class="q">Which game of the night?</div><div class="chips" id="c-game"></div>
+  </div>
+
+  <form id="f" autocomplete="off" novalidate>
+   <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+   <section class="panel">
+    <h2>Your game</h2>
+    <div class="q req">Who did you play?</div>
+    <div class="chips grid2" id="c-faction" data-chipclass="fac"></div>
+
+    <div class="q req">How fun was it? <small>1 = a funeral, 5 = a gunfight</small></div>
+    <div class="chips five" id="c-fun"></div>
+    <div class="scale-labels"><span>Not fun</span><span>Great fun</span></div>
+
+    <div class="q req">How clear were the rules?</div>
+    <div class="chips five" id="c-clarity"></div>
+    <div class="scale-labels"><span>Lost</span><span>Crystal clear</span></div>
+
+    <div class="q req">Would you play again?</div>
+    <div class="chips grid3" id="c-again"></div>
+
+    <div class="q req">Did it feel balanced?</div>
+    <div class="chips grid2" id="c-balance"></div>
+    <div id="off-wrap" class="hidden"><div class="q">What felt too strong or too weak? <small>optional</small></div>
+      <input type="text" id="off" maxlength="200" placeholder="A faction, ability, seat, layout…"></div>
+   </section>
+
+   <details class="panel" id="d-game">
+    <summary>About the game (optional)</summary>
+    <div class="q">Difficulty</div><div class="chips grid3" id="c-tier"></div>
+    <div class="q">Players</div><div class="chips grid3" id="c-count"></div>
+    <div class="q">Layout</div><select id="layout" aria-label="Layout"></select>
+    <div class="q">Your seat <small>1 = went first</small></div><div class="chips" id="c-seat"></div>
+    <div class="q">Did you win?</div><div class="chips grid3" id="c-won"></div>
+    <div class="q">First time playing?</div><div class="chips grid2" id="c-first"></div>
+   </details>
+
+   <details class="panel" id="d-more" open>
+    <summary>Tell us more (optional)</summary>
+    <div class="q">Favorite character or ability</div><select id="fav"></select>
+    <div class="q">Least favorite</div><select id="least"></select>
+    <div class="q">What confused you?</div><textarea id="confused" maxlength="600" placeholder="A rule, a card, a moment where you went “wait, what?”"></textarea>
+    <div class="q">One thing you'd change</div><textarea id="change" maxlength="600"></textarea>
+    <div class="q">How did you hear about tonight?</div><div class="chips grid2" id="c-heard"></div>
+   </details>
+
+   <details class="panel" id="d-contact">
+    <summary>Stay in touch (optional)</summary>
+    <p class="hint">Only Adam sees this. No spam, no list sales.</p>
+    <div class="q">Name or handle</div><input type="text" id="handle" maxlength="80" autocomplete="off" placeholder="First name or @handle">
+    <div class="q">Email</div><input type="email" id="email" maxlength="120" autocomplete="off" inputmode="email" placeholder="you@example.com">
+    <label class="tick"><input type="checkbox" id="followup"><span>You may contact me with follow-up questions about my game.</span></label>
+    <label class="tick"><input type="checkbox" id="credit"><span>Credit me in the rulebook playtester list.</span></label>
+    <div id="credit-wrap" class="hidden"><div class="q">Credit me as</div><input type="text" id="creditname" maxlength="80" placeholder="Exactly how it should be printed"></div>
+   </details>
+  </form>
+  <p class="foot">DREADWOOD · First public playtest · Potion Portal, St. Pete</p>
+</main>
+
+<div class="dock" id="dock"><div class="in">
+  <p class="note" id="left">5 answers to go</p>
+  <button class="btn" id="go" type="button" disabled>Send feedback</button>
+</div></div>
+
+<main class="wrap thanks hidden" id="thanks-view">
+  <img class="logo" src="assets/img/logo.png" alt="DREADWOOD" width="900" height="249">
+  <h1>Thanks, partner.</h1>
+  <p class="lede" style="font-size:20px">Your notes go straight into the rulebook pile. Every game you played made it better.</p>
+  <div class="status wait" id="tstatus">Saving…</div>
+  <p class="lede">Eliminated early? Grab another drink. You earned it.</p>
+  <div style="display:grid;gap:10px;margin-top:20px">
+   <button class="btn" id="again" type="button">Another player at this table</button>
+   <button class="btn ghost" id="again-me" type="button">I played another game</button>
+  </div>
+  <p class="foot">Anything we missed? Tell Adam in person. He's the one in the hat.</p>
+</main>
+<script src="assets/config.js"></script><script src="assets/common.js"></script>
+<script>
+(() => {
+const {$, $$, chips, getChips, setChips, enqueue, flush, pending, fillLayouts, ROSTER, FACTIONS, jget, jset} = DW;
+const P = new URLSearchParams(location.search);
+let table = P.get("t") || "", game = P.get("g") || "";
+const num = x => (/^\d{1,2}$/.test(x) ? x : "");
+table = num(table); game = num(game);
+const mounted = Date.now();
+chips($("#c-table"), ["1","2","3","4","5","6"], {onchange:v=>{table=v; showWhere();}});
+chips($("#c-game"), ["1","2","3","4+"], {onchange:v=>{game=v; showWhere();}});
+function showWhere(){ $("#where").textContent = "Table " + (table||"?") + " · Game " + (game||"?"); setChips($("#c-table"), table); setChips($("#c-game"), game); if (table && game) $("#where-edit").classList.add("hidden"); }
+$("#edit-where").onclick = () => $("#where-edit").classList.toggle("hidden");
+showWhere(); if (!table || !game) $("#where-edit").classList.remove("hidden");
+
+const upd = () => {
+  const need = [["fac",getChips($("#c-faction"))],["fun",getChips($("#c-fun"))],["cl",getChips($("#c-clarity"))],["ag",getChips($("#c-again"))],["bal",getChips($("#c-balance"))]].filter(x=>!x[1]).length;
+  $("#go").disabled = need>0;
+  $("#left").textContent = need ? need + (need===1?" answer to go":" answers to go") : "Ready. Thanks for doing this.";
+  $("#off-wrap").classList.toggle("hidden", getChips($("#c-balance"))!=="Felt off");
+};
+chips($("#c-faction"), FACTIONS, {onchange:upd});
+chips($("#c-fun"), ["1","2","3","4","5"], {onchange:upd});
+chips($("#c-clarity"), ["1","2","3","4","5"], {onchange:upd});
+chips($("#c-again"), ["Yes","Maybe","No"], {onchange:upd});
+chips($("#c-balance"), ["Fair","Felt off"], {onchange:upd});
+chips($("#c-tier"), ["Beginner","Deadly","Immortal","Not sure"].map(v=>({v})), {onchange:()=>{}});
+$("#c-tier").classList.remove("grid3");
+chips($("#c-count"), ["2","3","4"], {onchange:v=>fillLayouts($("#layout"), v?+v:0)});
+chips($("#c-seat"), ["1","2","3","4"]);
+chips($("#c-won"), ["Won","Lost","Unfinished"]);
+chips($("#c-first"), ["First time","Played before"]);
+chips($("#c-heard"), ["Potion Portal","Social media","A friend","Walked in","Other"]);
+fillLayouts($("#layout"), 0);
+// favorite / least: characters + abilities + Silver Bullet
+for (const id of ["fav","least"]) { const s=$("#"+id); s.innerHTML='<option value="">No pick</option>';
+  Object.entries(ROSTER).forEach(([f,r]) => { const g=document.createElement("optgroup"); g.label=f;
+    [...r.chars.map(c=>["Character: "+c, c]), ...r.abil.map(a=>["Ability: "+a, a+" (ability)"])].forEach(([v,l])=>{const o=document.createElement("option");o.value=v;o.textContent=l;g.appendChild(o)}); s.appendChild(g); });
+  const g=document.createElement("optgroup"); g.label="Everyone"; const o=document.createElement("option"); o.value="Silver Bullet"; o.textContent="Silver Bullet"; g.appendChild(o); s.appendChild(g); }
+$("#credit").onchange = e => $("#credit-wrap").classList.toggle("hidden", !e.target.checked);
+upd();
+
+function build(){
+  const v = id => ($("#"+id).value||"").trim();
+  return { type:"survey", table, game, faction:getChips($("#c-faction")), fun:+getChips($("#c-fun")), clarity:+getChips($("#c-clarity")),
+    play_again:getChips($("#c-again")), balance:getChips($("#c-balance")), balance_note:v("off"),
+    tier:getChips($("#c-tier")), players:getChips($("#c-count")), layout:v("layout"), seat:getChips($("#c-seat")), result:getChips($("#c-won")), first_time:getChips($("#c-first")),
+    favorite:v("fav"), least_favorite:v("least"), confused:v("confused"), change:v("change"), heard:getChips($("#c-heard")),
+    handle:v("handle"), email:v("email"), ok_followup:$("#followup").checked, ok_credit:$("#credit").checked, credit_name:v("creditname"),
+    seconds:Math.round((Date.now()-mounted)/1000) };
+}
+async function showThanks(){
+  $("#form-view").classList.add("hidden"); $("#dock").classList.add("hidden"); $("#thanks-view").classList.remove("hidden"); scrollTo(0,0);
+  const st = $("#tstatus");
+  const paint = () => { const n = pending(); if (n){ st.className="status wait"; st.textContent="Saved on this phone. It will send itself as soon as you have signal. You can close this page."; } else { st.className="status ok"; st.textContent="✓ Received. Nothing more to do."; } };
+  paint(); document.addEventListener("dw-queue", paint); await flush(); paint();
+}
+$("#go").onclick = async () => {
+  if ($("#f [name=website]").value) { showThanks(); return; }           // honeypot: bots get a fake thank-you, nothing is stored
+  if (Date.now()-mounted < 2500) return;                                   // humans need more than 2.5 s
+  const em = $("#email").value.trim(); if (em && !/^\S+@\S+\.\S+$/.test(em)) { $("#d-contact").open = true; $("#email").focus(); return; }
+  enqueue(build()); showThanks();
+};
+function resetForm(keepGame){
+  $("#f").reset(); ["c-faction","c-fun","c-clarity","c-again","c-balance","c-tier","c-count","c-seat","c-won","c-first","c-heard"].forEach(i=>setChips($("#"+i),""));
+  $("#credit-wrap").classList.add("hidden"); if(!keepGame){ game=""; showWhere(); $("#where-edit").classList.remove("hidden"); }
+  fillLayouts($("#layout"),0); upd();
+  $("#thanks-view").classList.add("hidden"); $("#form-view").classList.remove("hidden"); $("#dock").classList.remove("hidden"); scrollTo(0,0);
+}
+$("#again").onclick = () => resetForm(true);
+$("#again-me").onclick = () => resetForm(false);
+})();
+</script></body></html>

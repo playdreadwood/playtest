@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>DREADWOOD Host Log</title><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#251538">
+<link rel="stylesheet" href="../assets/app.css">
+</head><body>
+<main class="wrap wide">
+  <div class="row"><img src="../assets/img/logo.png" alt="DREADWOOD" style="height:44px;width:auto"><span class="tag" id="qstat">Queue: 0</span></div>
+  <h1 style="margin-top:10px">Host game log</h1>
+  <p class="lede">One entry per game. Must-haves: tier, player count, layout, factions, winner. Everything else is a bonus. Your draft saves itself.</p>
+
+  <form id="f" autocomplete="off" novalidate>
+  <section class="panel"><h2>Setup</h2>
+    <div class="cols">
+      <div><div class="mini">Table</div><div class="chips grid3" id="c-table"></div></div>
+      <div><div class="mini">Game # at this table</div><div class="chips" id="c-game"></div></div>
+    </div>
+    <div class="mini">Difficulty</div><div class="chips grid3" id="c-tier"></div>
+    <div class="mini">Players</div><div class="chips grid3" id="c-count"></div>
+    <div class="mini">Layout <small>(players choose or go random)</small></div><select id="layout"></select>
+    <div class="cols" style="margin-top:10px">
+      <div><div class="mini">Start</div><div class="row"><input type="time" id="t0" style="width:auto;flex:1"><button class="btn sm" type="button" data-now="t0">Now</button></div></div>
+      <div><div class="mini">End</div><div class="row"><input type="time" id="t1" style="width:auto;flex:1"><button class="btn sm" type="button" data-now="t1">Now</button></div></div>
+    </div>
+    <div class="cols3" style="margin-top:6px">
+      <div><div class="mini">Teaching (min)</div><div class="stepper"><button type="button" data-step="teach,-1">−</button><input type="number" id="teach" inputmode="numeric" min="0"><button type="button" data-step="teach,1">+</button></div></div>
+      <div><div class="mini">First-timers</div><div class="stepper"><button type="button" data-step="newp,-1">−</button><input type="number" id="newp" inputmode="numeric" min="0" max="4"><button type="button" data-step="newp,1">+</button></div></div>
+      <div><div class="mini">Returning</div><div class="stepper"><button type="button" data-step="retp,-1">−</button><input type="number" id="retp" inputmode="numeric" min="0" max="4"><button type="button" data-step="retp,1">+</button></div></div>
+    </div>
+  </section>
+
+  <section class="panel"><h2>Seats</h2>
+    <p class="hint">Clockwise from the first player. Not the printed 4P labels.</p>
+    <div id="seats"></div>
+  </section>
+
+  <section class="panel"><h2>Result</h2>
+    <div class="mini">How it ended</div><div class="chips grid3" id="c-end"></div>
+    <div class="mini" style="margin-top:12px">Rounds played</div><div class="stepper" style="max-width:240px"><button type="button" data-step="rounds,-1">−</button><input type="number" id="rounds" inputmode="numeric" min="0"><button type="button" data-step="rounds,1">+</button></div>
+    <div class="mini">Winner's Bloodwells left</div><div class="chips grid4" id="c-mw"></div>
+    <div class="mini">Winner's vampires left</div><div class="chips grid4" id="c-mv"></div>
+  </section>
+
+  <section class="panel"><h2>Moments</h2>
+    <p class="hint">Tick it, add a few words if you can.</p>
+    <div id="ticks"></div>
+    <div class="mini">House rules or misplays used</div><textarea id="house" maxlength="600"></textarea>
+    <div class="mini">Notes</div><textarea id="notes" maxlength="900" placeholder="Timestamped lines welcome: 7:42 stall on Vengeance AP timing"></textarea>
+  </section>
+  <div class="hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+  </form>
+
+  <details class="panel"><summary>This device</summary>
+    <p class="hint">Everything logged or submitted on this device is also kept here, as a backup.</p>
+    <div class="row"><button class="btn sm ghost" id="exp-json" type="button">Download JSON</button><button class="btn sm ghost" id="exp-csv" type="button">Download CSV</button><button class="btn sm ghost" id="retry" type="button">Retry sending</button></div>
+    <p class="hint" id="hist" style="margin-top:10px"></p>
+  </details>
+</main>
+<div class="dock"><div class="in">
+  <p class="note" id="note">Fill what you can.</p>
+  <div class="row" style="flex-wrap:nowrap"><button class="btn ghost" id="clear" type="button" style="width:36%">New game</button><button class="btn" id="save" type="button">Save game log</button></div>
+</div></div>
+<script src="../assets/config.js"></script><script src="../assets/common.js"></script>
+<script>
+(() => {
+const {$, $$, chips, getChips, setChips, enqueue, flush, pending, fillLayouts, ROSTER, FACTIONS, jget, jset, download, csv} = DW;
+const DK = "dw_host_draft_v1";
+const TICKS = [["disputes","Rule looked up or disputed","Which rule?"],["confusion","Confusion moment","What happened?"],["kingmaking","Kingmaking","Who helped whom?"],["runaway","Runaway leader","Who, and when?"],["broken_combo","Broken or unfun combo","Which one?"],["stall","Long stall (over 2 min on one turn)","Whose turn, why?"]];
+const OUT = ["—","Wells","Vamps","Staked"];
+chips($("#c-table"), ["1","2","3","4","5","6"], {onchange:save});
+chips($("#c-game"), ["1","2","3","4","5"], {onchange:save});
+chips($("#c-tier"), ["Beginner","Deadly","Immortal"], {onchange:()=>{seatsView(); save();}});
+chips($("#c-count"), ["2","3","4"], {onchange:v=>{fillLayouts($("#layout"), v?+v:0); seatsView(); save();}});
+chips($("#c-end"), ["Last standing","GHOST TOWN","Unfinished at close"], {onchange:save});
+chips($("#c-mw"), ["0","1","2","3"], {onchange:save}); chips($("#c-mv"), ["0","1","2"], {onchange:save});
+fillLayouts($("#layout"), 0);
+$("#ticks").innerHTML = TICKS.map(([k,l,ph]) => `<label class="tick"><input type="checkbox" data-tick="${k}"><span>${l}</span></label><input type="text" data-tn="${k}" class="hidden" maxlength="200" placeholder="${ph}" style="margin:0 0 8px">`).join("");
+$$("[data-tick]").forEach(c => c.onchange = () => { $(`[data-tn=${c.dataset.tick}]`).classList.toggle("hidden", !c.checked); save(); });
+
+let seatState = [];   // [{name,faction,out_round,out_cause,cards:[]}], winner index
+let winner = -1;
+function count(){ return +getChips($("#c-count")) || 0; }
+function seatsView(){
+  const n = count(), box = $("#seats"), tier = getChips($("#c-tier"));
+  if (!n){ box.innerHTML = '<p class="hint">Pick the player count first.</p>'; return; }
+  while (seatState.length < n) seatState.push({name:"",faction:"",out_round:"",out_cause:"—",cards:[]});
+  seatState.length = n; if (winner >= n) winner = -1;
+  box.innerHTML = "";
+  seatState.forEach((s,i) => {
+    const d = document.createElement("div"); d.className = "seat" + (winner===i ? " win":"");
+    const cards = tier==="Beginner" ? [] : ["Silver Bullet", ...(ROSTER[s.faction]?.once||[])];
+    d.innerHTML = `<h3>Seat ${i+1}${i===0?" · goes first":""}</h3>
+      <input type="text" data-k="name" maxlength="40" placeholder="First name" value="${(s.name||"").replace(/"/g,"&quot;")}">
+      <div class="mini">Faction</div><div class="chips grid2 fc" data-chipclass="fac"></div>
+      <div class="mini">Went out in round / by</div>
+      <input type="number" data-k="out_round" inputmode="numeric" min="1" placeholder="Round number" value="${s.out_round}" style="margin-bottom:8px"><div class="chips grid2 oc"></div>
+      ${cards.length ? `<div class="mini">Once-per-game cards used</div><div class="chips cc"></div>` : ""}
+      <div style="margin-top:10px"><button type="button" class="btn sm ${winner===i?"":"ghost"}" data-win="${i}">${winner===i?"★ Winner":"Mark as winner"}</button></div>`;
+    box.appendChild(d);
+    $("input[data-k=name]", d).oninput = e => {s.name=e.target.value; save();};
+    $("input[data-k=out_round]", d).oninput = e => {s.out_round=e.target.value; save();};
+    const fc=$(".fc",d); chips(fc, FACTIONS, {onchange:v=>{s.faction=v; s.cards=[]; seatsView(); save();}}); setChips(fc, s.faction);
+    const oc=$(".oc",d); chips(oc, OUT.map(v=>({v})), {onchange:v=>{s.out_cause=v||"—"; save();}}); setChips(oc, s.out_cause);
+    if (cards.length){ const cc=$(".cc",d); chips(cc, cards, {multi:true,onchange:v=>{s.cards=v; save();}}); setChips(cc, s.cards); }
+    $("[data-win]",d).onclick = () => { winner = winner===i ? -1 : i; seatsView(); save(); };
+  });
+}
+$$("[data-now]").forEach(b => b.onclick = () => { const d=new Date(); $("#"+b.dataset.now).value = String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"); save(); });
+$$("[data-step]").forEach(b => b.onclick = () => { const [id,dl]=b.dataset.step.split(","); const e=$("#"+id); e.value = Math.max(0, (+e.value||0) + +dl); save(); });
+$$("input,textarea,select").forEach(e => e.addEventListener("input", save));
+
+function collect(){
+  const v = id => ($("#"+id).value||"").trim(), ticks = {};
+  TICKS.forEach(([k]) => { ticks[k] = $(`[data-tick=${k}]`).checked ? (($(`[data-tn=${k}]`).value||"").trim() || "yes") : ""; });
+  return { type:"game", table:getChips($("#c-table")), game:getChips($("#c-game")), tier:getChips($("#c-tier")), players:getChips($("#c-count")), layout:v("layout"),
+    start:v("t0"), end:v("t1"), teach_min:v("teach"), first_timers:v("newp"), returning:v("retp"),
+    seats:seatState.map((s,i)=>({seat:i+1,name:s.name,faction:s.faction,out_round:s.out_round,out_cause:s.out_cause==="—"?"":s.out_cause,cards_used:s.cards,winner:winner===i})),
+    winner_seat: winner>=0 ? winner+1 : "", winner_faction: winner>=0 ? seatState[winner].faction : "",
+    end_condition:getChips($("#c-end")), rounds:v("rounds"), margin_wells:getChips($("#c-mw")), margin_vamps:getChips($("#c-mv")),
+    ticks, house_rules:v("house"), notes:v("notes") };
+}
+function save(){ jset(DK, {...collect(), _seatState:seatState, _winner:winner}); $("#note").textContent = "Draft saved on this device."; }
+function restore(){
+  const d = jget(DK, null); if (!d) return seatsView();
+  setChips($("#c-table"), d.table); setChips($("#c-game"), d.game); setChips($("#c-tier"), d.tier); setChips($("#c-count"), d.players);
+  fillLayouts($("#layout"), +d.players||0); $("#layout").value = d.layout||"";
+  $("#t0").value=d.start||""; $("#t1").value=d.end||""; $("#teach").value=d.teach_min||""; $("#newp").value=d.first_timers||""; $("#retp").value=d.returning||"";
+  setChips($("#c-end"), d.end_condition); $("#rounds").value=d.rounds||""; setChips($("#c-mw"), d.margin_wells); setChips($("#c-mv"), d.margin_vamps);
+  $("#house").value=d.house_rules||""; $("#notes").value=d.notes||"";
+  TICKS.forEach(([k]) => { const t=(d.ticks||{})[k]; const c=$(`[data-tick=${k}]`); c.checked=!!t; const n=$(`[data-tn=${k}]`); n.classList.toggle("hidden",!t); n.value = t && t!=="yes" ? t : ""; });
+  seatState = d._seatState||[]; winner = d._winner ?? -1; seatsView();
+}
+restore();
+
+function newGame(){
+  const t = getChips($("#c-table")), g = getChips($("#c-game"));
+  localStorage.removeItem(DK); $("#f").reset(); seatState=[]; winner=-1;
+  ["c-tier","c-count","c-end","c-mw","c-mv"].forEach(i=>setChips($("#"+i),"")); $$("[data-tn]").forEach(e=>e.classList.add("hidden"));
+  fillLayouts($("#layout"),0); setChips($("#c-table"), t); setChips($("#c-game"), g && g!=="5" ? String(+g+1) : ""); seatsView(); save(); scrollTo(0,0);
+}
+$("#clear").onclick = () => { if (confirm("Start a blank log for the next game? The current draft will be cleared (saved games are not affected).")) newGame(); };
+$("#save").onclick = async () => {
+  if ($("#f [name=website]").value) return;
+  const r = collect(); const miss = [];
+  if (!r.table) miss.push("table"); if (!r.tier) miss.push("difficulty"); if (!r.players) miss.push("player count"); if (!r.layout) miss.push("layout"); if (r.winner_seat==="" && r.end_condition!=="Unfinished at close") miss.push("winner");
+  if (r.seats.some(s=>!s.faction)) miss.push("factions");
+  if (miss.length && !confirm("Missing: "+miss.join(", ")+". Save anyway?")) return;
+  enqueue(r); localStorage.removeItem(DK);
+  $("#note").textContent = "Saved. Sending…"; await flush(); paint();
+  newGame(); $("#note").textContent = pending() ? "Saved on this device. Will send when online." : "✓ Saved and sent. Blank log ready for the next game.";
+};
+function paint(){ const n=pending(), s=jget(DW.SK,[]); $("#qstat").textContent = n ? "Waiting to send: "+n : "All sent ✓"; $("#qstat").style.borderColor = n ? "var(--amber)" : "var(--ok)";
+  $("#hist").textContent = s.length+" records on this device ("+s.filter(x=>x.type==="game").length+" game logs, "+s.filter(x=>x.type==="survey").length+" surveys)."; }
+document.addEventListener("dw-queue", paint); paint(); setInterval(paint, 4000);
+$("#exp-json").onclick = () => download("dreadwood-device-"+Date.now()+".json", JSON.stringify(jget(DW.SK,[]),null,1), "application/json");
+$("#exp-csv").onclick = () => download("dreadwood-device-"+Date.now()+".csv", csv(jget(DW.SK,[])), "text/csv");
+$("#retry").onclick = async () => { await flush(); paint(); };
+})();
+</script></body></html>
