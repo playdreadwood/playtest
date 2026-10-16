@@ -30,8 +30,9 @@ function setChips(el, val){ const vs = Array.isArray(val) ? val : [val]; $$(".ch
 /* Delivery. Queue in localStorage first (so nothing is lost), then try every sink. */
 function enqueue(rec){
   rec.device_id = deviceState().did; rec.id = rec.id || uid(); rec.ts = rec.ts || new Date().toISOString(); rec.ua = navigator.userAgent.slice(0,80);
-  const q = jget(QK, []); if (!q.find(x=>x.id===rec.id)) q.push(rec); jset(QK, q);
-  const s = jget(SK, []); if (!s.find(x=>x.id===rec.id)) { s.push(rec); jset(SK, s); }  // device history (for export)
+  // same id = same record: replace what is queued / in device history (last write wins)
+  const q = jget(QK, []).filter(x=>x.id!==rec.id); q.push(rec); jset(QK, q);
+  const s = jget(SK, []).filter(x=>x.id!==rec.id); s.push(rec); jset(SK, s);
   return rec;
 }
 async function send(rec){

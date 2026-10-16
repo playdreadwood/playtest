@@ -85,13 +85,14 @@
 
 <main class="wrap thanks hidden" id="thanks-view">
   <img class="logo" src="assets/img/logo.png" alt="DREADWOOD" width="900" height="249">
-  <h1>Thanks, partner.</h1>
+  <h1 id="thx-h1">Thanks, partner.</h1>
   <figure class="vamp" id="vamp"><img id="vamp-img" alt="" width="260" height="360"><figcaption><b id="vamp-name"></b><span id="vamp-line"></span></figcaption></figure>
   <p class="lede" style="font-size:20px">Your notes go straight into the rulebook pile.</p>
   <div class="status wait" id="tstatus">Saving…</div>
   <a class="btn ig" id="ig" href="https://instagram.com/playdreadwood" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg><div class="igt"><span class="a">Follow @playdreadwood</span><span class="b">on Instagram</span></div></a>
   <p class="lede">Eliminated early? Grab another drink. You earned it.</p>
   <div style="display:grid;gap:10px;margin-top:20px">
+   <button class="btn ghost" id="more-thoughts" type="button">Wait! I had more thoughts.</button>
    <button class="btn" id="again" type="button">Another player at this table</button>
    <button class="btn ghost" id="again-me" type="button">I played another game</button>
   </div>
@@ -154,8 +155,10 @@ function build(){
     handle:pt?v("creditname"):"", email:pt?v("email"):"", ok_followup:pt && !!v("email"), ok_credit:pt, credit_name:pt?v("creditname"):"",
     seconds:Math.round((Date.now()-mounted)/1000) };
 }
-async function showThanks(real){
-  if (real){ const v = DW.nextVampire(); $('#vamp-img').src='assets/vamps/'+v.f; $('#vamp-img').alt=v.name; $('#vamp-name').textContent=v.name; $('#vamp-line').textContent=v.line; $('#vamp').classList.remove('hidden'); } else $('#vamp').classList.add('hidden');
+let cur = null;   // {id, ts, vamp} of the record this screen belongs to
+async function showThanks(real, upd){
+  if (real){ const v = upd && cur && cur.vamp ? cur.vamp : DW.nextVampire(); if (cur) cur.vamp = v; $('#vamp-img').src='assets/vamps/'+v.f; $('#vamp-img').alt=v.name; $('#vamp-name').textContent=v.name; $('#vamp-line').textContent=v.line; $('#vamp').classList.remove('hidden'); } else $('#vamp').classList.add('hidden');
+  $('#thx-h1').textContent = upd ? 'Added. Thanks.' : 'Thanks, partner.';
   $("#form-view").classList.add("hidden"); $("#thanks-view").classList.remove("hidden"); scrollTo(0,0);
   const st = $("#tstatus");
   const paint = () => { const n = pending(); if (n){ st.className="status wait"; st.textContent="Saved on this phone. It will send itself as soon as you have signal. You can close this page."; } else { st.className="status ok"; st.textContent="✓ Received. Nothing more to do."; } };
@@ -165,15 +168,24 @@ const submit = async () => {
   if ($("#f [name=website]").value) { showThanks(); return; }           // honeypot: bots get a fake thank-you, nothing is stored
   if (Date.now()-mounted < 2500) return;                                   // humans need more than 2.5 s
   const em = $("#email").value.trim(); if (em && !/^\S+@\S+\.\S+$/.test(em)) { $("#email").focus(); return; }
-  enqueue(build()); showThanks(true);
+  const upd = !!cur, rec = build();
+  if (upd){ rec.id = cur.id; rec.ts = cur.ts; rec.update = true; }
+  enqueue(rec); if (!upd) cur = {id:rec.id, ts:rec.ts, vamp:null};
+  showThanks(true, upd);
 };
 $("#go").onclick = $("#go2").onclick = submit;
 function resetForm(keepGame){
+  cur = null;
   $("#f").reset(); ["c-game","c-faction","c-fun","c-clarity","c-again","c-balance","c-tier","c-count","c-seat","c-won","c-first","c-heard","c-interests"].forEach(i=>setChips($("#"+i),""));
   $("#pt-fields").classList.remove("open"); $("#extra").classList.remove("open"); $("#more").textContent="Help shape the game"; $("#more").setAttribute("aria-expanded","false"); if(!keepGame) game="";
   setChips($("#c-game"), keepGame ? game : ""); fillLayouts($("#layout"),0); upd(); badges(); $$('#f details').forEach(d=>d.open=false);
   $("#thanks-view").classList.add("hidden"); $("#form-view").classList.remove("hidden"); scrollTo(0,0);
 }
+$("#more-thoughts").onclick = () => {
+  $("#thanks-view").classList.add("hidden"); $("#form-view").classList.remove("hidden");
+  const x=$("#extra"); if(!x.classList.contains("open")) $("#more").click(); else scrollTo(0,0);
+  badges();
+};
 $("#again").onclick = () => resetForm(true);
 $("#again-me").onclick = () => resetForm(false);
 })();

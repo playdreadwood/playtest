@@ -12,19 +12,22 @@ var COLS = {
 };
 function sheet_(n){ var ss=SpreadsheetApp.getActiveSpreadsheet(), s=ss.getSheetByName(n);
   if(!s){ s=ss.insertSheet(n); s.appendRow(COLS[n]); s.setFrozenRows(1); } return s; }
-function has_(s,id){ if(s.getLastRow()<2) return false; return s.getRange(2,1,s.getLastRow()-1,1).getValues().some(function(r){return r[0]===id;}); }
+function rowOf_(s,id){ if(s.getLastRow()<2) return 0; var v=s.getRange(2,1,s.getLastRow()-1,1).getValues(); for(var i=v.length-1;i>=0;i--){ if(v[i][0]===id) return i+2; } return 0; }
 function cell_(v){ return (v!==null && typeof v==='object') ? JSON.stringify(v) : v; }
+/** Upsert: a repeat id (a player adding detail, or a retry) UPDATES its row; it never adds a duplicate. */
+function put_(s,id,row){ var r=rowOf_(s,id); if(r) s.getRange(r,1,1,row.length).setValues([row]); else s.appendRow(row); }
 function doPost(e){
   var lock=LockService.getScriptLock(); lock.waitLock(20000);
   try{
     var r=JSON.parse(e.postData.contents);
-    if(r.type==='survey'){ var s=sheet_('surveys'); if(!has_(s,r.id)) s.appendRow(COLS.surveys.map(function(k){return cell_(r[k]);})); }
+    if(r.type==='survey'){ put_(sheet_('surveys'), r.id, COLS.surveys.map(function(k){return cell_(r[k]);})); }
     else if(r.type==='game'){
-      var g=sheet_('games'); if(!has_(g,r.id)){
-        var row=COLS.games.map(function(k){ if(k==='seats_json') return JSON.stringify(r.seats||[]);
-          if(r.ticks && k in r.ticks) return r.ticks[k]; return cell_(r[k]); }); g.appendRow(row);
-        var st=sheet_('seats'); (r.seats||[]).forEach(function(x){ st.appendRow([r.id,r.ts,r.game,r.tier,r.players,r.layout,x.seat,x.name,x.faction,x.out_round,x.out_cause,(x.cards_used||[]).join('; '),x.winner]); });
-      }
+      var row=COLS.games.map(function(k){ if(k==='seats_json') return JSON.stringify(r.seats||[]);
+        if(r.ticks && k in r.ticks) return r.ticks[k]; return cell_(r[k]); });
+      put_(sheet_('games'), r.id, row);
+      var st=sheet_('seats');
+      for(var i=st.getLastRow(); i>=2; i--){ if(st.getRange(i,1).getValue()===r.id) st.deleteRow(i); }   // replace this game's seats
+      (r.seats||[]).forEach(function(x){ st.appendRow([r.id,r.ts,r.game,r.tier,r.players,r.layout,x.seat,x.name,x.faction,x.out_round,x.out_cause,(x.cards_used||[]).join('; '),x.winner]); });
     }
     return ContentService.createTextOutput('ok');
   } finally { lock.releaseLock(); }

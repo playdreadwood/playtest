@@ -12,7 +12,7 @@ Mobile-first static site for DREADWOOD's first public playtest (Fri Oct 30, 2026
 
 ## How submissions are stored
 
-Every submission is written to the device's `localStorage` first (so offline or flaky bar signal never loses it), then sent. A queued item retries on page load, when the phone comes back online, and every 15 s. The thank-you screen shows "Saved on this phone" until the send succeeds, then "Received". Each record has a unique `id`, so duplicates are harmless; de-duplicate on `id`.
+Every submission is written to the device's `localStorage` first (so offline or flaky bar signal never loses it), then sent. A queued item retries on page load, when the phone comes back online, and every 15 s. The thank-you screen shows "Saved on this phone" until the send succeeds, then "Received". Each record has a unique `id`. If a player taps "Wait! I had more thoughts." on the thank-you screen and resubmits, the same `id` is sent again with `update:true`. **When aggregating, keep the LAST row per `id`.**
 
 Two sinks (set in `assets/config.js`; a send succeeds if either accepts):
 
@@ -47,3 +47,9 @@ After each survey the thank-you screen shows one of the 8 characters (`assets/va
 The balance question reads "Did everyone have a fair shot?" with buttons "Yes, fair" / "Someone had an edge". Stored values are unchanged (`balance` = `Fair` or `Felt off`; free text in `balance_note`), so Sheet columns and old rows stay compatible. Likewise the interests chip "Video: role-playing games" still stores `Video: RPGs`. Keep labels plain; faction names and Beginner/Deadly/Immortal are left as is.
 
 The optional accordions are titled "The match", "Your two cents" and "Who's talking"; the expand button reads "Help shape the game" and then "Done helping".
+
+## Updates ("Wait! I had more thoughts.")
+The thank-you screen can reopen the survey with every answer kept. A resend reuses the original `id`/`ts` and adds `update:true`; the thank-you shows the same vampire ("Added. Thanks.").
+- **Sheet:** the current `apps-script/Code.gs` does an upsert (repeat id = update that row; games also replace their `seats` rows). It must be redeployed (Deploy > Manage deployments > edit > Version: New version > Deploy) for updates to land. **Until then the old script ignores repeat ids**, so the Sheet keeps the first submission and the extras are lost there (the relay still has them, last-wins, for about 12 h; the device history also keeps them).
+- **Relay:** `tools/pull.sh` is last-wins per id.
+- **Any other export:** keep the last row per `id`.
