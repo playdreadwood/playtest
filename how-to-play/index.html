@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>How to Play DREADWOOD</title><meta name="theme-color" content="#251538">
+<link rel="preload" href="../assets/fonts/BarlowCondensed-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/app.css">
+</head><body>
+<main class="wrap">
+  <header class="hdr"><a href="../"><img class="logo" src="../assets/img/logo.png" alt="DREADWOOD home" width="900" height="249"></a>
+  <h1>How to play</h1></header>
+  <p class="draftbar">DRAFT. Rules text pending the Manual Maker and Rules Keeper.</p>
+
+  <!-- Tier picker (shown when no tier is chosen) -->
+  <section id="picker">
+    <div class="panel">
+      <h2>Pick your tier</h2>
+      <p class="hint">Your table chooses. Any tier, any table.</p>
+      <div class="tiers">
+        <a class="tbtn" data-tier="beginner" href="#beginner"><span class="t"><span class="a">Beginner</span><span class="b">Core rules, AP tracker, quick reference. Start here.</span></span><span class="go" aria-hidden="true">›</span></a>
+        <a class="tbtn" data-tier="deadly" href="#deadly"><span class="t"><span class="a">Deadly</span><span class="b">Adds faction cards and abilities.</span></span><span class="go" aria-hidden="true">›</span></a>
+        <a class="tbtn" data-tier="immortal" href="#immortal"><span class="t"><span class="a">Immortal</span><span class="b">Deadly, plus the Hazard Draft.</span></span><span class="go" aria-hidden="true">›</span></a>
+      </div>
+    </div>
+  </section>
+
+  <nav class="subnav hidden" id="subnav" aria-label="Tiers">
+    <a href="#beginner" data-tier="beginner">Beginner</a><a href="#deadly" data-tier="deadly">Deadly</a><a href="#immortal" data-tier="immortal">Immortal</a>
+  </nav>
+
+  <!-- BEGINNER -->
+  <section class="panel tierpage hidden" id="beginner">
+    <h2>Beginner</h2>
+    <span class="draft">Draft</span>
+    <h3>The point</h3>
+    <p>Everyone gets two vampires and three Bloodwells. Lose both vampires, or all three Bloodwells, and you're out. Last one standing wins.</p>
+    <h3>Setup</h3>
+    <ol>
+      <li>Pick a faction. First come, first served. Take its 2 vampires, 3 Bloodwells, AP tracker card, quick reference card and meeple.</li>
+      <li>Pick a layout card for your player count, or draw one at random.</li>
+      <li>Place every piece exactly as the card shows, facing included. Then the card is done.</li>
+      <li>All 12 hazards go in the shared pool. The 3 dynamite wait in their own supply.</li>
+      <li>First player: whoever most recently saw their own blood. Play goes clockwise.</li>
+    </ol>
+    <h3>Your turn</h3>
+    <p>Choose <b>one</b> vampire. You get <b>5 AP</b>. First round only: the first player gets 4, the next 5, anyone after that 6.</p>
+    <p>Spend every point. Exactly. No saving. Can't make it come out even? Undo until you can. Still can't? You're <b>Staked</b>. Out.</p>
+    <table class="costs" aria-label="Action costs">
+      <tr><td><b>Move</b>. One square, the way you face. Never diagonal.</td><td>1 AP</td></tr>
+      <tr><td><b>Pivot</b>. Face N, E, S or W. Never two in a row.</td><td>1 AP</td></tr>
+      <tr><td><b>Standard Shot</b>. Straight ahead, any distance. Stops at the first thing it hits, friends included.</td><td>3 AP</td></tr>
+      <tr><td><b>Throw Hazard</b>. Any hazard from the pool, 1 to 3 squares ahead, onto an empty square.</td><td>1 AP</td></tr>
+      <tr><td><b>Place Dynamite</b>. On the empty square in front of you. Nobody throws it.</td><td>3 AP</td></tr>
+      <tr><td><b>Bloodbath</b>. End a move next to any Bloodwell, diagonals count. Clears Bleeding and the Curse.</td><td>0 AP</td></tr>
+    </table>
+    <h3>Getting hurt</h3>
+    <ul>
+      <li>First hit: <b>Bleeding</b>. Hit again: eliminated. A hit Bloodwell is destroyed.</li>
+      <li><b>Bear Trap</b>: step on it and you Bleed.</li>
+      <li><b>Grave Dust</b>: step on it and you're <b>Cursed</b>. Everything but Pivot and Bloodbath costs 1 more AP. No throwing, no dynamite, no Tombstones.</li>
+      <li><b>Tombstone</b>: cover, but only from the side the vampire faces. Shots fly over Bear Traps and Grave Dust.</li>
+      <li><b>Dynamite</b>: any shot sets it off. Hits all 8 squares around it. Friends included.</li>
+    </ul>
+    <h3>The end</h3>
+    <p>Last one standing wins. If everyone goes down at once, nobody wins. But also everyone wins. Shout <b>“Ghost Town!”</b></p>
+  </section>
+
+  <!-- DEADLY -->
+  <section class="panel tierpage hidden" id="deadly">
+    <h2>Deadly</h2>
+    <span class="draft">Draft</span>
+    <p><span class="adds">Beginner +</span></p>
+    <p>All the <a class="inl" href="#beginner">Beginner rules</a>, plus each faction's cards: abilities, the Silver Bullet and bonus AP.</p>
+    <h3>Silver Bullet</h3>
+    <p>Once per game. Load and fire in the same turn for <b>4 AP</b>. A hit eliminates on the spot. A Tombstone still stops it.</p>
+    <h3>The factions</h3>
+    <div class="fcard sheriffs"><h4>Sheriffs</h4><p>Guard their wells and come back. Bullets can't touch a Bloodwell with a Sheriff beside it. A free move or pivot at the end of the turn. Once per game, a dead Sheriff returns.</p></div>
+    <div class="fcard outlaws"><h4>Outlaws</h4><p>Break wells and run. Destroy an enemy Bloodwell and get a free escape. Once per game each: Rampage, two shots left and right. Hand Cannon, through everything for 5 squares.</p></div>
+    <div class="fcard hunters"><h4>Bounty Hunters</h4><p>Shoot through your cover. Shots pass straight through Tombstones. Clean hits curse the target. Kills pay bonus AP, or bank it for a bigger payday.</p></div>
+    <div class="fcard vigilantes"><h4>Vigilantes</h4><p>Move as a pair and pay you back. Both vampires act on one shared AP pool. +1 AP when they stay close. Lose a vampire or a well to someone else and gain 4 AP, right then.</p></div>
+    <p class="hint">Full ability text is on each faction's cards.</p>
+  </section>
+
+  <!-- IMMORTAL -->
+  <section class="panel tierpage hidden" id="immortal">
+    <h2>Immortal</h2>
+    <span class="draft">Draft</span>
+    <p><span class="adds">Deadly +</span></p>
+    <p>All the <a class="inl" href="#deadly">Deadly rules</a>, plus the <b>Hazard Draft</b>. You lay the traps yourselves.</p>
+    <h3>The Hazard Draft</h3>
+    <ol>
+      <li>Set up the pieces from the layout card as usual. All 12 hazards start in the pool.</li>
+      <li>The player who goes <b>last</b> drafts first. Then counter-clockwise.</li>
+      <li>On your pick, take any one hazard and place it on any empty square that isn't <b>Hallowed ground</b> (the striped squares on the card).</li>
+      <li>Keep going until everyone has their picks. Then play.</li>
+    </ol>
+    <table class="costs" aria-label="Picks per player">
+      <tr><td>2 players: 4 each, 4 left in the pool</td><td>4</td></tr>
+      <tr><td>3 players: 3 each, 3 left in the pool</td><td>3</td></tr>
+      <tr><td>4 players: 3 each, pool empty</td><td>3</td></tr>
+    </table>
+    <p class="hint">Dynamite is never drafted. Hallowed ground only matters during the draft.</p>
+  </section>
+
+  <div class="backrow hidden" id="backrow">
+    <a class="btn ghost" href="#">Switch tier</a>
+    <a class="btn" href="../survey/">Done? Tell us</a>
+  </div>
+  <p class="foot"><a href="../">Playtest home</a> · <a href="../faq/">FAQ</a><br>Stuck on a rule? Ask Adam. He's the one in the hat.</p>
+</main>
+<script>
+(function(){
+  var T = ["beginner","deadly","immortal"], $ = function(s){return document.querySelector(s)};
+  function show(){
+    var t = location.hash.slice(1); if (T.indexOf(t) < 0) t = "";
+    $("#picker").classList.toggle("hidden", !!t);
+    ["#subnav","#backrow"].forEach(function(s){ $(s).classList.toggle("hidden", !t); });
+    T.forEach(function(x){ $("#"+x).classList.toggle("hidden", x !== t); });
+    document.querySelectorAll("#subnav a").forEach(function(a){ a.setAttribute("aria-current", a.dataset.tier === t ? "true" : "false"); });
+    scrollTo(0, 0);
+  }
+  addEventListener("hashchange", show); show();
+})();
+</script>
+</body></html>
