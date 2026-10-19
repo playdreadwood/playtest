@@ -31,478 +31,221 @@
 
   <!-- BEGINNER -->
   <section class="panel tierpage hidden" id="beginner">
-   <div id="beginner-rules" class="jumpto">
-    <h2>Beginner</h2>
-    <h3>The goal</h3>
-    <p>The town is dry and the Vein is nearly gone. Four factions want the last of the blood.</p>
-    <p>Be the <b>last player standing</b>. You're out when:</p>
-    <ul><li>all 3 of your Bloodwells are destroyed, or</li><li>both of your Vampires are eliminated, or</li><li>you're <b>Staked</b> (see below).</li></ul>
-    <p>There's no turn limit.</p>
-    <figure class="fig"><img src="../assets/diagrams/D3.webp" alt="How you're out: all 3 Bloodwells destroyed, or both Vampires eliminated" loading="lazy"></figure>
-    <h3>What you get</h3>
-    <p>Each player picks a faction, first come, first served: Sheriff (blue), Bounty Hunter (green), Vigilante (gray) or Outlaw (red). Take your faction's 2 Vampires and 3 Bloodwells.</p>
-    <p>In Beginner you use only two of your faction cards: the <b>AP tracker card</b> (with your colored meeple) and the <b>quick reference card</b>. Leave the rest in the box.</p>
-    <h3>Setup</h3>
-    <ol>
-      <li>Take a layout card for your player count.</li>
-      <li>Place every Vampire and Bloodwell <b>exactly</b> as the card shows, facings included. Each player takes the part of the map nearest them. The seat labels printed on the card don't matter.</li>
-      <li>Put all 12 hazards (4 Tombstones, 4 Bear Traps, 4 Grave Dust) in a shared pool beside the board.</li>
-      <li>Put the 3 Dynamite sticks in their crate beside the board.</li>
-      <li>First player: whoever most recently saw their own blood. Play goes <b>clockwise</b>.</li>
-    </ol>
-    <figure class="fig"><img src="../assets/diagrams/D1.webp" alt="A 4-player layout card next to the board it sets up" loading="lazy"></figure>
-    <p>The layout card only matters at the start. After that, the board is yours to wreck.</p>
-    <h3>Your turn</h3>
-    <ol>
-      <li>Pick <b>one</b> Vampire to act with this turn.</li>
-      <li>You get <b>5 AP</b> (Action Points). Put your meeple on 5 on your AP tracker card.</li>
-      <li>Spend AP on actions, in any order, as often as you like. Move the meeple down as you go.</li>
-      <li><b>Spend every point.</b> When the meeple slides off the card, your turn is over.</li>
-    </ol>
-    <p>You can't save AP for later.</p>
-    <p><b>First round only</b>, later seats start a little stronger: Player 1 (first player) 4 AP, Player 2 5, Player 3 6, Player 4 6. With fewer players, drop the missing seats. From round two, everyone gets 5. Starting on 6 with a card that only goes to 5? Keep the extra point in your head.</p>
-    <figure class="fig"><img src="../assets/diagrams/D2.webp" alt="A full 5 AP turn: move 1, pivot 1, shoot 3" loading="lazy"></figure>
-    <h3>Actions</h3>
-    <table class="costs" aria-label="Action costs">
-      <tr><td><b>Move.</b> One square, only the way you're facing. Never diagonal, never off the board.</td><td>1 AP</td></tr>
-      <tr><td><b>Pivot.</b> Face north, east, south or west (a 180° turn is fine). The same Vampire can't Pivot twice in a row in one turn.</td><td>1 AP</td></tr>
-      <tr><td><b>Standard Shot.</b> Fire straight ahead, any distance.</td><td>3 AP</td></tr>
-      <tr><td><b>Throw Hazard.</b> Throw a hazard from the pool.</td><td>1 AP</td></tr>
-      <tr><td><b>Place Dynamite.</b> Put a stick on the square in front of you.</td><td>3 AP</td></tr>
-      <tr><td><b>Bloodbath.</b> Heal by ending a move next to a Bloodwell.</td><td>0 AP</td></tr>
-    </table>
-    <h3>Facing</h3>
-    <p>Every Vampire faces north, east, south or west. Facing decides where you move, shoot, throw and place Dynamite. It also decides whether a Tombstone protects you.</p>
-    <h3>What blocks you</h3>
-    <ul><li>Two Vampires never share a square.</li><li>Bloodwells, Dynamite and other Vampires block movement.</li><li>You can step onto a <b>Bear Trap</b> or <b>Grave Dust</b>. It goes off and is used up.</li><li>You can step onto a <b>Tombstone</b> if no other Vampire is on it.</li></ul>
-    <h3>Shooting</h3>
-    <p>A Standard Shot flies straight ahead and stops at the first thing it hits. Friends count too.</p>
-    <ul><li>It flies over Bear Traps and Grave Dust.</li><li><b>Vampire hit:</b> it becomes <b>Bleeding</b> (red ring). Already Bleeding? It's eliminated.</li><li><b>Bloodwell hit:</b> destroyed. It leaves an empty square.</li><li><b>Dynamite hit:</b> it explodes.</li><li><b>Tombstone hit:</b> see Tombstone cover.</li></ul>
-    <h3>Tombstone cover</h3>
-    <p>A Vampire on a Tombstone hides on the side it faces. The Tombstone always faces the same way as the Vampire on it. With no Vampire on it, its facing doesn't matter.</p>
-    <ul><li><b>Shot from the side it faces:</b> the Tombstone breaks. The Vampire is safe.</li><li><b>Shot from any other side (flanked):</b> the Vampire is hit. The Tombstone stays.</li><li><b>Empty Tombstone:</b> it breaks. The shot stops.</li></ul>
-    <figure class="fig"><img src="../assets/diagrams/D7.webp" alt="Tombstone cover: protected versus flanked" loading="lazy"></figure>
-    <h3>Health</h3>
-    <p><b>Bleeding (red ring).</b> Your first hit. Any hit while Bleeding eliminates you.</p>
-    <p><b>Cursed (magenta ring).</b> From Grave Dust.</p>
-    <ul><li>Every action costs +1 AP, except Pivot and Bloodbath.</li><li>No throwing hazards. No placing Dynamite.</li><li>You can't enter a Tombstone square.</li><li>Curses don't stack.</li></ul>
-    <p>A Vampire can be Bleeding and Cursed at the same time.</p>
-    <h3>Bloodbath: the only cure</h3>
-    <p>End a move next to <b>any</b> Bloodwell, yours or an enemy's. Diagonals count.</p>
-    <ul><li>Clear Bleeding, Cursed or both.</li><li>Always free, even when Cursed.</li><li>Use it as often as you like.</li></ul>
-    <p>If the square you step onto has a hazard, the hazard goes off first. A Bleeding Vampire that steps on a Bear Trap is eliminated before it can bathe.</p>
-    <figure class="fig"><img src="../assets/diagrams/D4.webp" alt="Bloodbath: ending a move next to Bloodwells clears both rings" loading="lazy"></figure>
-    <h3>Hazards</h3>
-    <p>Hazards wait in the shared pool. <b>Throw Hazard (1 AP):</b></p>
-    <ul><li>Pick any type left in the pool.</li><li>It lands 1, 2 or 3 squares ahead, the way you face, on an <b>empty</b> square.</li><li>It flies over Bear Traps and Grave Dust.</li><li>Tombstones, Bloodwells, Vampires and Dynamite block it. You can't throw past them. That throw just isn't allowed, and nothing is damaged.</li><li>Pool empty? No throw. Cursed? No throw.</li></ul>
-    <p>Hazards only ever go on empty squares. So you can't throw Grave Dust at a Vampire.</p>
-    <figure class="fig"><img src="../assets/diagrams/D6.webp" alt="Throw Hazard: lands 1 to 3 ahead on an empty square" loading="lazy"></figure>
-    <div class="tokens"><figure><img src="../assets/art/tombstone.webp" alt=""><figcaption>Tombstone</figcaption></figure><figure><img src="../assets/art/bear_trap.webp" alt=""><figcaption>Bear Trap</figcaption></figure><figure><img src="../assets/art/grave_dust.webp" alt=""><figcaption>Grave Dust</figcaption></figure></div>
-    <ul><li><b>Tombstone.</b> Cover. One Vampire at most, and never a Cursed one.</li><li><b>Bear Trap.</b> Step on it: you're Bleeding. Already Bleeding? You're eliminated, and nobody gets credit (in Deadly and Immortal: no Vengeance and no Contract Payoff).</li><li><b>Grave Dust.</b> Step on it: you're Cursed. Already Cursed? It's just used up.</li></ul>
-    <p>Once a hazard is on the board, it belongs to the board. When it's used up, broken or blown up, it goes back to the pool.</p>
-    <figure class="fig"><img src="../assets/diagrams/D5.webp" alt="Bear Trap versus Grave Dust" loading="lazy"></figure>
-    <h3>Dynamite</h3>
-    <p>There are only 3 sticks. Dynamite is not a hazard.</p>
-    <p><b>Place Dynamite (3 AP):</b> put a stick from the crate on the empty square directly in front of your Vampire. Not while Cursed. Crate empty? No placing.</p>
-    <p>It explodes only when a <b>shot</b> hits it or another <b>blast</b> reaches it. <b>The blast hits the 8 squares around the stick:</b></p>
-    <ul><li>Vampires become Bleeding (already Bleeding: eliminated).</li><li>Bloodwells are destroyed.</li><li>Hazards are destroyed and go back to the pool.</li><li>Other Dynamite explodes too.</li></ul>
-    <p>Your own pieces get hurt. Tombstones give no cover.</p>
-    <figure class="fig"><img src="../assets/diagrams/D8.webp" alt="A Dynamite blast hits the 8 squares around the stick" loading="lazy"></figure>
-    <p>Each blast finishes before the next starts, and nothing is hit twice in one chain. Exploded sticks go back to the crate.</p>
-    <figure class="fig"><img src="../assets/diagrams/D9.webp" alt="A Dynamite chain: one blast finishes, then the next" loading="lazy"></figure>
-    <h3>Can't spend it all?</h3>
-    <p>If you get stuck mid-turn and can't spend exactly all your AP, undo actions until you can. Or perish.</p>
-    <p><b>Staked.</b> At the start of your turn, if there's no way at all to spend exactly all your AP, you're <b>Staked</b>. You're out. Nobody gets credit for it.</p>
-    <p>The one exception: if your own Vampire dies during your turn, your turn can end with AP left over. That AP is lost.</p>
-    <h3>When a player is out</h3>
-    <p>Only their Vampires and Bloodwells leave the board. Hazards and Dynamite stay where they are. Down to one Vampire, or one or two Bloodwells? You're still in.</p>
-    <h3>Winning</h3>
-    <p>The last player standing wins.</p>
-    <p><b>GHOST TOWN.</b> If the last players are all eliminated at the same moment (usually Dynamite), everyone shouts “GHOST TOWN!” together. Nobody wins. But also everyone wins.</p>
-    <p>You don't have to win. You just have to not lose.</p>
-   </div>
-   <!--GEN:beginner-->
-<div class="refblock qref" id="beginner-qr"><h2>Quick reference</h2><p class="lead">The base game. Use only your faction's AP Tracker card and Quick Reference card: no faction abilities, no Silver Bullet, no bonus AP, no Hazard Draft. Lines marked <span class="tt dea">Deadly+</span> or <span class="tt imm">Immortal</span> are not used in Beginner.</p><h3>Setup</h3>
-<ul>
-<li>Factions: first come, first served. One player per faction.</li>
-<li>Pick a layout card for your player count. Sit anywhere; take the part of the map nearest you and place your pieces and facings exactly as shown. Seat labels on the card don't matter.</li>
-<li>First player: whoever most recently saw their own blood. Play goes <b>clockwise</b>. In later games, first player moves one seat clockwise.</li>
-<li>No Hazard Draft: all 12 hazards start in the shared pool. The 3 dynamite sticks start in the dynamite supply.</li>
-</ul>
+<!--GEN:beginner-->
+<div id="beginner-rules" class="jumpto"><h2>Beginner</h2><h3>The goal</h3>
+<p>Be the <b>last player standing</b>. You're out when all 3 of your Bloodwells are destroyed or both your Vampires are eliminated.</p>
+<figure class="fig"><img src="../assets/diagrams/D3.webp" alt="How you&#x27;re out" loading="lazy"></figure>
+<h3>Setup</h3>
+<ol>
+<li>Pick a faction. Take its 2 Vampires and 3 Bloodwells.</li>
+<li>Set up exactly as your layout card shows, facings included.</li>
+<li>All 12 hazards go in the pool. The 3 Dynamite sticks go in the crate.</li>
+<li>First player: whoever most recently saw their own blood. Play goes clockwise.</li>
+</ol>
+<figure class="fig"><img src="../assets/diagrams/D1.webp" alt="A layout card next to the board it sets up" loading="lazy"></figure>
 <h3>Your turn</h3>
 <ol>
-<li>Choose <b>one</b> active vampire. No exceptions, Vigilantes included.</li>
-<li>Take <b>5 AP</b> and set your meeple on that number on your AP Tracker card.<ul><li>Round 1 only: first player 4, then clockwise 5, 6, 6.</li></ul></li>
-<li>Spend AP on actions in any order, as often as you like.</li>
-<li><b>Spend all of it.</b> Meeple slides off the card = turn over.<ul><li>Can't spend exactly all? Undo actions until you can.</li><li>If, at the start of your turn, <b>no</b> sequence of actions can spend exactly all your AP, you are <b>Staked</b>: you lose and are eliminated. No one gets credit.</li><li>Only exception: your active vampire dies mid-turn. The turn may end with AP unspent; that AP is lost.</li></ul></li>
+<li>Pick <b>one</b> Vampire.</li>
+<li>Take <b>5 AP</b>. Round 1 only: 4, 5, 6, 6 by seat.</li>
+<li>Spend <b>every</b> point, in any order.</li>
 </ol>
-<ul>
-<li>Tracker caps: Sheriff 5, Outlaw 5, Bounty Hunter 9, Vigilante 11. AP above the cap is tracked on trust.</li>
-</ul>
-<h3>AP costs</h3>
-<table class=""><tr><th>Action</th><th>AP</th><th>Cursed</th></tr>
-<tr><td>Move</td><td class=n>1</td><td class=n>2</td></tr>
-<tr><td>Pivot</td><td class=n>1</td><td class=n>1</td></tr>
-<tr><td>Standard Shot</td><td class=n>3</td><td class=n>4</td></tr>
-<tr><td>Throw Hazard</td><td class=n>1</td><td class=n>not allowed</td></tr>
-<tr><td>Place Dynamite</td><td class=n>3</td><td class=n>not allowed</td></tr>
-<tr><td>Bloodbath</td><td class=n>0</td><td class=n>0</td></tr>
-</table>
+<p>Can't spend it all at the start of your turn? You're <b>Staked</b>, and you're out.</p>
+<figure class="fig"><img src="../assets/diagrams/D2.webp" alt="A 5 AP turn: move 1, pivot 1, shoot 3" loading="lazy"></figure>
 <h3>Actions</h3>
-<ul>
-<li><b>Move:</b> 1 square straight ahead (facing direction). Never diagonal. Can't enter a blocked square or leave the board.</li>
-<li><b>Pivot:</b> face N, S, E or W. Must change your facing (180° is fine). No vampire may pivot twice in a row in the same turn. Pivot memory resets each new turn.</li>
-<li><b>Standard Shot:</b> straight ahead, any range. Stops at the first thing it hits. Can hit your own pieces.</li>
-<li><b>Throw Hazard:</b> pick any hazard left in the pool. It lands 1, 2 or 3 squares ahead on an <b>empty</b> square. It flies over Bear Traps and Grave Dust only; anything else blocks it. Never sets off dynamite. Empty pool = no throw.</li>
-<li><b>Place Dynamite:</b> on the empty square directly in front of you. Needs a stick in the supply.</li>
-</ul>
-<h3>Added in higher tiers (not used in Beginner)</h3>
-<ul>
-<li><span class="tt dea">Deadly+</span> Faction abilities, bonus AP, the Silver Bullet (4 AP, 6 Cursed), and Vigilantes using both vampires.</li>
-<li><span class="tt imm">Immortal</span> The Hazard Draft and Hallowed ground.</li>
-</ul>
+<table class="costs" aria-label="Action costs">
+<tr><td><b>Move.</b> One square forward.</td><td>1 AP</td></tr>
+</table>
+<tr><td><b>Pivot.</b> Face a new way. Not twice in a row.</td><td>1 AP</td></tr>
+</table>
+<tr><td><b>Shot.</b> Straight ahead. Hits the first thing in line.</td><td>3 AP</td></tr>
+</table>
+<tr><td><b>Throw Hazard.</b> 1 to 3 squares ahead, onto an empty square.</td><td>1 AP</td></tr>
+</table>
+<tr><td><b>Place Dynamite.</b> On the square in front of you.</td><td>3 AP</td></tr>
+</table>
+<tr><td><b>Bloodbath.</b> End a move next to any Bloodwell. Heals everything.</td><td>0 AP</td></tr>
+</table>
+</table>
 <h3>Health</h3>
 <ul>
-<li><b>Two-Tap:</b> first hit = <b>Bleeding</b> (red ring). Hit while Bleeding = eliminated.</li>
-<li><b>Cursed</b> (magenta ring): +1 AP on everything except Pivot and Bloodbath. Can't throw hazards or place dynamite. Can't enter a Tombstone square. Doesn't stack.</li>
-<li>A vampire can be Bleeding and Cursed at once.</li>
-<li><b>Bloodbath (free):</b> end any move (free moves too) next to <b>any</b> Bloodwell, diagonals included. Clears Bleeding, Cursed, or both. No limit. A hazard on the square you enter triggers first.</li>
+<li><b>Hit once:</b> Bleeding (red ring). <b>Hit again:</b> eliminated.</li>
+<li><b>Cursed</b> (magenta ring): +1 AP per action. No throwing, no Dynamite, no Tombstones.</li>
 </ul>
-<h3>Shots and Tombstones</h3>
-<p>A shot meets, in order: empty square (continue), Bear Trap/Grave Dust (pass over), Tombstone (below), vampire (hit, stop), Bloodwell (destroyed, stop), dynamite (explodes, stop). Off the board = ends.</p>
-<table class="wide"><tr><th>Shot enters</th><th>Result</th></tr>
-<tr><td>Tombstone alone</td><td>Tombstone destroyed. Shot stops.</td></tr>
-<tr><td>Tombstone + vampire facing the shooter</td><td>Tombstone destroyed. Vampire safe. Shot stops.</td></tr>
-<tr><td>Tombstone + vampire not facing the shooter</td><td>Vampire hit. Tombstone stays. Shot stops.</td></tr>
+<figure class="fig"><img src="../assets/diagrams/D4.webp" alt="Bloodbath clears both rings" loading="lazy"></figure>
+<h3>Shots</h3>
+<p>A shot stops at the first thing it hits. Vampires take a hit. Bloodwells are destroyed. Dynamite explodes. Shots fly over Bear Traps and Grave Dust.</p>
+<p>A Vampire on a Tombstone is safe from shots on the side it faces. Shot from any other side, it's hit. An empty Tombstone just breaks.</p>
+<figure class="fig"><img src="../assets/diagrams/D7.webp" alt="Tombstone cover: protected versus flanked" loading="lazy"></figure>
+<h3>Hazards</h3>
+<div class="tokens"><figure><img src="../assets/art/tombstone.webp" alt=""><figcaption>Tombstone</figcaption></figure><figure><img src="../assets/art/bear_trap.webp" alt=""><figcaption>Bear Trap</figcaption></figure><figure><img src="../assets/art/grave_dust.webp" alt=""><figcaption>Grave Dust</figcaption></figure></div>
+<ul>
+<li><b>Tombstone:</b> cover.</li>
+<li><b>Bear Trap:</b> step on it, Bleed.</li>
+<li><b>Grave Dust:</b> step on it, Cursed.</li>
+<li>Throws can only fly over Bear Traps and Grave Dust.</li>
+</ul>
+<figure class="fig"><img src="../assets/diagrams/D6.webp" alt="Throw Hazard: 1 to 3 squares ahead" loading="lazy"></figure>
+<h3>Dynamite</h3>
+<p>A shot or blast sets it off. It hits all 8 squares around it, your pieces too.</p>
+<figure class="fig"><img src="../assets/diagrams/D8.webp" alt="A Dynamite blast hits the 8 squares around it" loading="lazy"></figure>
+<h3>Winning</h3>
+<p>Last one standing wins. Everyone out at once? Shout <b>"GHOST TOWN!"</b> Nobody wins.</p></div><div class="refblock qref" id="beginner-qr"><h2>Quick reference</h2><h3>Your turn</h3>
+<ul>
+<li>One Vampire.</li>
+<li>5 AP. Round 1: 4, 5, 6, 6.</li>
+<li>Spend it all.</li>
+</ul>
+<h3>AP costs</h3>
+<table class="md"><tr><th>Action</th><th>AP</th><th>Cursed</th></tr>
+<tr><td>Move</td><td class=n>1</td><td class=n>2</td></tr>
+<tr><td>Pivot</td><td class=n>1</td><td class=n>1</td></tr>
+<tr><td>Shot</td><td class=n>3</td><td class=n>4</td></tr>
+<tr><td>Throw Hazard</td><td class=n>1</td><td class=n>no</td></tr>
+<tr><td>Place Dynamite</td><td class=n>3</td><td class=n>no</td></tr>
+<tr><td>Bloodbath</td><td class=n>0</td><td class=n>0</td></tr>
 </table>
+<h3>Health</h3>
 <ul>
-<li>A Tombstone with a vampire on it always faces the same way as that vampire.</li>
+<li>1 hit: Bleeding. 2 hits: eliminated.</li>
+<li>Cursed: +1 AP. No throws, Dynamite or Tombstones.</li>
+<li>Bloodbath: end a move next to any Bloodwell. Clears both.</li>
 </ul>
-<h3>Hazards (4 of each, shared pool)</h3>
+<h3>Shot into a Tombstone</h3>
+<table class="md wide"><tr><th>Tombstone</th><th>Result</th></tr>
+<tr><td>Empty</td><td class=n>Breaks</td></tr>
+<tr><td>Vampire facing you</td><td>Breaks. Vampire safe.</td></tr>
+<tr><td>Vampire facing elsewhere</td><td class=n>Vampire hit</td></tr>
+</table>
+<h3>Hazards and Dynamite</h3>
 <ul>
-<li><b>Tombstone:</b> cover. Max one vampire on it, never a Cursed one.</li>
-<li><b>Bear Trap:</b> step on it = Bleeding (already Bleeding = eliminated). No one gets credit for a Bear Trap death.</li>
-<li><b>Grave Dust:</b> step on it = Cursed (already Cursed = just cleared).</li>
-<li>Stepping on a Bear Trap or Grave Dust uses it up. Shots pass over both.</li>
-<li>Hazards go only on empty squares, never on a vampire, Bloodwell, dynamite or another hazard.</li>
-<li>Anything that leaves the board goes back to the pool. Once on the board, a hazard belongs to the board.</li>
-<li>A throw can't pass a vampire, Bloodwell, Tombstone or Dynamite. That throw is simply not allowed, and nothing is damaged.</li>
+<li>Throw 1 to 3 ahead onto an empty square. Blocked? No throw.</li>
+<li>Dynamite: a shot or blast sets it off. Hits all 8 squares around it.</li>
 </ul>
-<h3>Dynamite and chains</h3>
+<h3>Out</h3>
 <ul>
-<li>Explodes when hit by any shot or caught in another blast.</li>
-<li>Blast hits all 8 squares around it: vampires Bleed (Bleeding = eliminated), Bloodwells destroyed, hazards destroyed, other dynamite chains. Friendly pieces too. No Tombstone cover.</li>
-<li>Each blast resolves fully before the next. Nothing is hit twice in one chain.</li>
-<li>Credit goes to whoever fired the shot that set off the first stick.</li>
-<li>Exploded sticks return to the supply (3 total).</li>
-</ul>
-<h3>Elimination and victory</h3>
-<ul>
-<li>You're out when all 3 Bloodwells are destroyed <b>or</b> both vampires are eliminated. Only your vampires and Bloodwells leave the board.</li>
-<li>The full chain resolves before anyone is checked for out. No one wins mid-turn.</li>
-<li><b>Last player standing wins.</b></li>
-<li><b>GHOST TOWN!</b> If simultaneous eliminations leave no one standing, nobody wins. Everyone shouts "GHOST TOWN!" together. Then nobody wins. But also everyone wins.</li>
-<li>No turn limit.</li>
+<li>No Bloodwells or no Vampires left.</li>
 </ul></div>
 <!--/GEN:beginner-->
   </section>
 
   <!-- DEADLY -->
   <section class="panel tierpage hidden" id="deadly">
-   <div id="deadly-rules" class="jumpto">
-    <h2>Deadly</h2>
-    <p><span class="adds">Beginner + your faction cards</span></p>
-    <p>Everything in <a class="inl" href="#beginner">Beginner</a> still applies. Now you also use:</p>
-    <ul><li>your faction's three ability cards,</li><li>the Silver Bullet, and</li><li>bonus AP from your abilities.</li></ul>
-    <p>Once-per-game cards are once per player, not per Vampire. Turn the card over when you use it.</p>
-    <h3>The Silver Bullet</h3>
-    <p>Every player has one. Once per game.</p>
-    <ul><li><b>4 AP total:</b> 1 to load, 3 to fire (6 if Cursed).</li><li>Load and fire in the <b>same turn</b>, or not at all.</li><li>A hit eliminates a Vampire at once, even if it wasn't Bleeding.</li><li>It stops at a Tombstone like any shot (unless a Bounty Hunter fires it).</li></ul>
-    <h3>Bonus AP</h3>
-    <p>Add these to your AP tracker at the start of your turn (or when they happen):</p>
-    <ul><li><b>Bound by Blood (Vigilante):</b> +1 AP.</li><li><b>Vengeance is Mine (Vigilante):</b> +4 AP.</li><li><b>Contract Payoff (Bounty Hunter):</b> +2 or +4 AP, once per game.</li></ul>
-    <h3>The factions</h3>
-    <div class="fcard sheriffs"><h4>Sheriff</h4><div class="art"><img src="../assets/art/sheriffs.webp" alt="" loading="lazy"></div><p><b>Under My Protection.</b> While one of your Sheriffs stands in the 8 squares around one of your Bloodwells, no bullet can harm that well. That's any shot, Silver Bullet, Rampage or Hand Cannon, yours or an enemy's. It never stops Dynamite.</p><p><b>Swift Justice.</b> At the very end of your turn, after your meeple slides off, your active Sheriff may move once and/or pivot once, in either order, for free.</p><p><b>Order Restored (2 AP, once per game).</b> Bring back a fallen Sheriff on an empty square next to your surviving Sheriff or one of your own Bloodwells (diagonals count). It comes back healthy, facing any way, and can't act this turn.</p><figure class="fig"><img src="../assets/diagrams/D10.webp" alt="Under My Protection: a shot stops at the guarded well and does no harm" loading="lazy"></figure></div>
-    <div class="fcard hunters"><h4>Bounty Hunter</h4><div class="art"><img src="../assets/art/hunters.webp" alt="" loading="lazy"></div><p><b>Sharpshooter.</b> Your Standard Shots and Silver Bullet pass through Tombstones without breaking them, and hit a Vampire hiding there no matter which way it faces.</p><p><b>Marked Man.</b> A Standard Shot that hits an enemy Vampire cleanly (through no Tombstone) also Curses it.</p><p><b>Contract Payoff (once per game).</b> The marker starts at +2. Each time you take down an enemy Vampire or Bloodwell, you must choose:</p><ul><li>take +2 AP now (card used), or</li><li>raise the marker to +4. Your next kill then automatically pays +4 (card used then).</li></ul><p>Several kills from one command pay only once. You may raise the marker on one kill and cash it on a later kill in the same turn.</p></div>
-    <div class="fcard vigilantes"><h4>Vigilante</h4><div class="art"><img src="../assets/art/vigilantes.webp" alt="" loading="lazy"></div><p><b>Fluid Malice.</b> Use both Vigilantes in the same turn, switching freely, sharing one AP pool. You can pivot one, then the other.</p><p><b>Bound by Blood.</b> +1 AP at the start of your turn if both Vigilantes are alive and fit inside one 4 × 4 block.</p><p><b>Vengeance is Mine.</b> +4 AP, once per turn, when <b>another player</b> eliminates one of your Vampires or destroys one of your Bloodwells.</p><ul><li>Spend any of it right away, even on their turn.</li><li>Roll the rest into your next turn, where you must spend every point as usual.</li></ul><p>Your own shots and chains never trigger it. A Bear Trap kill gives no one credit, so it never triggers Vengeance.</p></div>
-    <div class="fcard outlaws"><h4>Outlaw</h4><div class="art"><img src="../assets/art/outlaws.webp" alt="" loading="lazy"></div><p><b>Daring Escape.</b> Right after your Outlaw destroys an enemy Bloodwell, take a free bonus turn: up to 2 moves and 2 pivots, in any order, now or never. Two Pivots in a row are allowed here. Once per turn.</p><p><b>Rampage (3 AP, once per game).</b> Two Standard Shots at once: one straight out the Outlaw's left, one out its right. Each breaks a Tombstone and stops there.</p><p><b>Hand Cannon (4 AP, once per game).</b> Hits <b>everything</b> in the 5 squares ahead:</p><ul><li>Vampires become Bleeding (already Bleeding: eliminated).</li><li>Bloodwells and hazards are destroyed (Under My Protection still guards a well).</li><li>Tombstones are smashed, and it keeps going.</li><li>Dynamite in its path goes off after the bullet finishes.</li></ul><p>A Vampire hit by the Hand Cannon and then by the blast it sets off? That combo kill is called <b>Dust to Dust</b>. It's just a name, with no extra rules effect.</p><figure class="fig"><img src="../assets/diagrams/D11.webp" alt="Hand Cannon: hits 5 squares, smashes a Tombstone and keeps going" loading="lazy"></figure></div>
-   </div>
-   <!--GEN:deadly-->
-<div class="refblock qref" id="deadly-qr"><h2>Quick reference</h2><p class="lead">Lines marked <span class="tt dea">Deadly+</span> are in Deadly and Immortal only. Everything else is the same in every tier.</p><h3>Setup</h3>
+<!--GEN:deadly-->
+<div id="deadly-rules" class="jumpto"><h2>Deadly</h2><p><span class="adds">Beginner + your faction cards</span></p>
+<p>Everything in Beginner, plus:</p>
 <ul>
-<li>Factions: first come, first served. One player per faction.</li>
-<li>Pick a layout card for your player count. Sit anywhere; take the part of the map nearest you and place your pieces and facings exactly as shown. Seat labels on the card don't matter.</li>
-<li>First player: whoever most recently saw their own blood. Play goes <b>clockwise</b>. In later games, first player moves one seat clockwise.</li>
-<li>No Hazard Draft: all 12 hazards start in the shared pool. The 3 dynamite sticks start in the dynamite supply.</li>
+<li>your faction's three abilities,</li>
+<li>the Silver Bullet,</li>
+<li>bonus AP.</li>
 </ul>
-<h3>Your turn</h3>
-<ol>
-<li>Choose <b>one</b> active vampire. <span class="tt dea">Deadly+</span> Vigilantes use both (Fluid Malice).</li>
-<li>Take <b>5 AP</b> and set your meeple on that number on your AP Tracker card.<ul><li>Round 1 only: first player 4, then clockwise 5, 6, 6.</li><li><span class="tt dea">Deadly+</span> Bonus AP: Bound by Blood +1, Vengeance is Mine +4, Contract Payoff +2/+4, plus any rolled-over Vengeance AP.</li></ul></li>
-<li>Spend AP on actions in any order, as often as you like.</li>
-<li><b>Spend all of it.</b> Meeple slides off the card = turn over.<ul><li>Can't spend exactly all? Undo actions until you can.</li><li>If, at the start of your turn, <b>no</b> sequence of actions can spend exactly all your AP, you are <b>Staked</b>: you lose and are eliminated. No one gets credit.</li><li>Only exception: your own vampire dies mid-turn. Leftover AP is lost. <span class="tt dea">Deadly+</span> A Vigilante with a living partner must spend the rest with it.</li></ul></li>
-</ol>
+<p>Every card is in <b>Faction cards</b> below.</p></div><div class="refblock qref" id="deadly-qr"><h2>Quick reference</h2><h3>Your turn</h3>
 <ul>
-<li>Tracker caps: Sheriff 5, Outlaw 5, Bounty Hunter 9, Vigilante 11. AP above the cap is tracked on trust.</li>
+<li>One Vampire. <span class="tt dea">Deadly+</span> Vigilantes use both.</li>
+<li>5 AP. Round 1: 4, 5, 6, 6.</li>
+<li>Spend it all.</li>
+<li><span class="tt dea">Deadly+</span> Add bonus AP from your faction.</li>
 </ul>
 <h3>AP costs</h3>
-<table class=""><tr><th>Action</th><th>AP</th><th>Cursed</th></tr>
+<table class="md"><tr><th>Action</th><th>AP</th><th>Cursed</th></tr>
 <tr><td>Move</td><td class=n>1</td><td class=n>2</td></tr>
 <tr><td>Pivot</td><td class=n>1</td><td class=n>1</td></tr>
-<tr><td>Standard Shot</td><td class=n>3</td><td class=n>4</td></tr>
-<tr><td>Throw Hazard</td><td class=n>1</td><td class=n>not allowed</td></tr>
-<tr><td>Place Dynamite</td><td class=n>3</td><td class=n>not allowed</td></tr>
+<tr><td>Shot</td><td class=n>3</td><td class=n>4</td></tr>
+<tr><td>Throw Hazard</td><td class=n>1</td><td class=n>no</td></tr>
+<tr><td>Place Dynamite</td><td class=n>3</td><td class=n>no</td></tr>
 <tr><td>Bloodbath</td><td class=n>0</td><td class=n>0</td></tr>
-<tr><td><span class="tt dea">Deadly+</span> Silver Bullet (load 1 + fire 3)</td><td class=n>4</td><td class=n>6</td></tr>
-<tr><td><span class="tt dea">Deadly+</span> Rampage (Outlaw)</td><td class=n>3</td><td class=n>4</td></tr>
-<tr><td><span class="tt dea">Deadly+</span> Hand Cannon (Outlaw)</td><td class=n>4</td><td class=n>5</td></tr>
-<tr><td><span class="tt dea">Deadly+</span> Order Restored (Sheriff)</td><td class=n>2</td><td class=n>3</td></tr>
-<tr><td><span class="tt dea">Deadly+</span> Free moves (Swift Justice, Daring Escape)</td><td class=n>0</td><td class=n>0</td></tr>
+<tr><td><span class="tt dea">Deadly+</span> Silver Bullet</td><td class=n>4</td><td class=n>6</td></tr>
+<tr><td><span class="tt dea">Deadly+</span> Rampage</td><td class=n>3</td><td class=n>4</td></tr>
+<tr><td><span class="tt dea">Deadly+</span> Hand Cannon</td><td class=n>4</td><td class=n>5</td></tr>
+<tr><td><span class="tt dea">Deadly+</span> Order Restored</td><td class=n>2</td><td class=n>3</td></tr>
 </table>
-<h3>Actions</h3>
-<ul>
-<li><b>Move:</b> 1 square straight ahead (facing direction). Never diagonal. Can't enter a blocked square or leave the board.</li>
-<li><b>Pivot:</b> face N, S, E or W. Must change your facing (180° is fine). No vampire may pivot twice in a row in the same turn. Pivot memory resets each new turn.<ul><li><span class="tt dea">Deadly+</span> Vigilantes may pivot one vampire, then the other.</li><li><span class="tt dea">Deadly+</span> Daring Escape may pivot twice in a row.</li></ul></li>
-<li><b>Standard Shot:</b> straight ahead, any range. Stops at the first thing it hits. Can hit your own pieces.</li>
-<li><b>Throw Hazard:</b> pick any hazard left in the pool. It lands 1, 2 or 3 squares ahead on an <b>empty</b> square. It flies over Bear Traps and Grave Dust only; anything else blocks it. Never sets off dynamite. Empty pool = no throw.</li>
-<li><b>Place Dynamite:</b> on the empty square directly in front of you. Needs a stick in the supply.</li>
-<li><span class="tt dea">Deadly+</span> <b>Silver Bullet:</b> load and fire in the same turn. Once per game. A hit eliminates at once.</li>
-<li><span class="tt dea">Deadly+</span> <b>Faction abilities:</b> see your faction card.</li>
-</ul>
 <h3>Health</h3>
 <ul>
-<li><b>Two-Tap:</b> first hit = <b>Bleeding</b> (red ring). Hit while Bleeding = eliminated.</li>
-<li><b>Cursed</b> (magenta ring): +1 AP on everything except Pivot and Bloodbath. Can't throw hazards or place dynamite. Can't enter a Tombstone square. Doesn't stack.</li>
-<li>A vampire can be Bleeding and Cursed at once.</li>
-<li><b>Bloodbath (free):</b> end any move (free moves too) next to <b>any</b> Bloodwell, diagonals included. Clears Bleeding, Cursed, or both. No limit. A hazard on the square you enter triggers first.</li>
+<li>1 hit: Bleeding. 2 hits: eliminated.</li>
+<li>Cursed: +1 AP. No throws, Dynamite or Tombstones.</li>
+<li>Bloodbath: end a move next to any Bloodwell. Clears both.</li>
 </ul>
-<h3>Shots and Tombstones</h3>
-<p>A shot meets, in order: empty square (continue), Bear Trap/Grave Dust (pass over), Tombstone (below), vampire (hit, stop), Bloodwell (destroyed, stop), dynamite (explodes, stop). Off the board = ends.</p>
-<table class="wide"><tr><th>Shot enters</th><th>Result</th></tr>
-<tr><td>Tombstone alone</td><td>Tombstone destroyed. Shot stops.</td></tr>
-<tr><td>Tombstone + vampire facing the shooter</td><td>Tombstone destroyed. Vampire safe. Shot stops.</td></tr>
-<tr><td>Tombstone + vampire not facing the shooter</td><td>Vampire hit. Tombstone stays. Shot stops.</td></tr>
+<h3>Shot into a Tombstone</h3>
+<table class="md wide"><tr><th>Tombstone</th><th>Result</th></tr>
+<tr><td>Empty</td><td class=n>Breaks</td></tr>
+<tr><td>Vampire facing you</td><td>Breaks. Vampire safe.</td></tr>
+<tr><td>Vampire facing elsewhere</td><td class=n>Vampire hit</td></tr>
 </table>
+<h3>Hazards and Dynamite</h3>
 <ul>
-<li><span class="tt dea">Deadly+</span> Sharpshooter (Bounty Hunter) passes through Tombstones and hits whoever shelters there.</li>
-<li><span class="tt dea">Deadly+</span> Hand Cannon destroys Tombstones and keeps going.</li>
-<li><span class="tt dea">Deadly+</span> Under My Protection (Sheriff) guards a Sheriff's Bloodwells, while one of their Sheriffs is next to them, from every bullet, Hand Cannon included. Never from dynamite.</li>
-<li>A Tombstone with a vampire on it always faces the same way as that vampire.</li>
+<li>Throw 1 to 3 ahead onto an empty square. Blocked? No throw.</li>
+<li>Dynamite: a shot or blast sets it off. Hits all 8 squares around it.</li>
 </ul>
-<h3>Hazards (4 of each, shared pool)</h3>
+<h3>Out</h3>
 <ul>
-<li><b>Tombstone:</b> cover. Max one vampire on it, never a Cursed one.</li>
-<li><b>Bear Trap:</b> step on it = Bleeding (already Bleeding = eliminated). No one gets credit for a Bear Trap death.</li>
-<li><b>Grave Dust:</b> step on it = Cursed (already Cursed = just cleared).</li>
-<li>Stepping on a Bear Trap or Grave Dust uses it up. Shots pass over both.</li>
-<li>Hazards go only on empty squares, never on a vampire, Bloodwell, dynamite or another hazard.</li>
-<li>Anything that leaves the board goes back to the pool. Once on the board, a hazard belongs to the board.</li>
-<li>A throw can't pass a vampire, Bloodwell, Tombstone or Dynamite. That throw is simply not allowed, and nothing is damaged.</li>
-</ul>
-<h3>Dynamite and chains</h3>
-<ul>
-<li>Explodes when hit by any shot (Hand Cannon too) or caught in another blast.</li>
-<li>Blast hits all 8 squares around it: vampires Bleed (Bleeding = eliminated), Bloodwells destroyed, hazards destroyed, other dynamite chains. Friendly pieces too. No Tombstone cover.</li>
-<li>Each blast resolves fully before the next. Nothing is hit twice in one chain.</li>
-<li>Credit goes to whoever fired the shot that set off the first stick.</li>
-<li>Exploded sticks return to the supply (3 total).</li>
-<li><span class="tt dea">Deadly+</span> <b>Dust to Dust:</b> a vampire hit by the Hand Cannon can also be hit by the blast it sets off.</li>
-</ul>
-<h3>Elimination and victory</h3>
-<ul>
-<li>You're out when all 3 Bloodwells are destroyed <b>or</b> both vampires are eliminated. Only your vampires and Bloodwells leave the board.</li>
-<li>The full chain resolves before anyone is checked for out. No one wins mid-turn.</li>
-<li><b>Last player standing wins.</b></li>
-<li><b>GHOST TOWN!</b> If simultaneous eliminations leave no one standing, nobody wins. Everyone shouts "GHOST TOWN!" together. Then nobody wins. But also everyone wins.</li>
-<li>No turn limit.</li>
-</ul></div><div class="refblock" id="deadly-cards"><h2>Faction cards</h2><p class="lead">Once-per-game cards are per player, not per vampire. Turn the card over after use. Factions are picked first come, first served. One player per faction.</p>
-     <div class="fjump"><a href="#deadly/cards" data-f="sheriffs" style="--fc:var(--sheriff)" onclick="document.getElementById('deadly-f-sheriffs').scrollIntoView();return false">Sheriffs</a><a href="#deadly/cards" data-f="hunters" style="--fc:var(--hunter)" onclick="document.getElementById('deadly-f-hunters').scrollIntoView();return false">Bounty Hunters</a><a href="#deadly/cards" data-f="vigilantes" style="--fc:var(--vigil)" onclick="document.getElementById('deadly-f-vigilantes').scrollIntoView();return false">Vigilantes</a><a href="#deadly/cards" data-f="outlaws" style="--fc:var(--outlaw)" onclick="document.getElementById('deadly-f-outlaws').scrollIntoView();return false">Outlaws</a></div><div class="acard" style="--fc:var(--parch)"><h4>Silver Bullet</h4><div class="ty">Every player · once per game</div><p>Load 1 + fire 3 = <b>4 AP</b> (6 if Cursed). Load and fire in the same turn, or not at all. Once per game; turn the card over after use.</p>
-<ul>
-<li>Fires straight ahead, any range, like a shot. A hit <b>eliminates</b> at once (skips Two-Tap).</li>
-<li>Stops at a Tombstone like a normal shot (Bounty Hunters' Sharpshooter passes through).</li>
-<li>Under My Protection guards Bloodwells from it.</li>
-</ul></div><div class="fgroup jumpto" id="deadly-f-sheriffs" style="--fc:var(--sheriff)"><h3>Sheriffs</h3><div class="art"><img src="../assets/art/sheriffs.webp" alt="" loading="lazy"></div><div class="acard"><h4>Under My Protection</h4><div class="ty">passive</div><p>No bullet harms your Bloodwell while one of your Sheriffs is in the 8 squares around it. That's every bullet, yours or an enemy's: Standard Shot, Silver Bullet, Rampage and Hand Cannon. It never stops dynamite. It's on or off: two Sheriffs change nothing.</p></div><div class="acard"><h4>Swift Justice</h4><div class="ty">passive</div><p>At the very end of your turn, after your meeple slides off the card, your active Sheriff may move once and/or pivot once, in either order, for 0 AP. This is a bonus turn, so pivot memory resets. It triggers hazards, and Bloodbath works after it.</p></div><div class="acard"><h4>Order Restored</h4><div class="ty">once per game · 2 AP; 3 if Cursed</div><p>Revive your vanquished Sheriff on an empty square next to (diagonals included) your surviving Sheriff or one of your own surviving Bloodwells, never an enemy's. It returns healthy, facing N, S, E or W. It can't act this turn and is never your active vampire this turn.</p></div></div><div class="fgroup jumpto" id="deadly-f-hunters" style="--fc:var(--hunter)"><h3>Bounty Hunters</h3><div class="art"><img src="../assets/art/hunters.webp" alt="" loading="lazy"></div><div class="acard"><h4>Sharpshooter</h4><div class="ty">passive</div><p>Your Standard Shots and Silver Bullet pass through Tombstones without destroying them, and hit a vampire sheltering there whichever way it faces.</p></div><div class="acard"><h4>Marked Man</h4><div class="ty">passive</div><p>A Standard Shot that hits an enemy vampire cleanly (no Tombstone passed through) also Curses it. An already Cursed target gets nothing more.</p></div><div class="acard"><h4>Contract Payoff</h4><div class="ty">card + marker · once per game</div><p>The marker starts at +2. When you vanquish an enemy vampire or Bloodwell, you must choose one:</p>
-<ul>
-<li>cash +2 AP now (card used, turn it over), or</li>
-<li>move the marker to +4. A later kill then pays +4 (card used).</li>
-</ul>
-<p>Moving the marker doesn't use the card. Several kills from one command pay once. Chain kills count if you fired the shot that set off the chain. Bear Trap deaths and Staked players give no credit.</p>
-<p>Raising on one kill and cashing +4 on a later kill in the same turn is allowed.</p></div></div><div class="fgroup jumpto" id="deadly-f-vigilantes" style="--fc:var(--vigil)"><h3>Vigilantes</h3><div class="art"><img src="../assets/art/vigilantes.webp" alt="" loading="lazy"></div><div class="acard"><h4>Fluid Malice</h4><div class="ty">passive</div><p>Switch freely between both Vigilantes during your turn, sharing one AP pool. No vampire may pivot twice in a row in the same turn, but you may pivot one Vigilante and then the other. If one Vigilante dies on your turn, spend the rest of your AP with the other, or the turn is invalid.</p></div><div class="acard"><h4>Bound by Blood</h4><div class="ty">passive</div><p>+1 AP at the start of your turn if both Vigilantes are alive and inside a 4x4 block (no more than 3 squares apart in any direction). Add it to your AP Tracker at the start of the turn.</p></div><div class="acard"><h4>Vengeance is Mine</h4><div class="ty">reaction</div><p>+4 AP, once per turn, when <b>another player</b> eliminates one of your vampires or destroys one of your Bloodwells. It never triggers on your own turn or from your own chain.</p>
-<ul>
-<li>Spend any or all of it right when the loss resolves, even on another player's turn, at normal costs. Either living Vigilante may spend it.</li>
-<li>While spending it, pivot memory resets and once-per-game cards (like the Silver Bullet) can be used.</li>
-<li>Whatever you don't spend rolls into your next turn. Then the normal rule applies: spend all your AP.</li>
-<li>No cap. AP above 11 is tracked on trust.</li>
-</ul></div></div><div class="fgroup jumpto" id="deadly-f-outlaws" style="--fc:var(--outlaw)"><h3>Outlaws</h3><div class="art"><img src="../assets/art/outlaws.webp" alt="" loading="lazy"></div><div class="acard"><h4>Daring Escape</h4><div class="ty">passive</div><p>Right after your Outlaw destroys an <b>enemy</b> Bloodwell (by Hand Cannon or a chain you set off too, after the blasts resolve): a free bonus turn of up to 2 moves and 2 pivots, in any order. Use it now or lose it. Once per turn. It may pivot twice in a row. It triggers hazards.</p></div><div class="acard"><h4>Rampage</h4><div class="ty">once per game · 3 AP; 4 if Cursed</div><p>Fire two Standard Shots at once, straight left and straight right of your facing. The left bullet resolves fully first, explosions included, then the right. Each destroys a Tombstone and stops.</p></div><div class="acard"><h4>Hand Cannon</h4><div class="ty">once per game · 4 AP; 5 if Cursed</div><p>Hits <b>everything</b> in the 5 squares ahead. Vampires Bleed (already Bleeding = eliminated). Bloodwells and hazards are destroyed, except Bloodwells guarded by Under My Protection. Tombstones are destroyed and give no cover; the shot keeps going. Every dynamite stick in those 5 squares explodes after the bullet finishes its path.</p>
-<p><b>Dust to Dust:</b> a vampire hit by the Hand Cannon can also be hit by the blast it sets off. A healthy vampire can go Bleeding, then down, in one shot.</p></div></div></div>
+<li>No Bloodwells or no Vampires left.</li>
+</ul></div><div class="refblock" id="deadly-cards"><h2>Faction cards</h2><div class="fjump"><a href="#deadly/cards" data-f="sheriffs" style="--fc:var(--sheriff)" onclick="document.getElementById('deadly-f-sheriffs').scrollIntoView();return false">Sheriffs</a><a href="#deadly/cards" data-f="hunters" style="--fc:var(--hunter)" onclick="document.getElementById('deadly-f-hunters').scrollIntoView();return false">Bounty Hunters</a><a href="#deadly/cards" data-f="vigilantes" style="--fc:var(--vigil)" onclick="document.getElementById('deadly-f-vigilantes').scrollIntoView();return false">Vigilantes</a><a href="#deadly/cards" data-f="outlaws" style="--fc:var(--outlaw)" onclick="document.getElementById('deadly-f-outlaws').scrollIntoView();return false">Outlaws</a></div><div class="acard" style="--fc:var(--parch)"><h4>Silver Bullet</h4><div class="ty">every player · once per game · 4 AP</div><p>Load and fire in one turn. One hit eliminates.</p></div><div class="fgroup jumpto" id="deadly-f-sheriffs" style="--fc:var(--sheriff)"><h3>Sheriffs</h3><div class="art"><img src="../assets/art/sheriffs.webp" alt="" loading="lazy"></div><div class="acard"><h4>Under My Protection</h4><div class="ty">passive</div><p>No bullet hurts a Bloodwell with one of your Sheriffs next to it. Dynamite still does.</p>
+<figure class="fig"><img src="../assets/diagrams/D10.webp" alt="Under My Protection: the shot stops at the guarded well" loading="lazy"></figure></div><div class="acard"><h4>Swift Justice</h4><div class="ty">passive</div><p>After your turn ends, your Sheriff may move once and pivot once, free.</p></div><div class="acard"><h4>Order Restored</h4><div class="ty">once per game · 2 AP</div><p>Bring back a dead Sheriff next to your other Sheriff or one of your Bloodwells.</p></div></div><div class="fgroup jumpto" id="deadly-f-hunters" style="--fc:var(--hunter)"><h3>Bounty Hunters</h3><div class="art"><img src="../assets/art/hunters.webp" alt="" loading="lazy"></div><div class="acard"><h4>Sharpshooter</h4><div class="ty">passive</div><p>Your shots pass through Tombstones and hit whoever is on them.</p></div><div class="acard"><h4>Marked Man</h4><div class="ty">passive</div><p>A Standard Shot that hits an enemy Vampire also Curses it.</p></div><div class="acard"><h4>Contract Payoff</h4><div class="ty">once per game</div><p>Kill an enemy Vampire or Bloodwell: take +2 AP now, or raise to +4 and cash it on a later kill. Same turn is fine.</p></div></div><div class="fgroup jumpto" id="deadly-f-vigilantes" style="--fc:var(--vigil)"><h3>Vigilantes</h3><div class="art"><img src="../assets/art/vigilantes.webp" alt="" loading="lazy"></div><div class="acard"><h4>Fluid Malice</h4><div class="ty">passive</div><p>Use both Vigilantes each turn, sharing one AP pool.</p></div><div class="acard"><h4>Bound by Blood</h4><div class="ty">passive</div><p>+1 AP if your turn starts with both inside a 4×4 block.</p></div><div class="acard"><h4>Vengeance is Mine</h4><div class="ty">reaction</div><p>Another player kills your Vampire or Bloodwell: +4 AP. Spend it now or next turn.</p></div></div><div class="fgroup jumpto" id="deadly-f-outlaws" style="--fc:var(--outlaw)"><h3>Outlaws</h3><div class="art"><img src="../assets/art/outlaws.webp" alt="" loading="lazy"></div><div class="acard"><h4>Daring Escape</h4><div class="ty">passive</div><p>Destroy an enemy Bloodwell: 2 free moves and 2 free pivots, right away.</p></div><div class="acard"><h4>Rampage</h4><div class="ty">once per game · 3 AP</div><p>Two shots at once, straight left and straight right.</p></div><div class="acard"><h4>Hand Cannon</h4><div class="ty">once per game · 4 AP</div><p>Hits everything in the 5 squares ahead. Smashes Tombstones and keeps going.</p>
+<figure class="fig"><img src="../assets/diagrams/D11.webp" alt="Hand Cannon: 5 squares, through a Tombstone" loading="lazy"></figure></div></div></div>
 <!--/GEN:deadly-->
   </section>
 
   <!-- IMMORTAL -->
   <section class="panel tierpage hidden" id="immortal">
-   <div id="immortal-rules" class="jumpto">
-    <h2>Immortal</h2>
-    <p><span class="adds">Deadly + the Hazard Draft</span></p>
-    <p>Everything in <a class="inl" href="#deadly">Deadly</a> still applies. The only change is at setup: instead of leaving all 12 hazards in the pool, players draft them onto the board.</p>
-    <h3>The Hazard Draft</h3>
-    <p>Do this after placing Vampires and Bloodwells, before the first turn.</p>
-    <ol><li>The player who takes the <b>last</b> turn drafts first. Then drafting goes counter-clockwise.</li><li>On your pick, take any hazard from the pool and place it right away.</li><li>It must go on an <b>empty</b> square: no Vampire, Bloodwell, Dynamite or other hazard.</li><li>It can't go on a <b>Hallowed</b> square (striped on the layout card).</li></ol>
-        <table class="costs" aria-label="Picks per player">
-      <tr><td>2 players: 4 each (4 stay in the pool)</td><td>4</td></tr>
-      <tr><td>3 players: 3 each (3 stay in the pool)</td><td>3</td></tr>
-      <tr><td>4 players: 3 each (the pool is empty)</td><td>3</td></tr>
-    </table>
-    <p>A drafted Tombstone can face any way: dealer's choice.</p>
-    <div class="tokens"><figure><img src="../assets/art/tombstone.webp" alt=""><figcaption>Tombstone ×4</figcaption></figure><figure><img src="../assets/art/bear_trap.webp" alt=""><figcaption>Bear Trap ×4</figcaption></figure><figure><img src="../assets/art/grave_dust.webp" alt=""><figcaption>Grave Dust ×4</figcaption></figure></div>
-    <p>Dynamite is never drafted.</p>
-    <p>Hazards left in the pool can be thrown later by anyone. Hallowed squares only matter during the draft. After that, throw anywhere you can reach.</p>
-   </div>
-   <!--GEN:immortal-->
-<div class="refblock qref" id="immortal-qr"><h2>Quick reference</h2><p class="lead">Lines marked <span class="tt dea">Deadly+</span> are in Deadly and Immortal only. Lines marked <span class="tt imm">Immortal</span> are in Immortal only. Everything else is the same in every tier.</p><h3>Setup</h3>
+<!--GEN:immortal-->
+<div id="immortal-rules" class="jumpto"><h2>Immortal</h2><p><span class="adds">Deadly + the Hazard Draft</span></p>
+<p>Everything in Deadly. At setup, players draft the hazards onto the board instead of leaving them all in the pool. See <b>Draft &amp; pool</b> below.</p></div><div class="refblock qref" id="immortal-qr"><h2>Quick reference</h2><h3>Your turn</h3>
 <ul>
-<li>Factions: first come, first served. One player per faction.</li>
-<li>Pick a layout card for your player count. Sit anywhere; take the part of the map nearest you and place your pieces and facings exactly as shown. Seat labels on the card don't matter.</li>
-<li>First player: whoever most recently saw their own blood. Play goes <b>clockwise</b>. In later games, first player moves one seat clockwise.</li>
-<li><span class="tt imm">Immortal</span> Hazard Draft: the player who goes <b>last</b> drafts first, then counter-clockwise. Each pick: take any hazard from the pool and place it on an empty square that is <b>not Hallowed ground</b> (marked on the layout card). Picks each: 2P 4, 3P 3, 4P 3. See the Hazard Draft sheet.</li>
-<li>The 3 dynamite sticks start in the dynamite supply. They are never drafted.</li>
-</ul>
-<h3>Your turn</h3>
-<ol>
-<li>Choose <b>one</b> active vampire. <span class="tt dea">Deadly+</span> Vigilantes use both (Fluid Malice).</li>
-<li>Take <b>5 AP</b> and set your meeple on that number on your AP Tracker card.<ul><li>Round 1 only: first player 4, then clockwise 5, 6, 6.</li><li><span class="tt dea">Deadly+</span> Bonus AP: Bound by Blood +1, Vengeance is Mine +4, Contract Payoff +2/+4, plus any rolled-over Vengeance AP.</li></ul></li>
-<li>Spend AP on actions in any order, as often as you like.</li>
-<li><b>Spend all of it.</b> Meeple slides off the card = turn over.<ul><li>Can't spend exactly all? Undo actions until you can.</li><li>If, at the start of your turn, <b>no</b> sequence of actions can spend exactly all your AP, you are <b>Staked</b>: you lose and are eliminated. No one gets credit.</li><li>Only exception: your own vampire dies mid-turn. Leftover AP is lost. <span class="tt dea">Deadly+</span> A Vigilante with a living partner must spend the rest with it.</li></ul></li>
-</ol>
-<ul>
-<li>Tracker caps: Sheriff 5, Outlaw 5, Bounty Hunter 9, Vigilante 11. AP above the cap is tracked on trust.</li>
+<li>One Vampire. <span class="tt dea">Deadly+</span> Vigilantes use both.</li>
+<li>5 AP. Round 1: 4, 5, 6, 6.</li>
+<li>Spend it all.</li>
+<li><span class="tt dea">Deadly+</span> Add bonus AP from your faction.</li>
 </ul>
 <h3>AP costs</h3>
-<table class=""><tr><th>Action</th><th>AP</th><th>Cursed</th></tr>
+<table class="md"><tr><th>Action</th><th>AP</th><th>Cursed</th></tr>
 <tr><td>Move</td><td class=n>1</td><td class=n>2</td></tr>
 <tr><td>Pivot</td><td class=n>1</td><td class=n>1</td></tr>
-<tr><td>Standard Shot</td><td class=n>3</td><td class=n>4</td></tr>
-<tr><td>Throw Hazard</td><td class=n>1</td><td class=n>not allowed</td></tr>
-<tr><td>Place Dynamite</td><td class=n>3</td><td class=n>not allowed</td></tr>
+<tr><td>Shot</td><td class=n>3</td><td class=n>4</td></tr>
+<tr><td>Throw Hazard</td><td class=n>1</td><td class=n>no</td></tr>
+<tr><td>Place Dynamite</td><td class=n>3</td><td class=n>no</td></tr>
 <tr><td>Bloodbath</td><td class=n>0</td><td class=n>0</td></tr>
-<tr><td><span class="tt dea">Deadly+</span> Silver Bullet (load 1 + fire 3)</td><td class=n>4</td><td class=n>6</td></tr>
-<tr><td><span class="tt dea">Deadly+</span> Rampage (Outlaw)</td><td class=n>3</td><td class=n>4</td></tr>
-<tr><td><span class="tt dea">Deadly+</span> Hand Cannon (Outlaw)</td><td class=n>4</td><td class=n>5</td></tr>
-<tr><td><span class="tt dea">Deadly+</span> Order Restored (Sheriff)</td><td class=n>2</td><td class=n>3</td></tr>
-<tr><td><span class="tt dea">Deadly+</span> Free moves (Swift Justice, Daring Escape)</td><td class=n>0</td><td class=n>0</td></tr>
+<tr><td><span class="tt dea">Deadly+</span> Silver Bullet</td><td class=n>4</td><td class=n>6</td></tr>
+<tr><td><span class="tt dea">Deadly+</span> Rampage</td><td class=n>3</td><td class=n>4</td></tr>
+<tr><td><span class="tt dea">Deadly+</span> Hand Cannon</td><td class=n>4</td><td class=n>5</td></tr>
+<tr><td><span class="tt dea">Deadly+</span> Order Restored</td><td class=n>2</td><td class=n>3</td></tr>
 </table>
-<h3>Actions</h3>
-<ul>
-<li><b>Move:</b> 1 square straight ahead (facing direction). Never diagonal. Can't enter a blocked square or leave the board.</li>
-<li><b>Pivot:</b> face N, S, E or W. Must change your facing (180° is fine). No vampire may pivot twice in a row in the same turn. Pivot memory resets each new turn.<ul><li><span class="tt dea">Deadly+</span> Vigilantes may pivot one vampire, then the other.</li><li><span class="tt dea">Deadly+</span> Daring Escape may pivot twice in a row.</li></ul></li>
-<li><b>Standard Shot:</b> straight ahead, any range. Stops at the first thing it hits. Can hit your own pieces.</li>
-<li><b>Throw Hazard:</b> pick any hazard left in the pool. It lands 1, 2 or 3 squares ahead on an <b>empty</b> square. It flies over Bear Traps and Grave Dust only; anything else blocks it. Never sets off dynamite. Empty pool = no throw.</li>
-<li><b>Place Dynamite:</b> on the empty square directly in front of you. Needs a stick in the supply.</li>
-<li><span class="tt dea">Deadly+</span> <b>Silver Bullet:</b> load and fire in the same turn. Once per game. A hit eliminates at once.</li>
-<li><span class="tt dea">Deadly+</span> <b>Faction abilities:</b> see your faction card.</li>
-</ul>
 <h3>Health</h3>
 <ul>
-<li><b>Two-Tap:</b> first hit = <b>Bleeding</b> (red ring). Hit while Bleeding = eliminated.</li>
-<li><b>Cursed</b> (magenta ring): +1 AP on everything except Pivot and Bloodbath. Can't throw hazards or place dynamite. Can't enter a Tombstone square. Doesn't stack.</li>
-<li>A vampire can be Bleeding and Cursed at once.</li>
-<li><b>Bloodbath (free):</b> end any move (free moves too) next to <b>any</b> Bloodwell, diagonals included. Clears Bleeding, Cursed, or both. No limit. A hazard on the square you enter triggers first.</li>
+<li>1 hit: Bleeding. 2 hits: eliminated.</li>
+<li>Cursed: +1 AP. No throws, Dynamite or Tombstones.</li>
+<li>Bloodbath: end a move next to any Bloodwell. Clears both.</li>
 </ul>
-<h3>Shots and Tombstones</h3>
-<p>A shot meets, in order: empty square (continue), Bear Trap/Grave Dust (pass over), Tombstone (below), vampire (hit, stop), Bloodwell (destroyed, stop), dynamite (explodes, stop). Off the board = ends.</p>
-<table class="wide"><tr><th>Shot enters</th><th>Result</th></tr>
-<tr><td>Tombstone alone</td><td>Tombstone destroyed. Shot stops.</td></tr>
-<tr><td>Tombstone + vampire facing the shooter</td><td>Tombstone destroyed. Vampire safe. Shot stops.</td></tr>
-<tr><td>Tombstone + vampire not facing the shooter</td><td>Vampire hit. Tombstone stays. Shot stops.</td></tr>
+<h3>Shot into a Tombstone</h3>
+<table class="md wide"><tr><th>Tombstone</th><th>Result</th></tr>
+<tr><td>Empty</td><td class=n>Breaks</td></tr>
+<tr><td>Vampire facing you</td><td>Breaks. Vampire safe.</td></tr>
+<tr><td>Vampire facing elsewhere</td><td class=n>Vampire hit</td></tr>
 </table>
+<h3>Hazards and Dynamite</h3>
 <ul>
-<li><span class="tt dea">Deadly+</span> Sharpshooter (Bounty Hunter) passes through Tombstones and hits whoever shelters there.</li>
-<li><span class="tt dea">Deadly+</span> Hand Cannon destroys Tombstones and keeps going.</li>
-<li><span class="tt dea">Deadly+</span> Under My Protection (Sheriff) guards a Sheriff's Bloodwells, while one of their Sheriffs is next to them, from every bullet, Hand Cannon included. Never from dynamite.</li>
-<li>A Tombstone with a vampire on it always faces the same way as that vampire.</li>
+<li>Throw 1 to 3 ahead onto an empty square. Blocked? No throw.</li>
+<li>Dynamite: a shot or blast sets it off. Hits all 8 squares around it.</li>
 </ul>
-<h3>Hazards (4 of each, shared pool)</h3>
+<h3>Out</h3>
 <ul>
-<li><span class="tt imm">Immortal</span> Hallowed ground only matters during the draft. After that, throw anywhere you can reach.</li>
-<li><span class="tt imm">Immortal</span> After the draft, the pool holds 4 hazards (2P), 3 (3P) or none (4P).</li>
-<li><b>Tombstone:</b> cover. Max one vampire on it, never a Cursed one.</li>
-<li><b>Bear Trap:</b> step on it = Bleeding (already Bleeding = eliminated). No one gets credit for a Bear Trap death.</li>
-<li><b>Grave Dust:</b> step on it = Cursed (already Cursed = just cleared).</li>
-<li>Stepping on a Bear Trap or Grave Dust uses it up. Shots pass over both.</li>
-<li>Hazards go only on empty squares, never on a vampire, Bloodwell, dynamite or another hazard.</li>
-<li>Anything that leaves the board goes back to the pool. Once on the board, a hazard belongs to the board.</li>
-<li>A throw can't pass a vampire, Bloodwell, Tombstone or Dynamite. That throw is simply not allowed, and nothing is damaged.</li>
+<li>No Bloodwells or no Vampires left.</li>
 </ul>
-<h3>Dynamite and chains</h3>
+<h3><span class="tt imm">Immortal</span> Setup</h3>
 <ul>
-<li>Explodes when hit by any shot (Hand Cannon too) or caught in another blast.</li>
-<li>Blast hits all 8 squares around it: vampires Bleed (Bleeding = eliminated), Bloodwells destroyed, hazards destroyed, other dynamite chains. Friendly pieces too. No Tombstone cover.</li>
-<li>Each blast resolves fully before the next. Nothing is hit twice in one chain.</li>
-<li>Credit goes to whoever fired the shot that set off the first stick.</li>
-<li>Exploded sticks return to the supply (3 total).</li>
-<li><span class="tt dea">Deadly+</span> <b>Dust to Dust:</b> a vampire hit by the Hand Cannon can also be hit by the blast it sets off.</li>
+<li>Hazard Draft before turn one. See Draft &amp; pool.</li>
+</ul></div><div class="refblock" id="immortal-cards"><h2>Faction cards</h2><div class="fjump"><a href="#immortal/cards" data-f="sheriffs" style="--fc:var(--sheriff)" onclick="document.getElementById('immortal-f-sheriffs').scrollIntoView();return false">Sheriffs</a><a href="#immortal/cards" data-f="hunters" style="--fc:var(--hunter)" onclick="document.getElementById('immortal-f-hunters').scrollIntoView();return false">Bounty Hunters</a><a href="#immortal/cards" data-f="vigilantes" style="--fc:var(--vigil)" onclick="document.getElementById('immortal-f-vigilantes').scrollIntoView();return false">Vigilantes</a><a href="#immortal/cards" data-f="outlaws" style="--fc:var(--outlaw)" onclick="document.getElementById('immortal-f-outlaws').scrollIntoView();return false">Outlaws</a></div><div class="acard" style="--fc:var(--parch)"><h4>Silver Bullet</h4><div class="ty">every player · once per game · 4 AP</div><p>Load and fire in one turn. One hit eliminates.</p></div><div class="fgroup jumpto" id="immortal-f-sheriffs" style="--fc:var(--sheriff)"><h3>Sheriffs</h3><div class="art"><img src="../assets/art/sheriffs.webp" alt="" loading="lazy"></div><div class="acard"><h4>Under My Protection</h4><div class="ty">passive</div><p>No bullet hurts a Bloodwell with one of your Sheriffs next to it. Dynamite still does.</p>
+<figure class="fig"><img src="../assets/diagrams/D10.webp" alt="Under My Protection: the shot stops at the guarded well" loading="lazy"></figure></div><div class="acard"><h4>Swift Justice</h4><div class="ty">passive</div><p>After your turn ends, your Sheriff may move once and pivot once, free.</p></div><div class="acard"><h4>Order Restored</h4><div class="ty">once per game · 2 AP</div><p>Bring back a dead Sheriff next to your other Sheriff or one of your Bloodwells.</p></div></div><div class="fgroup jumpto" id="immortal-f-hunters" style="--fc:var(--hunter)"><h3>Bounty Hunters</h3><div class="art"><img src="../assets/art/hunters.webp" alt="" loading="lazy"></div><div class="acard"><h4>Sharpshooter</h4><div class="ty">passive</div><p>Your shots pass through Tombstones and hit whoever is on them.</p></div><div class="acard"><h4>Marked Man</h4><div class="ty">passive</div><p>A Standard Shot that hits an enemy Vampire also Curses it.</p></div><div class="acard"><h4>Contract Payoff</h4><div class="ty">once per game</div><p>Kill an enemy Vampire or Bloodwell: take +2 AP now, or raise to +4 and cash it on a later kill. Same turn is fine.</p></div></div><div class="fgroup jumpto" id="immortal-f-vigilantes" style="--fc:var(--vigil)"><h3>Vigilantes</h3><div class="art"><img src="../assets/art/vigilantes.webp" alt="" loading="lazy"></div><div class="acard"><h4>Fluid Malice</h4><div class="ty">passive</div><p>Use both Vigilantes each turn, sharing one AP pool.</p></div><div class="acard"><h4>Bound by Blood</h4><div class="ty">passive</div><p>+1 AP if your turn starts with both inside a 4×4 block.</p></div><div class="acard"><h4>Vengeance is Mine</h4><div class="ty">reaction</div><p>Another player kills your Vampire or Bloodwell: +4 AP. Spend it now or next turn.</p></div></div><div class="fgroup jumpto" id="immortal-f-outlaws" style="--fc:var(--outlaw)"><h3>Outlaws</h3><div class="art"><img src="../assets/art/outlaws.webp" alt="" loading="lazy"></div><div class="acard"><h4>Daring Escape</h4><div class="ty">passive</div><p>Destroy an enemy Bloodwell: 2 free moves and 2 free pivots, right away.</p></div><div class="acard"><h4>Rampage</h4><div class="ty">once per game · 3 AP</div><p>Two shots at once, straight left and straight right.</p></div><div class="acard"><h4>Hand Cannon</h4><div class="ty">once per game · 4 AP</div><p>Hits everything in the 5 squares ahead. Smashes Tombstones and keeps going.</p>
+<figure class="fig"><img src="../assets/diagrams/D11.webp" alt="Hand Cannon: 5 squares, through a Tombstone" loading="lazy"></figure></div></div></div><div class="refblock qref" id="immortal-draft"><h2>Hazard Draft</h2><div class="when2">Set up <i>›</i> draft <i>›</i> play</div>
+<ul>
+<li>The player who goes <b>last</b> picks first. Then counter-clockwise.</li>
+<li>Each pick: one hazard, onto an empty square that isn't <b>Hallowed</b> (striped on the layout card).</li>
+<li>Tombstones face any way. Dealer's choice.</li>
 </ul>
-<h3>Elimination and victory</h3>
-<ul>
-<li>You're out when all 3 Bloodwells are destroyed <b>or</b> both vampires are eliminated. Only your vampires and Bloodwells leave the board.</li>
-<li>The full chain resolves before anyone is checked for out. No one wins mid-turn.</li>
-<li><b>Last player standing wins.</b></li>
-<li><b>GHOST TOWN!</b> If simultaneous eliminations leave no one standing, nobody wins. Everyone shouts "GHOST TOWN!" together. Then nobody wins. But also everyone wins.</li>
-<li>No turn limit.</li>
-</ul></div><div class="refblock" id="immortal-cards"><h2>Faction cards</h2><p class="lead">Once-per-game cards are per player, not per vampire. Turn the card over after use. Factions are picked first come, first served. One player per faction.</p>
-     <div class="fjump"><a href="#immortal/cards" data-f="sheriffs" style="--fc:var(--sheriff)" onclick="document.getElementById('immortal-f-sheriffs').scrollIntoView();return false">Sheriffs</a><a href="#immortal/cards" data-f="hunters" style="--fc:var(--hunter)" onclick="document.getElementById('immortal-f-hunters').scrollIntoView();return false">Bounty Hunters</a><a href="#immortal/cards" data-f="vigilantes" style="--fc:var(--vigil)" onclick="document.getElementById('immortal-f-vigilantes').scrollIntoView();return false">Vigilantes</a><a href="#immortal/cards" data-f="outlaws" style="--fc:var(--outlaw)" onclick="document.getElementById('immortal-f-outlaws').scrollIntoView();return false">Outlaws</a></div><div class="acard" style="--fc:var(--parch)"><h4>Silver Bullet</h4><div class="ty">Every player · once per game</div><p>Load 1 + fire 3 = <b>4 AP</b> (6 if Cursed). Load and fire in the same turn, or not at all. Once per game; turn the card over after use.</p>
-<ul>
-<li>Fires straight ahead, any range, like a shot. A hit <b>eliminates</b> at once (skips Two-Tap).</li>
-<li>Stops at a Tombstone like a normal shot (Bounty Hunters' Sharpshooter passes through).</li>
-<li>Under My Protection guards Bloodwells from it.</li>
-</ul></div><div class="fgroup jumpto" id="immortal-f-sheriffs" style="--fc:var(--sheriff)"><h3>Sheriffs</h3><div class="art"><img src="../assets/art/sheriffs.webp" alt="" loading="lazy"></div><div class="acard"><h4>Under My Protection</h4><div class="ty">passive</div><p>No bullet harms your Bloodwell while one of your Sheriffs is in the 8 squares around it. That's every bullet, yours or an enemy's: Standard Shot, Silver Bullet, Rampage and Hand Cannon. It never stops dynamite. It's on or off: two Sheriffs change nothing.</p></div><div class="acard"><h4>Swift Justice</h4><div class="ty">passive</div><p>At the very end of your turn, after your meeple slides off the card, your active Sheriff may move once and/or pivot once, in either order, for 0 AP. This is a bonus turn, so pivot memory resets. It triggers hazards, and Bloodbath works after it.</p></div><div class="acard"><h4>Order Restored</h4><div class="ty">once per game · 2 AP; 3 if Cursed</div><p>Revive your vanquished Sheriff on an empty square next to (diagonals included) your surviving Sheriff or one of your own surviving Bloodwells, never an enemy's. It returns healthy, facing N, S, E or W. It can't act this turn and is never your active vampire this turn.</p></div></div><div class="fgroup jumpto" id="immortal-f-hunters" style="--fc:var(--hunter)"><h3>Bounty Hunters</h3><div class="art"><img src="../assets/art/hunters.webp" alt="" loading="lazy"></div><div class="acard"><h4>Sharpshooter</h4><div class="ty">passive</div><p>Your Standard Shots and Silver Bullet pass through Tombstones without destroying them, and hit a vampire sheltering there whichever way it faces.</p></div><div class="acard"><h4>Marked Man</h4><div class="ty">passive</div><p>A Standard Shot that hits an enemy vampire cleanly (no Tombstone passed through) also Curses it. An already Cursed target gets nothing more.</p></div><div class="acard"><h4>Contract Payoff</h4><div class="ty">card + marker · once per game</div><p>The marker starts at +2. When you vanquish an enemy vampire or Bloodwell, you must choose one:</p>
-<ul>
-<li>cash +2 AP now (card used, turn it over), or</li>
-<li>move the marker to +4. A later kill then pays +4 (card used).</li>
-</ul>
-<p>Moving the marker doesn't use the card. Several kills from one command pay once. Chain kills count if you fired the shot that set off the chain. Bear Trap deaths and Staked players give no credit.</p>
-<p>Raising on one kill and cashing +4 on a later kill in the same turn is allowed.</p></div></div><div class="fgroup jumpto" id="immortal-f-vigilantes" style="--fc:var(--vigil)"><h3>Vigilantes</h3><div class="art"><img src="../assets/art/vigilantes.webp" alt="" loading="lazy"></div><div class="acard"><h4>Fluid Malice</h4><div class="ty">passive</div><p>Switch freely between both Vigilantes during your turn, sharing one AP pool. No vampire may pivot twice in a row in the same turn, but you may pivot one Vigilante and then the other. If one Vigilante dies on your turn, spend the rest of your AP with the other, or the turn is invalid.</p></div><div class="acard"><h4>Bound by Blood</h4><div class="ty">passive</div><p>+1 AP at the start of your turn if both Vigilantes are alive and inside a 4x4 block (no more than 3 squares apart in any direction). Add it to your AP Tracker at the start of the turn.</p></div><div class="acard"><h4>Vengeance is Mine</h4><div class="ty">reaction</div><p>+4 AP, once per turn, when <b>another player</b> eliminates one of your vampires or destroys one of your Bloodwells. It never triggers on your own turn or from your own chain.</p>
-<ul>
-<li>Spend any or all of it right when the loss resolves, even on another player's turn, at normal costs. Either living Vigilante may spend it.</li>
-<li>While spending it, pivot memory resets and once-per-game cards (like the Silver Bullet) can be used.</li>
-<li>Whatever you don't spend rolls into your next turn. Then the normal rule applies: spend all your AP.</li>
-<li>No cap. AP above 11 is tracked on trust.</li>
-</ul></div></div><div class="fgroup jumpto" id="immortal-f-outlaws" style="--fc:var(--outlaw)"><h3>Outlaws</h3><div class="art"><img src="../assets/art/outlaws.webp" alt="" loading="lazy"></div><div class="acard"><h4>Daring Escape</h4><div class="ty">passive</div><p>Right after your Outlaw destroys an <b>enemy</b> Bloodwell (by Hand Cannon or a chain you set off too, after the blasts resolve): a free bonus turn of up to 2 moves and 2 pivots, in any order. Use it now or lose it. Once per turn. It may pivot twice in a row. It triggers hazards.</p></div><div class="acard"><h4>Rampage</h4><div class="ty">once per game · 3 AP; 4 if Cursed</div><p>Fire two Standard Shots at once, straight left and straight right of your facing. The left bullet resolves fully first, explosions included, then the right. Each destroys a Tombstone and stops.</p></div><div class="acard"><h4>Hand Cannon</h4><div class="ty">once per game · 4 AP; 5 if Cursed</div><p>Hits <b>everything</b> in the 5 squares ahead. Vampires Bleed (already Bleeding = eliminated). Bloodwells and hazards are destroyed, except Bloodwells guarded by Under My Protection. Tombstones are destroyed and give no cover; the shot keeps going. Every dynamite stick in those 5 squares explodes after the bullet finishes its path.</p>
-<p><b>Dust to Dust:</b> a vampire hit by the Hand Cannon can also be hit by the blast it sets off. A healthy vampire can go Bleeding, then down, in one shot.</p></div></div></div><div class="refblock qref" id="immortal-draft"><h2>Hazard Draft</h2><p class="lead">In Beginner and Deadly there is no draft: all 12 hazards start in the shared pool.</p>
-     <div class="when2">First player <i>›</i> place pieces <i>›</i> draft <i>›</i> play</div>
-     <h3>Draft order</h3><ul>
-<li>The player who takes their turn <b>last</b> drafts first.</li>
-<li>Then drafting goes <b>counter-clockwise</b>.</li>
-<li>Keep going until everyone has made their picks.</li>
-</ul>
-     <table class=""><tr><th>Players</th><th>Each drafts</th><th>Left in the pool</th></tr>
+<table class="md"><tr><th>Players</th><th>Each picks</th><th>Left in pool</th></tr>
 <tr><td>2</td><td class=n>4</td><td class=n>4</td></tr>
 <tr><td>3</td><td class=n>3</td><td class=n>3</td></tr>
-<tr><td>4</td><td class=n>3</td><td>0 (no throws until something leaves the board)</td></tr>
+<tr><td>4</td><td class=n>3</td><td class=n>0</td></tr>
 </table>
-     <h3>Each pick</h3><p>Take <b>one</b> hazard of any type from the pool and place it right away on a square that is:</p>
-<ul>
-<li><b>empty:</b> no vampire, Bloodwell, dynamite or other hazard, and</li>
-<li><b>not Hallowed ground.</b></li>
-</ul>
-     <h3>Hallowed ground</h3><ul>
-<li>The squares marked (striped) on the layout card. You <b>can't</b> place a hazard there during the draft.</li>
-<li>Every other empty square is fair game.</li>
-<li>On the current cards, Hallowed ground is every square touching a starting vampire or Bloodwell, diagonals included.</li>
-<li>Hallowed ground only matters during the draft. After that, throw anywhere you can reach.</li>
-</ul>
-     <h3>Tombstones</h3><ul>
-<li>Drafted Tombstones can face any way (dealer's choice). A Tombstone with a vampire on it always faces the same way as that vampire.</li>
-</ul>
-     <h3>Empty squares only</h3><p>A hazard is only ever placed or thrown on an empty square. Never on a vampire, Bloodwell, dynamite or another hazard. So Grave Dust can never be thrown at a vampire, and a vampire can't become Cursed on a Tombstone.</p>
-     <h3 id="immortal-pool" class="jumpto">The hazard pool</h3><div class="pool"><div class="hz"><img src="../assets/art/tombstone.webp" alt=""><div><h4>Tombstone<small>×4</small></h4><p>Cover from shots. At most one vampire may share its square, never a Cursed one. A vampire on it is safe from a shooter on the side it faces. Destroyed by a shot or blast.</p></div></div><div class="hz"><img src="../assets/art/bear_trap.webp" alt=""><div><h4>Bear Trap<small>×4</small></h4><p>Step on it: used up, vampire Bleeds. Already Bleeding = eliminated. No one gets credit for a Bear Trap death. Shots pass over it.</p></div></div><div class="hz"><img src="../assets/art/grave_dust.webp" alt=""><div><h4>Grave Dust<small>×4</small></h4><p>Step on it: used up, vampire is Cursed. Already Cursed = it's just cleared. Shots pass over it.</p></div></div><div class="hz"><img src="../assets/art/dynamite_crate.webp" alt=""><div><h4>Dynamite supply<small>×3 · not a hazard</small></h4><ul>
-<li><b>3 sticks</b>, kept off the board in the dynamite supply. Dynamite is <b>not</b> a hazard: it is never drafted and never in the hazard pool.</li>
-<li>Place Dynamite (3 AP) on the empty square directly in front of you. Not while Cursed. If all 3 are on the board, no one can place dynamite until one explodes.</li>
-<li>Exploded sticks return to the supply. Unexploded sticks stay on the board when a player is eliminated.</li>
-</ul></div></div></div><ul>
-<li>Free moves (Swift Justice, Daring Escape) trigger Bear Traps and Grave Dust too.</li>
-<li>Anything removed from the board (used up, destroyed, blown up) goes back to the pool and can be thrown again.</li>
-<li>Once on the board, a hazard belongs to the board. It stays when a player is eliminated.</li>
-</ul></div>
+     <h3 id="immortal-pool" class="jumpto">The hazard pool</h3><div class="pool"><div class="hz"><img src="../assets/art/tombstone.webp" alt=""><div><h4>Tombstone<small>×4</small></h4><p>Cover from shots.</p></div></div><div class="hz"><img src="../assets/art/bear_trap.webp" alt=""><div><h4>Bear Trap<small>×4</small></h4><p>Step on it: Bleed.</p></div></div><div class="hz"><img src="../assets/art/grave_dust.webp" alt=""><div><h4>Grave Dust<small>×4</small></h4><p>Step on it: Cursed.</p></div></div><div class="hz"><img src="../assets/art/dynamite_crate.webp" alt=""><div><h4>Dynamite<small>×3 · not a hazard</small></h4><p>Never drafted. Place it in front of you for 3 AP.</p></div></div></div><p>Used hazards go back to the pool.</p></div>
 <!--/GEN:immortal-->
   </section>
 
