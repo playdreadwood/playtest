@@ -4,7 +4,7 @@ Live: https://playdreadwood.github.io/playtest/ · Host log: `/host/` · Table c
 
 Mobile-first static site for DREADWOOD's first public playtest (Fri Oct 30, 2026, Potion Portal, St. Pete). No build step, no tracking, self-hosted Barlow fonts.
 
-> **Branch `landing-draft` (not merged, not live).** Adds a landing page at `/` with three buttons (survey, How to Play, FAQ). The survey moves to `/survey/` unchanged (same localStorage keys, vampire rotation, Sheet + relay sinks, thank-you, "more thoughts"). `/how-to-play/` opens on a Beginner / Deadly / Immortal picker (`#beginner`, `#deadly`, `#immortal`). `/faq/` is an accordion. All rules and FAQ text is **DRAFT** pending the Manual Maker and Rules Keeper. Old links with `?g=` are forwarded from `/` to `/survey/`. The printed QR (`/playtest/`) works on both main (survey) and this branch (landing). `/host/` and `/qr/` are unchanged.
+> **Branch `landing-draft` (not merged, not live).** Adds a landing page at `/` with three buttons (survey, How to Play, FAQ). The survey moves to `/survey/` unchanged (same localStorage keys, vampire rotation, Sheet + relay sinks, thank-you, "more thoughts"). `/how-to-play/` opens on a Beginner / Deadly / Immortal picker (`#beginner`, `#deadly`, `#immortal`). `/faq/` is an accordion. How to Play and FAQ text comes from the Manual Maker / Rules Keeper files in `dreadwood-playtest-sheet/content/` (how_to_play.md, playtest_faq.md), with diagrams in `assets/diagrams/` and art in `assets/art/`. Old links with `?g=` are forwarded from `/` to `/survey/`. The printed QR (`/playtest/`) works on both main (survey) and this branch (landing). `/host/` and `/qr/` are unchanged.
 
 | Page | What it is |
 |---|---|
