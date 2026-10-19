@@ -49,7 +49,7 @@ def cards(tier):
             ab += f'<div class="acard"{" style=\"--fc:var(--parch)\"" if k=="silver" else ""}><h4>{n}</h4><div class="ty">{ty}</div>{md(b)}</div>'
         if k == "silver": g += ab; continue
         jump += f'<a href="#{tier}/cards" data-f="{k}" style="--fc:{col}" onclick="document.getElementById(\'{tier}-f-{k}\').scrollIntoView();return false">{name}</a>'
-        g += f'<div class="fgroup jumpto" id="{tier}-f-{k}" style="--fc:{col}"><h3>{name}</h3><div class="art"><img src="../assets/art/{k}.webp" alt="" loading="lazy"></div>{ab}</div>'
+        g += f'<div class="fgroup jumpto" id="{tier}-f-{k}" style="--fc:{col}"><h3>{name}</h3>{ab}</div>'
     return f'<div class="refblock" id="{tier}-cards"><h2>Faction cards</h2><div class="fjump">{jump}</div>{g}</div>'
 def draft(tier):
     pool = "".join(f'<div class="hz"><img src="../assets/art/{a}.webp" alt=""><div><h4>{n}<small>{c}</small></h4><p>{inl(e)}</p></div></div>'

@@ -229,10 +229,9 @@ a.inl{color:var(--logo)}
 .qref td.n{font:700 20px "Barlow Condensed";color:var(--logo);white-space:nowrap}
 .tt{display:inline-block;font:700 12px/1.5 Barlow;letter-spacing:.06em;text-transform:uppercase;border-radius:99px;padding:0 8px;vertical-align:2px;color:#fff;margin-right:2px}
 .tt.dea{background:var(--ember)}.tt.imm{background:var(--magenta)}
-.fgroup{margin:14px 0 22px}
-.fgroup>h3{display:flex;align-items:center;gap:10px;font-size:24px;margin:0 0 6px;color:var(--parch)}
+.fgroup{margin:10px 0 14px}
+.fgroup>h3{display:flex;align-items:center;gap:10px;font-size:24px;margin:16px 0 8px;color:var(--parch)}
 .fgroup>h3::before{content:"";width:14px;height:26px;border-radius:3px;background:var(--fc)}
-.fgroup .art{margin:0 0 6px}
 .acard{background:#331a44;border:2px solid #7a4b8d;border-left:10px solid var(--fc);border-radius:10px;padding:12px 14px;margin:10px 0}
 .acard h4{font:700 24px/1 "Barlow Condensed";text-transform:uppercase;letter-spacing:.04em;margin:0;color:var(--parch)}
 .acard .ty{font:600 15px Barlow;color:var(--logo);margin:4px 0 6px;text-transform:uppercase;letter-spacing:.05em}
