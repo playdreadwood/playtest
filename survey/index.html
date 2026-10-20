@@ -182,6 +182,7 @@ function resetForm(keepGame){
 }
 $("#more-thoughts").onclick = () => {
   $("#thanks-view").classList.add("hidden"); $("#form-view").classList.remove("hidden");
+  ["#d-game","#d-more","#d-you"].forEach(id=>{ const d=$(id); if(d) d.open=true; });
   if(!$("#extra").classList.contains("open")) $("#more").click(); else $("#extra").scrollIntoView({behavior:"smooth",block:"start"});
   badges();
 };
