@@ -1,191 +1,33 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>DREADWOOD Playtest Feedback</title><meta name="theme-color" content="#251538">
-<meta name="description" content="Tell us how your DREADWOOD game went. About 60 seconds.">
+<title>DREADWOOD Playtest</title><meta name="theme-color" content="#251538">
+<meta name="description" content="DREADWOOD playtest night: feedback, how to play, and the FAQ.">
+<script>
+// Old links and printed QR codes pointed straight at the survey (?g=2 prefills the game count). Keep them working.
+(function(){ var q = location.search; if (/[?&]g=/.test(q)) location.replace("survey/" + q + location.hash); })();
+</script>
 <link rel="preload" href="assets/fonts/BarlowCondensed-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/app.css">
 </head><body>
-<main class="wrap" id="form-view">
+<main class="wrap">
   <header class="hdr"><img class="logo" src="assets/img/logo.png" alt="DREADWOOD" width="900" height="249">
-  <h1>Playtest feedback</h1></header>
-  <form id="f" autocomplete="off" novalidate>
-   <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+  <h1>Playtest night</h1></header>
+  <p class="when">Fri Oct 30 · 6:30–10 PM · Potion Portal, St. Pete</p>
 
-   <section class="panel pt" id="pt-panel">
-    <label class="tick big"><input type="checkbox" id="credit"><span><b>Include me as a playtester</b><small>Your name goes in the rulebook credits.</small></span></label>
-    <div id="pt-fields" class="reveal"><div class="rv">
-      <div class="q">Name <small>exactly as it should be printed</small></div><input type="text" id="creditname" maxlength="80" autocomplete="off" placeholder="First name, handle, or both">
-      <div class="q">Email <small>optional, only if you're up for follow-up questions</small></div><input type="email" id="email" maxlength="120" autocomplete="off" inputmode="email" placeholder="you@example.com">
-      <p class="hint" style="margin:8px 0 0">Only Adam sees this. No spam, no list sales.</p>
-    </div></div>
-   </section>
+  <nav class="menu" aria-label="Playtest">
+    <a class="mbtn hero" href="survey/">
+      <span class="t"><span class="k">Done playing?</span><span class="a">Tell us how it went</span><span class="b">About 60 seconds. Be blunt.</span></span><span class="go" aria-hidden="true">›</span>
+    </a>
+    <a class="mbtn" href="how-to-play/">
+      <span class="t"><span class="a">How to Play Dreadwood</span><span class="b">Rules, quick ref, faction cards, the draft.</span></span><span class="go" aria-hidden="true">›</span>
+    </a>
+    <a class="mbtn" href="faq/">
+      <span class="t"><span class="a">Playtest FAQ</span><span class="b">How long, which tier, who to ask.</span></span><span class="go" aria-hidden="true">›</span>
+    </a>
+  </nav>
 
-   <section class="panel">
-    <h2>Your game</h2>
-    <div class="q req">Who did you play?</div>
-    <div class="chips grid2" id="c-faction" data-chipclass="fac"></div>
-
-    <div class="q"><span class="req">How fun was it?</span><small>1 = a funeral, 5 = a gunfight</small></div>
-    <div class="chips five" id="c-fun"></div>
-    <div class="scale-labels"><span>Not fun</span><span>Great fun</span></div>
-
-    <div class="q req">How clear were the rules?</div>
-    <div class="chips five" id="c-clarity"></div>
-    <div class="scale-labels"><span>Lost</span><span>Crystal clear</span></div>
-
-    <div class="q req">Would you play again?</div>
-    <div class="chips grid3" id="c-again"></div>
-
-    <div class="q req">Did everyone have a fair shot?</div>
-    <div class="chips grid2" id="c-balance"></div>
-    <div id="off-wrap" class="hidden"><div class="q">What gave someone the edge? <small>optional</small></div>
-      <input type="text" id="off" maxlength="200" placeholder="A faction, a card, a seat, the board…"></div>
-   </section>
-
-   <p class="note count" id="left">5 answers to go</p>
-   <div class="actions">
-     <button class="btn" id="go" type="button" disabled>That’s Enough for Me</button>
-     <button class="btn ghost" id="more" type="button" aria-expanded="false" aria-controls="extra">Help shape the game</button>
-   </div>
-
-   <div id="extra" class="reveal"><div class="rv">
-   <details class="panel" id="d-game">
-    <summary>The match <span class="opt">optional</span><span class="cnt" hidden></span></summary>
-    <div class="q">How many games of Dreadwood have you played tonight?<small>Count this one.</small></div><div class="chips eq num" id="c-game"></div>
-    <div class="q">Players</div><div class="chips grid3" id="c-count"></div>
-    <div id="seat-wrap" class="hidden"><div class="q">Your seat<small>1 = went first</small></div><div class="chips eq num" id="c-seat"></div></div>
-    <div class="q">Layout</div><select id="layout" aria-label="Layout"></select>
-    <div class="q">Did you win?</div><div class="chips grid3" id="c-won"></div>
-   </details>
-
-   <details class="panel" id="d-more">
-    <summary>Your two cents <span class="opt">optional</span><span class="cnt" hidden></span></summary>
-    <div class="q">Favorite character or ability</div><select id="fav"></select>
-    <div class="q">Least favorite</div><select id="least"></select>
-    <div class="q">What confused you?</div><textarea id="confused" maxlength="600" placeholder="A rule, a card, a moment where you went “wait, what?”"></textarea>
-    <div class="q">One thing you'd change</div><textarea id="change" maxlength="600"></textarea>
-   </details>
-
-   <details class="panel" id="d-you">
-    <summary>Who's talking <span class="opt">optional</span><span class="cnt" hidden></span></summary>
-    <div class="q">How did you hear about tonight?</div><div class="chips grid2" id="c-heard"></div>
-    <div class="q">What do you usually play? <small>pick any</small></div><div class="chips grid2 left" id="c-interests"></div>
-    <div class="q">Favorite board or video game?</div><input type="text" id="favgame" maxlength="100" placeholder="Anything goes">
-   </details>
-
-   <p class="note count" id="left2"></p>
-   <button class="btn" id="go2" type="button" disabled>Send it all in</button>
-   </div></div>
-  </form>
-  <p class="foot">DREADWOOD · First public playtest · Potion Portal, St. Pete</p>
+  <a class="btn ig" href="https://instagram.com/playdreadwood" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg><div class="igt"><span class="a">Follow @playdreadwood</span><span class="b">on Instagram</span></div></a>
+  <p class="foot">Questions? Ask Adam. He's the one in the hat.</p>
 </main>
-
-<main class="wrap thanks hidden" id="thanks-view">
-  <img class="logo" src="assets/img/logo.png" alt="DREADWOOD" width="900" height="249">
-  <h1 id="thx-h1">Thanks, partner.</h1>
-  <figure class="vamp" id="vamp"><img id="vamp-img" alt="" width="260" height="360"><figcaption><b id="vamp-name"></b><span id="vamp-line"></span></figcaption></figure>
-  <p class="lede" style="font-size:20px">Your notes go straight into the rulebook pile.</p>
-  <div class="status wait" id="tstatus">Saving…</div>
-  <a class="btn ig" id="ig" href="https://instagram.com/playdreadwood" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg><div class="igt"><span class="a">Follow @playdreadwood</span><span class="b">on Instagram</span></div></a>
-  <p class="lede">Eliminated early? Grab another drink. You earned it.</p>
-  <div style="display:grid;gap:10px;margin-top:20px">
-   <button class="btn ghost" id="more-thoughts" type="button">Wait! I had more thoughts.</button>
-   <button class="btn" id="again" type="button">Another player at this table</button>
-   <button class="btn ghost" id="again-me" type="button">I played another game</button>
-  </div>
-  <p class="foot">Anything we missed? Tell Adam in person. He's the one in the hat.</p>
-</main>
-<script src="assets/config.js"></script><script src="assets/common.js"></script>
-<script>
-(() => {
-const {$, $$, chips, getChips, setChips, enqueue, flush, pending, fillLayouts, ROSTER, FACTIONS, jget, jset} = DW;
-const P = new URLSearchParams(location.search);
-let game = "";   // ?t= (old table param) is ignored on purpose
-const gp = (P.get("g")||"").replace(/\s/g,"+");   // ?t= (old table param) is ignored on purpose
-if (/^\d{1,2}\+?$/.test(gp)) game = (parseInt(gp,10) >= 4 || gp.endsWith("+")) ? "4+" : String(parseInt(gp,10));
-const mounted = Date.now();
-chips($("#c-game"), ["1","2","3","4+"], {onchange:v=>{game=v;}}); setChips($("#c-game"), game);
-const upd = () => {
-  const need = [["fac",getChips($("#c-faction"))],["fun",getChips($("#c-fun"))],["cl",getChips($("#c-clarity"))],["ag",getChips($("#c-again"))],["bal",getChips($("#c-balance"))]].filter(x=>!x[1]).length;
-  $("#go").disabled = $("#go2").disabled = need>0;
-  $("#left").textContent = $("#left2").textContent = need ? need + (need===1?" answer to go":" answers to go") : "Ready. Thanks for doing this.";
-  $("#off-wrap").classList.toggle("hidden", getChips($("#c-balance"))!=="Felt off");
-};
-chips($("#c-faction"), FACTIONS, {onchange:upd});
-chips($("#c-fun"), ["1","2","3","4","5"], {onchange:upd});
-chips($("#c-clarity"), ["1","2","3","4","5"], {onchange:upd});
-chips($("#c-again"), ["Yes","Maybe","No"], {onchange:upd});
-chips($("#c-balance"), [{v:"Fair",l:"Yes, fair"},{v:"Felt off",l:"Someone had an edge"}], {onchange:upd});
-function seatsFor(v){ const n=+v||0, keep=getChips($("#c-seat")); $("#seat-wrap").classList.toggle("hidden", !n);
-  chips($("#c-seat"), n?Array.from({length:n},(_,i)=>String(i+1)):[], {onchange:()=>{}}); $("#c-seat").style.setProperty("--n", n||1);
-  if (keep && +keep<=n) setChips($("#c-seat"), keep); }
-chips($("#c-count"), ["2","3","4"], {onchange:v=>{ fillLayouts($("#layout"), v?+v:0); seatsFor(v); }});
-seatsFor("");
-chips($("#c-won"), ["Won","Lost","Unfinished"]);
-chips($("#c-heard"), ["Potion Portal","Social media","A friend","Walked in","Other"]);
-chips($("#c-interests"), ["Tactics/strategy board games","Miniatures wargames","Card games","Party/family games","Tactics/strategy video games","Shooter video games","Role-playing video games","Other"], {multi:true});
-fillLayouts($("#layout"), 0);
-// favorite / least: characters + abilities + Silver Bullet
-for (const id of ["fav","least"]) { const s=$("#"+id); s.innerHTML='<option value="">No pick</option>';
-  Object.entries(ROSTER).forEach(([f,r]) => { const g=document.createElement("optgroup"); g.label=f;
-    [...r.chars.map(c=>["Character: "+c, c]), ...r.abil.map(a=>["Ability: "+a, a+" (ability)"])].forEach(([v,l])=>{const o=document.createElement("option");o.value=v;o.textContent=l;g.appendChild(o)}); s.appendChild(g); });
-  const g=document.createElement("optgroup"); g.label="Everyone"; const o=document.createElement("option"); o.value="Silver Bullet"; o.textContent="Silver Bullet"; g.appendChild(o); s.appendChild(g); }
-$("#credit").onchange = e => { $("#pt-fields").classList.toggle("open", e.target.checked); if(!e.target.checked){ $("#creditname").value=""; $("#email").value=""; } };
-$("#more").onclick = () => { $(".actions").classList.add("hidden"); $("#left").classList.add("hidden"); const x=$("#extra"); x.classList.add("open"); $("#more").setAttribute("aria-expanded","true"); setTimeout(()=>x.scrollIntoView({behavior:"smooth",block:"start"}),120); };
-upd();
-
-function badges(){
-  $$('#f details').forEach(d=>{ let n=0;
-    $$('.chips',d).forEach(c=>{ if($$('.chip[aria-pressed=true]',c).length) n++; });
-    $$('input[type=text],input[type=email],textarea,select',d).forEach(e=>{ if((e.value||'').trim()) n++; });
-    $$('input[type=checkbox]',d).forEach(e=>{ if(e.checked) n++; });
-    const b=$('.cnt',d); b.hidden=!n; b.textContent=n+' answered'; });
-}
-['click','input','change'].forEach(ev=>$('#f').addEventListener(ev,()=>setTimeout(badges,0)));
-badges();
-
-function build(){
-  const v = id => ($("#"+id).value||"").trim(), pt = $("#credit").checked;
-  return { type:"survey", game:getChips($("#c-game")), faction:getChips($("#c-faction")), fun:+getChips($("#c-fun")), clarity:+getChips($("#c-clarity")),
-    play_again:getChips($("#c-again")), balance:getChips($("#c-balance")), balance_note:v("off"),
-    tier:"", players:getChips($("#c-count")), layout:v("layout"), seat:getChips($("#c-seat")), result:getChips($("#c-won")), first_time:"",
-    favorite:v("fav"), least_favorite:v("least"), confused:v("confused"), change:v("change"), heard:getChips($("#c-heard")), interests:getChips($("#c-interests"),true), favorite_game:v("favgame"),
-    handle:pt?v("creditname"):"", email:pt?v("email"):"", ok_followup:pt && !!v("email"), ok_credit:pt, credit_name:pt?v("creditname"):"",
-    seconds:Math.round((Date.now()-mounted)/1000) };
-}
-let cur = null;   // {id, ts, vamp} of the record this screen belongs to
-async function showThanks(real, upd){
-  if (real){ const v = upd && cur && cur.vamp ? cur.vamp : DW.nextVampire(); if (cur) cur.vamp = v; $('#vamp-img').src='assets/vamps/'+v.f; $('#vamp-img').alt=v.name; $('#vamp-name').textContent=v.name; $('#vamp-line').textContent=v.line; $('#vamp').classList.remove('hidden'); } else $('#vamp').classList.add('hidden');
-  $('#thx-h1').textContent = upd ? 'Added. Thanks.' : 'Thanks, partner.';
-  $("#form-view").classList.add("hidden"); $("#thanks-view").classList.remove("hidden"); scrollTo(0,0);
-  const st = $("#tstatus");
-  const paint = () => { const n = pending(); if (n){ st.className="status wait"; st.textContent="Saved on this phone. It will send itself as soon as you have signal. You can close this page."; } else { st.className="status ok"; st.textContent="✓ Received. Nothing more to do."; } };
-  paint(); document.addEventListener("dw-queue", paint); await flush(); paint();
-}
-const submit = async () => {
-  if ($("#f [name=website]").value) { showThanks(); return; }           // honeypot: bots get a fake thank-you, nothing is stored
-  if (Date.now()-mounted < 2500) return;                                   // humans need more than 2.5 s
-  const em = $("#email").value.trim(); if (em && !/^\S+@\S+\.\S+$/.test(em)) { $("#email").focus(); return; }
-  const upd = !!cur, rec = build();
-  if (upd){ rec.id = cur.id; rec.ts = cur.ts; rec.update = true; }
-  enqueue(rec); if (!upd) cur = {id:rec.id, ts:rec.ts, vamp:null};
-  showThanks(true, upd);
-};
-$("#go").onclick = $("#go2").onclick = submit;
-function resetForm(keepGame){
-  cur = null;
-  $("#f").reset(); ["c-game","c-faction","c-fun","c-clarity","c-again","c-balance","c-count","c-seat","c-won","c-heard","c-interests"].forEach(i=>setChips($("#"+i),""));
-  seatsFor(""); $("#pt-fields").classList.remove("open"); $("#extra").classList.remove("open"); $(".actions").classList.remove("hidden"); $("#left").classList.remove("hidden"); $("#more").setAttribute("aria-expanded","false"); if(!keepGame) game="";
-  setChips($("#c-game"), keepGame ? game : ""); fillLayouts($("#layout"),0); upd(); badges(); $$('#f details').forEach(d=>d.open=false);
-  $("#thanks-view").classList.add("hidden"); $("#form-view").classList.remove("hidden"); scrollTo(0,0);
-}
-$("#more-thoughts").onclick = () => {
-  $("#thanks-view").classList.add("hidden"); $("#form-view").classList.remove("hidden");
-  if(!$("#extra").classList.contains("open")) $("#more").click(); else $("#extra").scrollIntoView({behavior:"smooth",block:"start"});
-  badges();
-};
-$("#again").onclick = () => resetForm(true);
-$("#again-me").onclick = () => resetForm(false);
-})();
-</script></body></html>
+</body></html>
