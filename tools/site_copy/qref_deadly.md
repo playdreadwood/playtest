@@ -19,7 +19,7 @@
 
 ## Health
 - 1 hit: Bleeding. 2 hits: eliminated.
-- Cursed: +1 AP. No throws, Dynamite or Tombstones.
+- Cursed: +1 AP, except Pivot. No throws, Dynamite or Tombstones.
 - Bloodbath: end a move next to any Bloodwell. Clears both.
 ## Shot into a Tombstone
 | Tombstone | Result |
@@ -31,4 +31,4 @@
 - Throw 1 to 3 ahead onto an empty square. Blocked? No throw.
 - Dynamite: a shot or blast sets it off. Hits all 8 squares around it.
 ## Out
-- No Bloodwells or no Vampires left.
+- No Bloodwells or no Vampires left, or Staked.

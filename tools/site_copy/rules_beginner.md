@@ -9,22 +9,22 @@ Be the **last player standing**. You're out when all 3 of your Bloodwells are de
 !D1 A layout card next to the board it sets up
 ## Your turn
 1. Pick **one** Vampire.
-2. Take **5 AP**. Round 1 only: 4, 5, 6, 6 by seat.
+2. Take **5 AP**. Round 1 only: first player 4, then clockwise 5, 6, 6.
 3. Spend **every** point, in any order.
 Can't spend it all at the start of your turn? You're **Staked**, and you're out.
 !D2 A 5 AP turn: move 1, pivot 1, shoot 3
 ## Actions
 <table class="costs" aria-label="Action costs">
 <tr><td><b>Move.</b> One square forward.</td><td>1 AP</td></tr>
-<tr><td><b>Pivot.</b> Face a new way. Not twice in a row.</td><td>1 AP</td></tr>
+<tr><td><b>Pivot.</b> Face a new way. Not twice in a row with the same Vampire in one turn.</td><td>1 AP</td></tr>
 <tr><td><b>Shot.</b> Straight ahead. Hits the first thing in line.</td><td>3 AP</td></tr>
 <tr><td><b>Throw Hazard.</b> 1 to 3 squares ahead, onto an empty square.</td><td>1 AP</td></tr>
-<tr><td><b>Place Dynamite.</b> On the square in front of you.</td><td>3 AP</td></tr>
-<tr><td><b>Bloodbath.</b> End a move next to any Bloodwell. Heals everything.</td><td>0 AP</td></tr>
+<tr><td><b>Place Dynamite.</b> On the empty square in front of you.</td><td>3 AP</td></tr>
+<tr><td><b>Bloodbath.</b> End a move next to any Bloodwell (diagonals count). Clears Bleeding and Cursed.</td><td>0 AP</td></tr>
 </table>
 ## Health
 - **Hit once:** Bleeding (red ring). **Hit again:** eliminated.
-- **Cursed** (magenta ring): +1 AP per action. No throwing, no Dynamite, no Tombstones.
+- **Cursed** (magenta ring): +1 AP per action, except Pivot. No throwing, no Dynamite, no Tombstones.
 !D4 Bloodbath clears both rings
 ## Shots
 A shot stops at the first thing it hits. Vampires take a hit. Bloodwells are destroyed. Dynamite explodes. Shots fly over Bear Traps and Grave Dust.
