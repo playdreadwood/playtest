@@ -20,11 +20,11 @@ Can't spend it all at the start of your turn? You're **Staked**, and you're out.
 <tr><td><b>Shot.</b> Straight ahead. Hits the first thing in line.</td><td>3 AP</td></tr>
 <tr><td><b>Throw Hazard.</b> 1 to 3 squares ahead, onto an empty square.</td><td>1 AP</td></tr>
 <tr><td><b>Place Dynamite.</b> On the empty square in front of you.</td><td>3 AP</td></tr>
-<tr><td><b>Bloodbath.</b> End a move next to any Bloodwell (diagonals count). Clears Bleeding and Cursed.</td><td>0 AP</td></tr>
 </table>
 ## Health
 - **Hit once:** Bleeding (red ring). **Hit again:** eliminated.
 - **Cursed** (magenta ring): +1 AP per action, except Pivot. No throwing, no Dynamite, no Tombstones.
+- **Bloodbath:** end a move next to any Bloodwell (diagonals count). Clears Bleeding and Cursed. Free, and not an action.
 !D4 Bloodbath clears both rings
 ## Shots
 A shot stops at the first thing it hits. Vampires take a hit. Bloodwells are destroyed. Dynamite explodes. Shots fly over Bear Traps and Grave Dust.

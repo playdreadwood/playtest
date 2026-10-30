@@ -10,12 +10,11 @@
 | Shot | 3 | 4 |
 | Throw Hazard | 1 | no |
 | Place Dynamite | 3 | no |
-| Bloodbath | 0 | 0 |
 
 ## Health
 - 1 hit: Bleeding. 2 hits: eliminated.
 - Cursed: +1 AP, except Pivot. No throws, Dynamite or Tombstones.
-- Bloodbath: end a move next to any Bloodwell. Clears both.
+- Bloodbath: end a move next to any Bloodwell (diagonals count). Clears Bleeding and Cursed.
 ## Shot into a Tombstone
 | Tombstone | Result |
 |---|---|

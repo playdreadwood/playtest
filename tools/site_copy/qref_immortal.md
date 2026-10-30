@@ -11,7 +11,6 @@
 | Shot | 3 | 4 |
 | Throw Hazard | 1 | no |
 | Place Dynamite | 3 | no |
-| Bloodbath | 0 | 0 |
 | [Deadly+] Silver Bullet | 4 | 6 |
 | [Deadly+] Rampage | 3 | 4 |
 | [Deadly+] Hand Cannon | 4 | 5 |
@@ -20,7 +19,7 @@
 ## Health
 - 1 hit: Bleeding. 2 hits: eliminated.
 - Cursed: +1 AP, except Pivot. No throws, Dynamite or Tombstones.
-- Bloodbath: end a move next to any Bloodwell. Clears both.
+- Bloodbath: end a move next to any Bloodwell (diagonals count). Clears Bleeding and Cursed.
 ## Shot into a Tombstone
 | Tombstone | Result |
 |---|---|
