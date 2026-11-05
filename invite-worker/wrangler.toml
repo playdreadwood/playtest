@@ -1,0 +1,9 @@
+name = "dreadwood-invite"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+account_id = "d9f92ccd3c838aa444b3dd634714f248"
+
+[vars]
+MAX_AGE = "86400"
+MAX_USES = "4"
+# Secrets: BOT_TOKEN, CHANNEL_ID via wrangler secret put

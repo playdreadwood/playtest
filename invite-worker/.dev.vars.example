@@ -1,0 +1,3 @@
+# Copy to .dev.vars for `npx wrangler dev`. NEVER commit real values.
+BOT_TOKEN=your-bot-token-here
+CHANNEL_ID=123456789012345678

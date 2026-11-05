@@ -63,3 +63,8 @@ The player survey no longer asks for difficulty. `tier` stays in the schema/Shee
 The player survey no longer asks "First time playing?"; `first_time` stays as an empty column for surveys (the host log still records first-timers vs returning). The seat question now sits under Players, appears only after a player count is chosen, and offers seats 1..N for that count (a chosen seat above N is cleared when the count changes).
 
 Interest chips now store their displayed text: "Tactics/strategy video games", "Shooter video games", "Role-playing video games" (earlier test rows used "Video: tactics/strategy", "Video: shooters", "Video: RPGs"; treat those as the same answers).
+
+## Discord invites (in-game)
+`invite-worker/` is a Cloudflare Worker that mints unique, short-lived (4 uses / 24 h) Discord invites for the
+game's **Invite friends on Discord** button. The bot token lives only in GitHub/Cloudflare secrets — never in this
+repo or the game. Setup and API contract: [`invite-worker/README.md`](invite-worker/README.md).
