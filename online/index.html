@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Play Online · DREADWOOD</title><meta name="theme-color" content="#251538">
+<meta name="description" content="Host or join a Dreadwood match over Tailscale. Build 19 or later.">
+<link rel="preload" href="../assets/fonts/BarlowCondensed-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/app.css">
+<style>
+  .wrap{max-width:640px}
+  .lede{text-align:center;color:#d8bf8a;font-size:17px;margin:0 0 6px;font-weight:500}
+  .meta{text-align:center;color:#a98fb8;font-size:15px;margin:0 0 18px}
+  .panel h2{font:700 28px "Barlow Condensed";letter-spacing:.04em;text-transform:uppercase;color:var(--logo);margin:0 0 8px}
+  .panel h3{font:700 20px "Barlow Condensed";letter-spacing:.04em;text-transform:uppercase;color:#f0d9a8;margin:16px 0 6px}
+  .panel ol,.panel ul{margin:6px 0 10px;padding-left:1.2em}
+  .panel li{margin:4px 0;line-height:1.35}
+  .panel p{margin:6px 0;line-height:1.4}
+  .panel .fig{margin:10px 0 14px}
+  .panel .fig img{width:100%;height:auto;display:block;background:#1a0f24}
+  .toc{display:grid;gap:8px;margin:10px 0 4px}
+  .toc a{display:flex;align-items:center;justify-content:space-between;text-decoration:none;padding:10px 12px;border-radius:8px;border:2px solid #7a4b8d;background:#331a44;color:var(--parch);font:700 18px "Barlow Condensed";text-transform:uppercase;letter-spacing:.04em}
+  .toc a span.b{font:500 13px Barlow;text-transform:none;letter-spacing:0;color:#cbb6d8;display:block;margin-top:2px}
+  .toc a .go{color:var(--logo);font-size:22px;margin-left:8px}
+  table.fix{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0}
+  table.fix th,table.fix td{padding:8px 6px;border-bottom:1px solid rgba(139,48,125,.55);vertical-align:top;text-align:left}
+  table.fix th{font:700 16px "Barlow Condensed";color:var(--logo);text-transform:uppercase;letter-spacing:.04em}
+  table.fix td:first-child{color:#f0d9a8;font-weight:600;width:42%}
+  .note{font-size:14px;color:#cbb6d8;margin-top:8px}
+  .ui{font-weight:700;color:#f6e2b0}
+  @media(max-width:420px){
+    table.fix,table.fix thead,table.fix tbody,table.fix th,table.fix td,table.fix tr{display:block;width:100%}
+    table.fix thead{display:none}
+    table.fix tr{border-bottom:1px solid rgba(139,48,125,.55);padding:8px 0}
+    table.fix td{border:0;padding:2px 0}
+    table.fix td:first-child{width:auto;margin-bottom:2px}
+  }
+</style>
+</head><body>
+<main class="wrap">
+  <header class="hdr"><a href="../"><img class="logo" src="../assets/img/logo.png" alt="DREADWOOD home" width="900" height="249"></a>
+  <h1>Play online</h1></header>
+  <p class="lede">Host or join a match over Tailscale</p>
+  <p class="meta">Dreadwood v19 or later · same build on every PC · port 24565 UDP</p>
+
+  <section class="panel">
+    <h2>On this page</h2>
+    <nav class="toc" aria-label="Sections">
+      <a href="#install"><span><span class="a">Install Tailscale</span><span class="b">Once per player</span></span><span class="go" aria-hidden="true">›</span></a>
+      <a href="#host"><span><span class="a">Host a match</span><span class="b">One player runs it</span></span><span class="go" aria-hidden="true">›</span></a>
+      <a href="#share"><span><span class="a">Share the address</span><span class="b">Copy and send</span></span><span class="go" aria-hidden="true">›</span></a>
+      <a href="#join"><span><span class="a">Join</span><span class="b">Everyone else</span></span><span class="go" aria-hidden="true">›</span></a>
+      <a href="#reconnect"><span><span class="a">Reconnecting</span><span class="b">Drops and Leave</span></span><span class="go" aria-hidden="true">›</span></a>
+      <a href="#fix"><span><span class="a">Troubleshooting</span><span class="b">When it stalls</span></span><span class="go" aria-hidden="true">›</span></a>
+    </nav>
+    <p class="note">The game refuses a different build with <b>Version mismatch</b>. The port is filled in automatically; nobody types it.</p>
+  </section>
+
+  <section class="panel" id="install">
+    <h2>Install Tailscale</h2>
+    <p>Every player does this once. The host and the joiners must be in the <b>same tailnet</b>.</p>
+    <ol>
+      <li>Install Tailscale for Windows from <a href="https://tailscale.com/download" target="_blank" rel="noopener">tailscale.com/download</a>.</li>
+      <li>Sign in. The host invites the others from the Tailscale admin console (<b>Users → Invite users</b>), or shares the machine (<b>Machines → … → Share</b>).</li>
+      <li>Confirm the Tailscale tray icon says <span class="ui">Connected</span>.</li>
+    </ol>
+  </section>
+
+  <section class="panel" id="host">
+    <h2>Host a match</h2>
+    <ol>
+      <li>Start Dreadwood, then open <span class="ui">New Game</span> → <span class="ui">Play Online</span>.</li>
+    </ol>
+    <figure class="fig"><img src="../assets/online/01_new_game_play_online_button.jpg" width="1280" height="720" alt="New Game menu with Play Online selected"></figure>
+    <ol start="2">
+      <li>Choose <span class="ui">Host a match</span>.</li>
+    </ol>
+    <figure class="fig"><img src="../assets/online/02_play_online_menu.jpg" width="1280" height="720" alt="Play Online menu: Host a match, Join a match, How to play online"></figure>
+    <ol start="3">
+      <li>Under <span class="ui">YOUR NAME</span>, enter a name. Under <span class="ui">SEATS</span>, pick 2, 3 or 4. Under <span class="ui">MODE</span>, pick Beginner, Deadly or Immortal.</li>
+      <li>Click <span class="ui">Start hosting</span>. The Lobby opens.</li>
+    </ol>
+    <figure class="fig"><img src="../assets/online/03_host_a_match.jpg" width="1280" height="720" alt="Host a match: name, seats, mode, Start hosting"></figure>
+  </section>
+
+  <section class="panel" id="share">
+    <h2>Share the address</h2>
+    <p>The Lobby shows the host address and a <span class="ui">Copy address</span> button. Paste that into any chat. Either the <b>100.x</b> address or the MagicDNS name works.</p>
+    <figure class="fig"><img src="../assets/online/05_lobby_host_view.jpg" width="1280" height="720" alt="Lobby with Tailscale address example 100.x.y.z and Copy address"></figure>
+    <ul>
+      <li>If Tailscale isn't running, the Lobby shows a LAN address instead. That only works for players on the same home network.</li>
+      <li>If it says <b>No network address found</b>, start Tailscale (or join a network) and open the Lobby again.</li>
+    </ul>
+  </section>
+
+  <section class="panel" id="join">
+    <h2>Join</h2>
+    <ol>
+      <li>Open <span class="ui">New Game</span> → <span class="ui">Play Online</span> → <span class="ui">Join a match</span>.</li>
+      <li>Enter <span class="ui">YOUR NAME</span>. Under <span class="ui">HOST ADDRESS</span>, paste the host's Tailscale IP or MagicDNS name, then click <span class="ui">Join</span>.</li>
+    </ol>
+    <figure class="fig"><img src="../assets/online/04_join_a_match.jpg" width="1280" height="720" alt="Join a match: name and host address fields"></figure>
+    <ol start="3">
+      <li>In the Lobby, pick a faction from the drop-down next to the name under <span class="ui">SEATS</span>. The host clicks <span class="ui">Start</span>. Start stays disabled until every seat has a faction.</li>
+    </ol>
+    <figure class="fig"><img src="../assets/online/06_online_match.jpg" width="1280" height="720" alt="An online match in progress on the board"></figure>
+    <p class="note">Ability cards can open as a pop-up. Dismiss with <span class="ui">Next</span> or the close control.</p>
+    <figure class="fig"><img src="../assets/online/08_popup_card_dismiss.jpg" width="1280" height="720" alt="Pop-up ability card with Next to dismiss"></figure>
+  </section>
+
+  <section class="panel" id="reconnect">
+    <h2>Reconnecting</h2>
+    <ul>
+      <li>A drop mid-match shows <b>Connection lost. Reconnecting...</b> and retries every 3 seconds for about 2 minutes. Everyone else sees <b>Waiting for &lt;name&gt; to reconnect...</b>.</li>
+      <li>If it gives up with <b>Could not reconnect to the host.</b>, go to <span class="ui">Play Online</span> → <span class="ui">Join a match</span> with the same name and address. The seat comes back.</li>
+      <li><span class="ui">Leave</span> quits the lobby or match. If the host leaves, the match ends.</li>
+    </ul>
+    <figure class="fig"><img src="../assets/online/07_waiting_for_player.jpg" width="1280" height="720" alt="Waiting for a player to reconnect overlay"></figure>
+  </section>
+
+  <section class="panel" id="fix">
+    <h2>Troubleshooting</h2>
+    <table class="fix">
+      <thead><tr><th>Symptom</th><th>Fix</th></tr></thead>
+      <tbody>
+        <tr><td>Joining sits on Connecting…, port 24565</td><td>Both PCs must show <b>Connected</b> in Tailscale and share a tailnet. Ping the host's 100.x address.</td></tr>
+        <tr><td>Version mismatch</td><td>Everyone installs the same Dreadwood build (v19 or later).</td></tr>
+        <tr><td>No address in the Lobby</td><td>Start Tailscale, reopen the Lobby, use <b>Copy address</b>.</td></tr>
+        <tr><td>Windows Firewall prompt on first host</td><td>If Windows Firewall asks, allow Dreadwood on private networks.</td></tr>
+        <tr><td>Works on the LAN but not over the internet</td><td>Use the Tailscale 100.x address, not a LAN 192.168 or 10.x address.</td></tr>
+        <tr><td>Still stuck</td><td>Open <b>How to play online</b> in the game for this guide.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <p class="foot"><a href="../">Playtest home</a> · <a href="../how-to-play/">How to play</a></p>
+</main>
+</body></html>
