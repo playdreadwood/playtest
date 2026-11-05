@@ -14,7 +14,7 @@
 | [Deadly+] Silver Bullet | 4 | 6 |
 | [Deadly+] Rampage | 3 | 4 |
 | [Deadly+] Hand Cannon | 4 | 5 |
-| [Deadly+] Order Restored | 2 | 3 |
+| [Deadly+] Order Restored | 3 | 4 |
 
 ## Health
 - 1 hit: Bleeding. 2 hits: eliminated.

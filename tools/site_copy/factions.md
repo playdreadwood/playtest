@@ -6,9 +6,9 @@
 No bullet hurts your Bloodwell while one of your Sheriffs is next to it. Dynamite still does.
 !D10 Under My Protection: the shot stops at the guarded well
 ### Swift Justice | passive
-After your turn ends, the Sheriff you used may move once and/or pivot once, in either order, free.
-### Order Restored | once per game · 2 AP
-Bring back a dead Sheriff on an empty square next to your other Sheriff or one of your Bloodwells. It returns healthy and can't act this turn.
+At the very end of your turn, your active Sheriff may make one free move and/or one free pivot. The move must end next to one of your own Bloodwells (any of the 8 squares around it). If it can't, it's pivot only.
+### Order Restored | once per game · 3 AP
+Destroy one of your Bloodwells to bring a fallen Sheriff back on an empty square orthogonally next to your surviving Sheriff or one of your own Bloodwells. It returns Bleeding and can't act this turn. Sacrificing your last Bloodwell puts you out.
 # Bounty Hunters | var(--hunter) | hunters
 ### Sharpshooter | passive
 Your shots pass through Tombstones and hit whoever is on them.
