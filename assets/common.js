@@ -114,7 +114,7 @@ function nextVampire(){
 const FACTIONS = ["Sheriffs","Outlaws","Bounty Hunters","Vigilantes"];
 const ROSTER = {
  "Sheriffs":{chars:["Marshal Cyrus Thorne","Deputy Victoria Steele"],abil:["Under My Protection","Swift Justice","Order Restored"],once:["Order Restored"]},
- "Outlaws":{chars:["Ruby \"The Rose\" O'Malley","\"Mad Dog\" Maddox"],abil:["Daring Escape","Rampage","Hand Cannon"],once:["Rampage","Hand Cannon"]},
+ "Outlaws":{chars:["Ruby \"The Rose\" O'Malley","\"Mad Dog\" Maddox"],abil:["Daring Escape","Rampage","Hand Cannon","Reckless Reach"],once:["Rampage","Hand Cannon"]},
  "Bounty Hunters":{chars:["Silas \"The Grave\" Vane","The Widow"],abil:["Sharpshooter","Marked Man","Contract Payoff"],once:["Contract Payoff"]},
  "Vigilantes":{chars:["\"Iron\" Ike Miller","\"Calamity\" June"],abil:["Fluid Malice","Bound by Blood","Vengeance is Mine"],once:[]}
 };

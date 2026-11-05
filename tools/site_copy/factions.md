@@ -31,3 +31,5 @@ Two standard shots, left then right. Each resolves on its own.
 ### Hand Cannon | once per game · 4 AP
 Hits everything in the 5 squares ahead. Smashes Tombstones and keeps going.
 !D11 Hand Cannon: 5 squares, through a Tombstone
+### Reckless Reach | passive
+Outlaws throw every hazard 1 square further, so a throw can land up to 4 squares ahead. And, yes, that includes dynamite. An Outlaw may place Dynamite 1 or 2 squares ahead.

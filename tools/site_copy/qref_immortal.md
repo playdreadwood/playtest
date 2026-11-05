@@ -27,7 +27,7 @@
 | Vampire facing you | Breaks. Vampire safe. |
 | Vampire facing elsewhere | Vampire hit |
 ## Hazards and Dynamite
-- Throw 1 to 3 ahead onto an empty square. Blocked? No throw.
+- Throw 1 to 3 ahead onto an empty square. Blocked? No throw. [Deadly+] Outlaws: up to 4 ahead, and Dynamite 1 or 2 ahead.
 - Dynamite: a shot or blast sets it off. Hits all 8 squares around it.
 ## Out
 - No Bloodwells or no Vampires left, or Staked.
